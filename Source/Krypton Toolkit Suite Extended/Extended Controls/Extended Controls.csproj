@@ -11,7 +11,7 @@
     <AssemblyName>Krypton Extended Toolkit</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationVersion>4.7.410.0</ApplicationVersion>
+    <ApplicationVersion>4.0.410.0</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,25 +36,25 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Krypton Docking, Version=4.70.570.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+    <Reference Include="Krypton Docking, Version=4.00.570.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.70\Krypton Docking.dll</HintPath>
+      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.00\Krypton Docking.dll</HintPath>
     </Reference>
-    <Reference Include="Krypton Navigator, Version=4.70.570.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+    <Reference Include="Krypton Navigator, Version=4.00.570.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.70\Krypton Navigator.dll</HintPath>
+      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.00\Krypton Navigator.dll</HintPath>
     </Reference>
-    <Reference Include="Krypton Ribbon, Version=4.70.571.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+    <Reference Include="Krypton Ribbon, Version=4.00.571.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.70\Krypton Ribbon.dll</HintPath>
+      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.00\Krypton Ribbon.dll</HintPath>
     </Reference>
-    <Reference Include="Krypton Toolkit, Version=4.70.593.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+    <Reference Include="Krypton Toolkit, Version=4.00.593.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.70\Krypton Toolkit.dll</HintPath>
+      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.00\Krypton Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="Krypton Workspace, Version=4.70.571.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+    <Reference Include="Krypton Workspace, Version=4.00.571.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.70\Krypton Workspace.dll</HintPath>
+      <HintPath>A:\Developer DLLs\Krypton DLLs\Versions\4.00\Krypton Workspace.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\PresentationCore.dll</HintPath>
