@@ -2,17 +2,26 @@
 using System;
 using System.Drawing;
 using Tooling.Classes.Other;
+using Tooling.Settings.Classes;
 
 namespace Tooling.UX
 {
     public partial class ColourMixer : KryptonForm
     {
         #region Variables
-        private int _alphaChannelValue, _redColourChannelValue, _greenColourChannelValue, _blueColourChannelValue;
+        private int _alphaChannelValue, _redColourChannelValue, _greenColourChannelValue, _blueColourChannelValue, _max = byte.MaxValue + 1;
 
-        ConversionMethods _conversionMethods = new ConversionMethods();
+        private ConversionMethods _conversionMethods = new ConversionMethods();
 
-        RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+        private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
+
+        private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
+
+        private ColourIntegerSettingsManager _colourIntegerSettingsManager = new ColourIntegerSettingsManager();
+
+        private Random randomColour = new Random();
+
+        private ColourUtility _colourUtility = new ColourUtility();
         #endregion
 
         #region Properties
@@ -32,6 +41,8 @@ namespace Tooling.UX
         public ColourMixer()
         {
             InitializeComponent();
+
+            SetAlphaChannelValue(_colourIntegerSettingsManager.GetAlphaChannelValue());
         }
 
         /// <summary>
@@ -282,16 +293,60 @@ namespace Tooling.UX
 
         private void kbtnGenerate_Click(object sender, EventArgs e)
         {
-            ktbRed.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(ktbRed.Minimum, ktbRed.Maximum);
+            kbtnGenerateRedValue.PerformClick();
 
-            ktbGreen.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(ktbGreen.Minimum, ktbGreen.Maximum);
+            kbtnGenerateGreenValue.PerformClick();
 
-            ktbBlue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(ktbBlue.Minimum, ktbBlue.Maximum);
+            kbtnGenerateBlueValue.PerformClick();
+        }
+
+        private void kbtnGenerateRedValue_Click(object sender, EventArgs e)
+        {
+            ktbRed.Value = _randomNumberGenerator.RandomlyGenerateARedNumberBetween(0, 255);
+        }
+
+        private void kbtnGenerateGreenValue_Click(object sender, EventArgs e)
+        {
+            ktbGreen.Value = _randomNumberGenerator.RandomlyGenerateAGreenNumberBetween(0, 255);
+        }
+
+        private void kbtnGenerateBlueValue_Click(object sender, EventArgs e)
+        {
+            ktbBlue.Value = _randomNumberGenerator.RandomlyGenerateABlueNumberBetween(0, 255);
+        }
+
+        private void kbtnUtiliseAsBaseColour_Click(object sender, EventArgs e)
+        {
+            PaletteColourCreator paletteColourCreator = new PaletteColourCreator(Convert.ToInt32(knumAlphaChannelValue.Value), Convert.ToInt32(knumRedChannelValue.Value), Convert.ToInt32(knumGreenChannelValue.Value), Convert.ToInt32(knumBlueChannelValue.Value));
+
+            paletteColourCreator.Show();
+        }
+
+        private void kbtnDefineCustomColours_Click(object sender, EventArgs e)
+        {
+            CustomColours customColours = new CustomColours();
+
+            customColours.Show();
+        }
+
+        private void kbtnGenerateColour_Click(object sender, EventArgs e)
+        {
+            pbColourPreview.BackColor = _colourUtility.GenerateRandomColour(kchkGenerateAlphaValue.Checked);
+
+            //int a = randomColour.Next(_max), r = randomColour.Next(_max), g = randomColour.Next(_max), b = randomColour.Next(_max); 
+
+            //knumRedChannelValue.Value = r;
+
+            //knumGreenChannelValue.Value = g;
+
+            //knumBlueChannelValue.Value = b;
         }
 
         private void DisplayColour()
         {
             pbColourPreview.BackColor = Color.FromArgb(ktbAlpha.Value, ktbRed.Value, ktbGreen.Value, ktbBlue.Value);
+
+            cpbColourPreview.BackColor = Color.FromArgb(ktbAlpha.Value, ktbRed.Value, ktbGreen.Value, ktbBlue.Value);
         }
         #endregion
 

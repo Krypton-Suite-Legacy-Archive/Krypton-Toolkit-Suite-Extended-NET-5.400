@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Globalization;
 
 namespace Tooling.Classes.Other
 {
@@ -135,39 +134,62 @@ namespace Tooling.Classes.Other
             return rgbColour;
         }
 
-        public Color ConvertHexadecimalToRGBTest(string hexColour)
+        //public Color ConvertHexadecimalToRGBTest(string hexColour)
+        //{
+        //    if (hexColour.StartsWith("#"))
+        //    {
+        //        hexColour = hexColour.Remove(0, 1);
+        //    }
+
+        //    byte red, green, blue;
+
+        //    if (hexColour.Length == 3)
+        //    {
+        //        red = Convert.ToByte(hexColour[0] + "" + hexColour[0], 16);
+
+        //        green = Convert.ToByte(hexColour[1] + "" + hexColour[1], 16);
+
+        //        blue = Convert.ToByte(hexColour[2] + "" + hexColour[2], 16);
+        //    }
+        //    else if (hexColour.Length == 6)
+        //    {
+        //        red = Convert.ToByte(hexColour[0] + "" + hexColour[1], 16);
+
+        //        green = Convert.ToByte(hexColour[2] + "" + hexColour[3], 16);
+
+        //        blue = Convert.ToByte(hexColour[4] + "" + hexColour[5], 16);
+        //    }
+        //    else
+        //    {
+        //        throw new ArgumentNullException($"Hex colour value: '{ hexColour.ToUpper() }' is invalid.");
+        //    }
+
+        //    SetRGB(Convert.ToInt32(red), Convert.ToInt32(green), Convert.ToInt32(blue));
+
+        //    return Color.FromArgb(255, red, green, blue);
+        //}
+
+        public static int[] ConvertHexadecimalToRGBTest(string hexColour)
         {
-            if (hexColour.StartsWith("#"))
+            int[] result;
+
+            try
             {
-                hexColour = hexColour.Remove(0, 1);
+                if (!hexColour.StartsWith("#"))
+                {
+                    hexColour = string.Concat("#", hexColour);
+                }
+
+                Color colourResult = ColorTranslator.FromHtml(hexColour);
+
+                result = new int[] { colourResult.R, colourResult.G, colourResult.B };
+            }
+            catch (Exception)
+            {
+                result = new int[3];
             }
 
-            byte red, green, blue;
-
-            if (hexColour.Length == 3)
-            {
-                red = Convert.ToByte(hexColour[0] + "" + hexColour[0], 16);
-
-                green = Convert.ToByte(hexColour[1] + "" + hexColour[1], 16);
-
-                blue = Convert.ToByte(hexColour[2] + "" + hexColour[2], 16);
-            }
-            else if (hexColour.Length == 6)
-            {
-                red = Convert.ToByte(hexColour[0] + "" + hexColour[1], 16);
-
-                green = Convert.ToByte(hexColour[2] + "" + hexColour[3], 16);
-
-                blue = Convert.ToByte(hexColour[4] + "" + hexColour[5], 16);
-            }
-            else
-            {
-                throw new ArgumentNullException($"Hex colour value: '{ hexColour.ToUpper() }' is invalid.");
-            }
-
-            SetRGB(Convert.ToInt32(red), Convert.ToInt32(green), Convert.ToInt32(blue));
-
-            return Color.FromArgb(255, red, green, blue);
+            return result;
         }
 
         /// <summary>
@@ -211,6 +233,33 @@ namespace Tooling.Classes.Other
             SetBlue(blue);
 
             SetAlpha(alpha);
+        }
+
+        /// <summary>
+        /// Formats the colour RGB string.
+        /// </summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns></returns>
+        public static String FormatColourRGBString(Color colour)
+        {
+            return $"{ colour.R.ToString() }, { colour.G.ToString() }, { colour.B.ToString() }";
+        }
+
+        /// <summary>
+        /// Formats the colour ARGB string.
+        /// </summary>
+        /// <param name="colour">The colour.</param>
+        /// <returns></returns>
+        public static String FormatColourARGBString(Color colour)
+        {
+            return $"{ colour.A.ToString() }, { colour.R.ToString() }, { colour.G.ToString() }, { colour.B.ToString() }";
+        }
+
+        public static String FormatColourToHexadecimal(Color colour)
+        {
+            int redValue = colour.R, greenValue = colour.G, blueValue = colour.B;
+
+            return ColorTranslator.FromHtml(string.Format("#{0:X2}{1:X2}{2:X2}", redValue, greenValue, blueValue)).Name.Remove(0, 1);
         }
         #endregion
 

@@ -4,8 +4,14 @@ namespace Tooling.Classes.Other
 {
     public class RandomNumberGenerator
     {
+        #region Constants
+        private const int MINIMUM_COLOUR_VALUE = 0, MAXMUM_COLOUR_VALUE = 256;
+        #endregion
+
         #region Variables
-        private int _alphaValue, _redValue, _greenValue, _blueValue;
+        private int _alphaValue, _redValue, _greenValue, _blueValue, _hueValue; //, _max = byte.MaxValue + 1;
+
+        private Random _randomColourGenerator = new Random();
         #endregion
 
         #region Properties
@@ -16,6 +22,8 @@ namespace Tooling.Classes.Other
         public int GreenValue { get { return _greenValue; } set { _greenValue = value; } }
 
         public int BlueValue { get { return _blueValue; } set { _blueValue = value; } }
+
+        public int HueValue { get { return _hueValue; } set { _hueValue = value; } }
         #endregion
 
         #region Constructor
@@ -25,7 +33,26 @@ namespace Tooling.Classes.Other
         }
         #endregion
 
-        #region Methods        
+        #region Methods
+        /// <summary>
+        /// Randomly generate a alpha number.
+        /// </summary>
+        /// <param name="startNumber">The start number.</param>
+        /// <param name="endNumber">The end number.</param>
+        /// <returns></returns>
+        public int RandomlyGenerateAlphaNumberBetween(int startNumber, int endNumber)
+        {
+            int alphaOutput;
+
+            Random random = new Random();
+
+            alphaOutput = random.Next(startNumber, endNumber + 1);
+
+            SetAlphaValue(alphaOutput);
+
+            return alphaOutput;
+        }
+
         /// <summary>
         /// Randomly generate a number.
         /// </summary>
@@ -84,6 +111,51 @@ namespace Tooling.Classes.Other
             }
 
             return output3;
+        }
+
+        public int RandomlyGenerateAHueNumberBetween(int startNumber, int endNumber)
+        {
+            int hueOutputValue;
+
+            Random random = new Random();
+
+            hueOutputValue = random.Next(startNumber, endNumber + 1);
+
+            SetHueValue(hueOutputValue);
+
+            return hueOutputValue;
+        }
+
+        /// <summary>
+        /// Generates the random colour.
+        /// </summary>
+        /// <param name="generateAlphaValue">if set to <c>true</c> [generate alpha value].</param>
+        public void GenerateRandomColour(bool generateAlphaValue = false)
+        {
+            int a, r, g, b;
+
+            if (generateAlphaValue)
+            {
+                a = _randomColourGenerator.Next(MAXMUM_COLOUR_VALUE);
+
+                SetAlphaValue(a);
+            }
+            else
+            {
+                SetAlphaValue(MAXMUM_COLOUR_VALUE);
+            }
+
+            r = _randomColourGenerator.Next(MAXMUM_COLOUR_VALUE);
+
+            SetRedValue(r);
+
+            g = _randomColourGenerator.Next(MAXMUM_COLOUR_VALUE);
+
+            SetGreenValue(g);
+
+            b = _randomColourGenerator.Next(MAXMUM_COLOUR_VALUE);
+
+            SetBlueValue(b);
         }
         #endregion
 
@@ -158,6 +230,24 @@ namespace Tooling.Classes.Other
         public int GetBlueValue()
         {
             return BlueValue;
+        }
+
+        /// <summary>
+        /// Sets the hue value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void SetHueValue(int value)
+        {
+            HueValue = value;
+        }
+
+        /// <summary>
+        /// Gets the hue value.
+        /// </summary>
+        /// <returns></returns>
+        public int GetHueValue()
+        {
+            return HueValue;
         }
         #endregion
     }

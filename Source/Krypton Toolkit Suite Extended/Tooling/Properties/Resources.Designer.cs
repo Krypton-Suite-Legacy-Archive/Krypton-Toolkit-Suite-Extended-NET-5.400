@@ -61,6 +61,26 @@ namespace Tooling.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon _10_large_opt {
+            get {
+                object obj = ResourceManager.GetObject("_10_large_opt", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _10_large_opt1 {
+            get {
+                object obj = ResourceManager.GetObject("_10_large_opt1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap cellbackground {
@@ -121,6 +141,29 @@ namespace Tooling.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;!--Created by exporting the settings of a KryptonPalette instance.--&gt;
+        ///&lt;!--For more information about Krypton visit www.ComponentFactory.com--&gt;
+        ///&lt;!--WARNING: Modifying this file may render it invalid for importing.--&gt;
+        ///&lt;KryptonPalette Version=&quot;18&quot; Generated=&quot;{0}&quot;&gt;
+        ///  &lt;Properties&gt;
+        ///    &lt;ButtonStyles&gt;
+        ///      &lt;ButtonCommon&gt;
+        ///        &lt;StateCommon&gt;
+        ///          &lt;Back&gt;
+        ///            &lt;Color1 Type=&quot;Color&quot; Value=&quot;{1}&quot; /&gt;
+        ///          &lt;/Back&gt;
+        ///          &lt;Content&gt;
+        ///            &lt;ShortText&gt;
+        ///          [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FreshFile {
+            get {
+                return ResourceManager.GetString("FreshFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon palette {
@@ -147,6 +190,26 @@ namespace Tooling.Properties {
             get {
                 object obj = ResourceManager.GetObject("palette_save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap System_Information_tool_icon {
+            get {
+                object obj = ResourceManager.GetObject("System_Information_tool_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon System_Information_tool_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("System_Information_tool_icon1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

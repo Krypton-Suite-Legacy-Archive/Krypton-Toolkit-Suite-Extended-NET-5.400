@@ -12,7 +12,7 @@ namespace KryptonApplicationUpdater.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
     internal sealed partial class XMLFileApplicationUpdaterSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static XMLFileApplicationUpdaterSettings defaultInstance = ((XMLFileApplicationUpdaterSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new XMLFileApplicationUpdaterSettings())));
