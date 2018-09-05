@@ -1,14 +1,15 @@
-# Krypton-Toolkit-Suite-Extended-NET-4.0
-
-=======
-
-## Help needed! If anyone knows how to generate colours based on a base colour, then please contribute to this project, as it'll be appreciated (4 colours are needed). Thanks!
+# Krypton-Toolkit-Suite-Extended-NET-4.00
 
 =======
 
 ## An extension to the Krypton Toolkit suite of controls for .NET framework 4.0
 
 ## NOTE: 20/06/2018 Background menu colours will be implemented in the comming weeks. Stay tuned for updates!
+
+======
+
+## 2018-09-05 Removal of Unsupported Code
+* Removed `KryptonRichTextBoxExtended` due to unsupported APIs in .NET framework 4.0.
 
 ======
 
