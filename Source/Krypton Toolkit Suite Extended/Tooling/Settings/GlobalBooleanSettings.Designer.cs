@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tooling.Settings {
+namespace Core.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -56,6 +56,78 @@ namespace Tooling.Settings {
             }
             set {
                 this["UseCircularPictureBoxes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LoadColoursOnOpenPalette {
+            get {
+                return ((bool)(this["LoadColoursOnOpenPalette"]));
+            }
+            set {
+                this["LoadColoursOnOpenPalette"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsInBetaMode {
+            get {
+                return ((bool)(this["IsInBetaMode"]));
+            }
+            set {
+                this["IsInBetaMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HidePropertiesPane {
+            get {
+                return ((bool)(this["HidePropertiesPane"]));
+            }
+            set {
+                this["HidePropertiesPane"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutomaticallyUpdateColours {
+            get {
+                return ((bool)(this["AutomaticallyUpdateColours"]));
+            }
+            set {
+                this["AutomaticallyUpdateColours"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UsePromptFeedback {
+            get {
+                return ((bool)(this["UsePromptFeedback"]));
+            }
+            set {
+                this["UsePromptFeedback"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowBuildTag {
+            get {
+                return ((bool)(this["ShowBuildTag"]));
+            }
+            set {
+                this["ShowBuildTag"] = value;
             }
         }
     }

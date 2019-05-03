@@ -1,10 +1,8 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
-using ExtendedControls.ExtendedToolkit.Messageboxes.Classes;
-using ExtendedControls.ExtendedToolkit.Messageboxes.Enumerations;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Tooling.Settings.Classes
+namespace Core.Settings.Classes
 {
     public class ColourSettingsManager
     {
@@ -183,21 +181,21 @@ namespace Tooling.Settings.Classes
         }
 
         /// <summary>
-        /// Sets the DisabledColour to the value of disabledColour.
+        /// Sets the DisabledControlColour to the value of disabledControlColour.
         /// </summary>
-        /// <param name="disabledColour">The value of disabledColour.</param>
-        public void SetDisabledColour(Color disabledColour)
+        /// <param name="disabledControlColour">The value of disabledControlColour.</param>
+        public void SetDisabledControlColour(Color disabledControlColour)
         {
-            _colourSettings.DisabledColour = disabledColour;
+            _colourSettings.DisabledControlColour = disabledControlColour;
         }
 
         /// <summary>
-        /// Gets the DisabledColour value.
+        /// Gets the DisabledControlColour value.
         /// </summary>
-        /// <returns>The value of disabledColour.</returns>
-        public Color GetDisabledColour()
+        /// <returns>The value of disabledControlColour.</returns>
+        public Color GetDisabledControlColour()
         {
-            return _colourSettings.DisabledColour;
+            return _colourSettings.DisabledControlColour;
         }
 
         /// <summary>
@@ -219,21 +217,39 @@ namespace Tooling.Settings.Classes
         }
 
         /// <summary>
+        /// Sets the LinkFocusedColour to the value of linkFocusedColour.
+        /// </summary>
+        /// <param name="linkFocusedColour">The value of linkFocusedColour.</param>
+        public void SetLinkFocusedColour(Color linkFocusedColour)
+        {
+            _colourSettings.LinkFocusedColour = linkFocusedColour;
+        }
+
+        /// <summary>
+        /// Gets the LinkFocusedColour value.
+        /// </summary>
+        /// <returns>The value of linkFocusedColour.</returns>
+        public Color GetLinkFocusedColour()
+        {
+            return _colourSettings.LinkFocusedColour;
+        }
+
+        /// <summary>
         /// Sets the FocusTextColour to the value of focusTextColour.
         /// </summary>
-        /// <param name="focusTextColour">The value of focusTextColour.</param>
-        public void SetFocusTextColour(Color focusTextColour)
+        /// <param name="focusedTextColour">The value of focusTextColour.</param>
+        public void SetFocusedTextColour(Color focusedTextColour)
         {
-            _colourSettings.FocusTextColour = focusTextColour;
+            _colourSettings.FocusedTextColour = focusedTextColour;
         }
 
         /// <summary>
         /// Gets the FocusTextColour value.
         /// </summary>
         /// <returns>The value of focusTextColour.</returns>
-        public Color GetFocusTextColour()
+        public Color GetFocusedTextColour()
         {
-            return _colourSettings.FocusTextColour;
+            return _colourSettings.FocusedTextColour;
         }
 
         /// <summary>
@@ -288,6 +304,24 @@ namespace Tooling.Settings.Classes
         public Color GetLinkVisitedColour()
         {
             return _colourSettings.LinkVisitedColour;
+        }
+
+        /// <summary>
+        /// Sets the LinkDisabledColour to the value of linkDisabledColour.
+        /// </summary>
+        /// <param name="linkDisabledColour">The value of linkDisabledColour.</param>
+        public void SetLinkDisabledColour(Color linkDisabledColour)
+        {
+            _colourSettings.LinkDisabledColour = linkDisabledColour;
+        }
+
+        /// <summary>
+        /// Gets the LinkDisabledColour value.
+        /// </summary>
+        /// <returns>The value of linkDisabledColour.</returns>
+        public Color GetLinkDisabledColour()
+        {
+            return _colourSettings.LinkDisabledColour;
         }
 
         /// <summary>
@@ -489,21 +523,39 @@ namespace Tooling.Settings.Classes
         }
 
         /// <summary>
-        /// Sets the StatusTextColour to the value of statusTextColour.
+        /// Sets the StatusStripTextColour to the value of statusStripTextColour.
         /// </summary>
-        /// <param name="statusTextColour">The value of statusTextColour.</param>
-        public void SetStatusTextColour(Color statusTextColour)
+        /// <param name="statusStripTextColour">The value of statusStripTextColour.</param>
+        public void SetStatusStripTextColour(Color statusStripTextColour)
         {
-            _colourSettings.StatusTextColour = statusTextColour;
+            _colourSettings.StatusStripTextColour = statusStripTextColour;
         }
 
         /// <summary>
-        /// Gets the StatusTextColour value.
+        /// Gets the StatusStripTextColour value.
         /// </summary>
-        /// <returns>The value of statusTextColour.</returns>
-        public Color GetStatusTextColour()
+        /// <returns>The value of statusStripTextColour.</returns>
+        public Color GetStatusStripTextColour()
         {
-            return _colourSettings.StatusTextColour;
+            return _colourSettings.StatusStripTextColour;
+        }
+
+        /// <summary>
+        /// Sets the RibbonTabTextColour to the value of ribbonTabTextColour.
+        /// </summary>
+        /// <param name="ribbonTabTextColour">The value of ribbonTabTextColour.</param>
+        public void SetRibbonTabTextColour(Color ribbonTabTextColour)
+        {
+            _colourSettings.RibbonTabTextColour = ribbonTabTextColour;
+        }
+
+        /// <summary>
+        /// Gets the RibbonTabTextColour value.
+        /// </summary>
+        /// <returns>The value of ribbonTabTextColour.</returns>
+        public Color GetRibbonTabTextColour()
+        {
+            return _colourSettings.RibbonTabTextColour;
         }
         #endregion
 
@@ -518,7 +570,7 @@ namespace Tooling.Settings.Classes
             {
                 DialogResult result = KryptonMessageBox.Show("Do you want to save the current colour settings?", "Save Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                //KryptonMessageBoxExtendedResult result = ExtendedKryptonMessagebox.Show("Do you want to save the current colour settings?", "Save Confirmation", KryptonMessageBoxExtendedButtons.YESNO, KryptonMessageBoxExtendedIcon.QUESTION);
+                //KryptonMessageBoxExtendedResult result = ExtendedKryptonMessageBox.Show("Do you want to save the current colour settings?", "Save Confirmation", KryptonMessageBoxExtendedButtons.YESNO, KryptonMessageBoxExtendedIcon.QUESTION);
 
                 if (result == DialogResult.Yes)
                 {
@@ -582,15 +634,17 @@ namespace Tooling.Settings.Classes
 
             SetNormalTextColour(Color.Black);
 
-            SetFocusTextColour(Color.White);
+            SetFocusedTextColour(Color.White);
 
             SetPressedTextColour(Color.Black);
 
             SetDisabledTextColour(Color.Gray);
 
-            SetDisabledColour(Color.Silver);
+            SetDisabledControlColour(Color.Silver);
 
             SetLinkNormalColour(Color.Blue);
+
+            SetLinkFocusedColour(Color.Gray);
 
             SetLinkHoverColour(Color.Red);
 
@@ -618,7 +672,25 @@ namespace Tooling.Settings.Classes
 
             SetCustomTextColourFive(Color.MintCream);
 
-            SetStatusTextColour(Color.Black);
+            SetStatusStripTextColour(Color.Black);
+
+            SetRibbonTabTextColour(Color.Black);
+        }
+        #endregion
+
+        #region Detection
+        public static bool AreColoursEmpty()
+        {
+            ColourSettingsManager colourSettingsManager = new ColourSettingsManager();
+
+            if (colourSettingsManager.GetBaseColour() == Color.Empty || colourSettingsManager.GetDarkestColour() == Color.Empty || colourSettingsManager.GetMediumColour() == Color.Empty || colourSettingsManager.GetLightColour() == Color.Empty || colourSettingsManager.GetLightestColour() == Color.Empty || colourSettingsManager.GetCustomColourOne() == Color.Empty || colourSettingsManager.GetCustomColourTwo() == Color.Empty || colourSettingsManager.GetCustomColourThree() == Color.Empty || colourSettingsManager.GetCustomColourFour() == Color.Empty || colourSettingsManager.GetCustomColourFive() == Color.Empty || colourSettingsManager.GetCustomTextColourOne() == Color.Empty || colourSettingsManager.GetCustomTextColourTwo() == Color.Empty || colourSettingsManager.GetCustomTextColourThree() == Color.Empty || colourSettingsManager.GetCustomTextColourFour() == Color.Empty || colourSettingsManager.GetCustomTextColourFive() == Color.Empty || colourSettingsManager.GetLinkNormalColour() == Color.Empty || colourSettingsManager.GetLinkFocusedColour() == Color.Empty || colourSettingsManager.GetLinkHoverColour() == Color.Empty || colourSettingsManager.GetLinkNormalColour() == Color.Empty || colourSettingsManager.GetLinkVisitedColour() == Color.Empty || colourSettingsManager.GetBorderColour() == Color.Empty || colourSettingsManager.GetDisabledControlColour() == Color.Empty || colourSettingsManager.GetAlternativeNormalTextColour() == Color.Empty || colourSettingsManager.GetDisabledTextColour() == Color.Empty || colourSettingsManager.GetFocusedTextColour() == Color.Empty || colourSettingsManager.GetMenuTextColour() == Color.Empty || colourSettingsManager.GetNormalTextColour() == Color.Empty || colourSettingsManager.GetPressedTextColour() == Color.Empty || colourSettingsManager.GetRibbonTabTextColour() == Color.Empty || colourSettingsManager.GetStatusStripTextColour() == Color.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
     }

@@ -1,8 +1,22 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
+using Core.Classes.Other;
+using Core.UX;
+using Core.UX.Colours;
+using Core.UX.Options;
+using ExtendedControls.Base.Code.Development;
+using ExtendedControls.Base.Enumerations;
 using ExtendedControls.Enumerations;
+using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
+using ExtendedControls.ExtendedToolkit.UI.Colours;
+using ExtendedControls.ExtendedToolkit.UI.Dialogues;
+using ExtendedControls.ExtendedToolkit.UI.Drawing;
+using ExtendedControls.ExtendedToolkit.UI.SystemBrowser;
+using ExtendedFileDialogs.UI.SystemBrowser;
 using KryptonApplicationUpdater.Classes.SettingsManager;
-using KryptonApplicationUpdater.Interfaces;
+//using KryptonApplicationUpdater.Interfaces;
+
 using KryptonExtendedToolkit.Base.Code;
+using KryptonExtendedToolkit.ExtendedToolkit.Controls;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -10,18 +24,17 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using Tooling.Classes.Other;
-using Tooling.UX;
 
 namespace Playground
 {
-    public partial class Form1 : KryptonForm, IUpdatable
+    public partial class Form1 : KryptonForm/*, IUpdatable <- Commented this out to allow the designers to work correctly*/
     {
         private UtilityMethods utilityMethods = new UtilityMethods();
         private InternalApplicationUpdaterSettingsManager internalApplicationUpdaterSettingsManager = new InternalApplicationUpdaterSettingsManager();
         private MostRecentlyUsedFileManager mostRecentlyUsedFileManager;
         private Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         private ToolStripNonClientRenderer toolStripNonClientRenderer;
+        Assembly _currentAssembly = Assembly.GetExecutingAssembly();
 
         public Form1()
         {
@@ -36,7 +49,7 @@ namespace Playground
         public string ApplicationName { get { return "Playground"; } set { } }
         public string CurrentApplicationVersion { get { return currentVersion.ToString(); } set { } }
         public string ApplicationIdentification { get { return "Playground"; } set { } }
-        Form IUpdatable.ParentForm { get { return this; } set { } }
+        //Form IUpdatable.ParentForm { get { return this; } set { } }
         #endregion
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,12 +63,12 @@ namespace Playground
                 internalApplicationUpdaterSettingsManager.SetXMLFileURL(ServerXMLFileURL);
             }
 
-            if (utilityMethods.GetHasElevateProcessWithAdministrativeRights())
+            if (UtilityMethods.GetHasElevateProcessWithAdministrativeRights())
             {
                 Text = Text + " (Administrator)";
             }
 
-            klblAdminMode.Text = $"Is running in Administrator mode: { utilityMethods.GetHasElevateProcessWithAdministrativeRights().ToString() }";
+            klblAdminMode.Text = $"Is running in Administrator mode: { UtilityMethods.GetHasElevateProcessWithAdministrativeRights().ToString() }";
 
             //kctb1.CueText = "Hello";
 
@@ -70,7 +83,7 @@ namespace Playground
                 kcmbGradientDirection.Items.Add(lgm.ToString().ToUpper());
             }
 
-            //kcmbGradientDirection.d
+            DevelopmentInformation.SetBuildInformation(this, _currentAssembly, DevelopmentState.BETA);
         }
 
         private void MyOwnRecentFileGotClicked_Handler(object sender, EventArgs e)
@@ -146,21 +159,21 @@ namespace Playground
 
         private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.Title = "Save file as:";
-
-            saveFileDialog.Filter = "Normal Text Files (*.txt)|*.txt";
-
-            saveFileDialog.InitialDirectory = Environment.CurrentDirectory;
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                StreamWriter writer = new StreamWriter(saveFileDialog.FileName);
+                Title = "Save file as:",
+                Filter = "Normal Text Files (*.txt)|*.txt",
+                InitialDirectory = Environment.CurrentDirectory
+            })
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter writer = new StreamWriter(saveFileDialog.FileName);
 
-                writer.Write(krtbEditor.Text);
+                    writer.Write(krtbEditor.Text);
 
-                mostRecentlyUsedFileManager.AddRecentFile(Path.GetFullPath(saveFileDialog.FileName));
+                    mostRecentlyUsedFileManager.AddRecentFile(Path.GetFullPath(saveFileDialog.FileName));
+                }
             }
         }
 
@@ -214,17 +227,17 @@ namespace Playground
 
         private void kcbtnGradientColour1_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            etslBlinkTest.GradientColourOne = kcbtnGradientColour1.SelectedColor;
+           
         }
 
         private void kcbtnGradientColour2_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            etslBlinkTest.GradientColourTwo = kcbtnGradientColour2.SelectedColor;
+            
         }
 
         private void kcbtnTextColour_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            etslBlinkTest.ForeColor = kcbtnTextColour.SelectedColor;
+            
         }
 
         private void kcmbGradientDirection_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,54 +252,22 @@ namespace Playground
 
         private void kcbtnHorizontal_Click(object sender, EventArgs e)
         {
-            etslBlinkTest.GradientMode = LinearGradientMode.Horizontal;
-
-            kcbtnHorizontal.Checked = true;
-
-            kcbtnVertical.Checked = false;
-
-            kcbtnForwardDiagonal.Checked = false;
-
-            kcbtnBackwardDiagonal.Checked = false;
+           
         }
 
         private void kcbtnVertical_Click(object sender, EventArgs e)
         {
-            etslBlinkTest.GradientMode = LinearGradientMode.Vertical;
-
-            kcbtnHorizontal.Checked = false;
-
-            kcbtnVertical.Checked = true;
-
-            kcbtnForwardDiagonal.Checked = false;
-
-            kcbtnBackwardDiagonal.Checked = false;
+          
         }
 
         private void kcbtnForwardDiagonal_Click(object sender, EventArgs e)
         {
-            etslBlinkTest.GradientMode = LinearGradientMode.ForwardDiagonal;
-
-            kcbtnHorizontal.Checked = false;
-
-            kcbtnVertical.Checked = false;
-
-            kcbtnForwardDiagonal.Checked = true;
-
-            kcbtnBackwardDiagonal.Checked = false;
+           
         }
 
         private void kcbtnBackwardDiagonal_Click(object sender, EventArgs e)
         {
-            etslBlinkTest.GradientMode = LinearGradientMode.BackwardDiagonal;
-
-            kcbtnHorizontal.Checked = false;
-
-            kcbtnVertical.Checked = false;
-
-            kcbtnForwardDiagonal.Checked = false;
-
-            kcbtnBackwardDiagonal.Checked = true;
+           
         }
 
         private void kryptonButton2_Click(object sender, EventArgs e)
@@ -298,14 +279,192 @@ namespace Playground
 
         private void kbtnMessageboxTest_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void kbtnPaletteEditor_Click(object sender, EventArgs e)
         {
-            PaletteEditor.UX.MainWindow _paletteEditor = new PaletteEditor.UX.MainWindow();
+            KryptonMessageBox.Show(this,
+                @"Once PaletteEditor is building again, then add to references and then this code can be uncommented!");
+            //PaletteEditor.UX.MainWindow _paletteEditor = new PaletteEditor.UX.MainWindow();
 
-            _paletteEditor.Show();
+            //_paletteEditor.Show();
+        }
+
+        private void kryptonButton3_Click(object sender, EventArgs e)
+        {
+            TypefaceSelectionDialogue typefaceSelectionDialogue = new TypefaceSelectionDialogue();
+
+            typefaceSelectionDialogue.Show();
+        }
+
+        private void kryptonButton4_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+
+            mainWindow.Show();
+        }
+
+        private void kuacsbElevate_Click(object sender, EventArgs e)
+        {
+
+            UtilityMethods.ElevateProcessWithAdministrativeRights(@"C:\\Windows\\Notepad.exe");
+        }
+
+        private void kryptonButton5_Click(object sender, EventArgs e)
+        {
+            Scrollbars scrollbars = new Scrollbars();
+
+            scrollbars.Show();
+        }
+
+        private void kryptonButton7_Click(object sender, EventArgs e)
+        {
+            KryptonColourChooser1 kryptonColourChooser1 = new KryptonColourChooser1();
+
+            kryptonColourChooser1.Show();
+        }
+
+        private void kryptonButton6_Click(object sender, EventArgs e)
+        {
+            KryptonColourChooser2 kryptonColourChooser2 = new KryptonColourChooser2();
+
+            kryptonColourChooser2.Show();
+        }
+
+        private void kryptonButton8_Click(object sender, EventArgs e)
+        {
+            SettingsManagementOptions settingsManagementOptions = new SettingsManagementOptions();
+
+            settingsManagementOptions.Show();
+        }
+
+        private void kryptonButton9_Click(object sender, EventArgs e)
+        {
+            ThemeOptions themeOptions = new ThemeOptions();
+
+            themeOptions.Show();
+        }
+
+        private void kryptonButton10_Click(object sender, EventArgs e)
+        {
+            GlobalOptionsMenu globalOptionsMenu = new GlobalOptionsMenu();
+
+            globalOptionsMenu.Show();
+        }
+
+        private void kryptonButton11_Click(object sender, EventArgs e)
+        {
+            HexadecimalToRGBConverter hexadecimalToRGBConverter = new HexadecimalToRGBConverter();
+
+            hexadecimalToRGBConverter.Show();
+        }
+
+        private void kryptonCommandLinkButton2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void kryptonCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButton12_Click(object sender, EventArgs e)
+        {
+            WizardTest wt = new WizardTest();
+
+            wt.Show();
+        }
+
+        private void kryptonButton13_Click(object sender, EventArgs e)
+        {
+            MoreControls mc = new MoreControls();
+
+            mc.Show();
+        }
+
+        private void kryptonButton14_Click(object sender, EventArgs e)
+        {
+            ColourTest colourTest = new ColourTest();
+
+            colourTest.Show();
+        }
+
+        private void kryptonButton15_Click(object sender, EventArgs e)
+        {
+            AdobeColourDialog adobeColourDialog = new AdobeColourDialog(Color.White);
+
+            adobeColourDialog.Show();
+        }
+
+        private void kryptonButton16_Click(object sender, EventArgs e)
+        {
+            KryptonFileBrowser kryptonFileBrowser = new KryptonFileBrowser();
+
+            kryptonFileBrowser.Show();
+        }
+
+        private void kryptonButton17_Click(object sender, EventArgs e)
+        {
+            KryptonFileExplorer kfe = new KryptonFileExplorer();
+
+            kfe.Show();
+        }
+
+        private void kryptonButton18_Click(object sender, EventArgs e)
+        {
+            MessageBoxTest mbt = new MessageBoxTest();
+
+            mbt.Show();
+        }
+
+        private void kryptonButton19_Click(object sender, EventArgs e)
+        {
+            PropertyGridTest pgt = new PropertyGridTest();
+
+            pgt.Show();
+        }
+
+        private void kryptonButton20_Click(object sender, EventArgs e)
+        {
+            Test test = new Test();
+
+            test.Show();
+        }
+
+        private void kryptonButton21_Click(object sender, EventArgs e)
+        {
+            Examples tr = new Examples();
+
+            tr.Show();
+        }
+
+        private void kryptonButton1_Click_1(object sender, EventArgs e)
+        {
+            FlashingLabelTest flashingLabel = new FlashingLabelTest();
+
+            flashingLabel.Show();
+        }
+
+        private void toolStripMenuItemUACSheld1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KryptonPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void KryptonCommandLinkVersion21_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace GlobalUtilities.Classes
     /// <summary>
     /// A wrapper for exception handling.
     /// </summary>
-    public class ExceptionHandler
+    internal class ExceptionHandler
     {
         #region Constructors
         /// <summary>
@@ -19,7 +19,36 @@ namespace GlobalUtilities.Classes
         }
         #endregion
 
-        #region Methods
+        #region Methods                
+        /// <summary>
+        /// Captures the exception.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="className">Name of the class.</param>
+        /// <param name="methodSignature">The method signature.</param>
+        public static void CaptureException(Exception exception, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "")
+        {
+            if (className != "")
+            {
+                KryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon);
+            }
+            else if (methodSignature != "")
+            {
+                KryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+            }
+            else if (className != "" && methodSignature != "")
+            {
+                KryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon);
+            }
+            else
+            {
+                KryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon);
+            }
+        }
+
         /// <summary>
         /// Shows the exception.
         /// </summary>
@@ -54,19 +83,6 @@ namespace GlobalUtilities.Classes
             {
                 Console.WriteLine($"[ { DateTime.Now.ToString() } ]: { exceptionMessage }");
             }
-        }
-
-        /// <summary>
-        /// Throws the exception.
-        /// </summary>
-        /// <param name="exceptionType">Type of the exception.</param>
-        /// <param name="content">The content.</param>
-        /// <param name="title">The title.</param>
-        /// <param name="buttons">The buttons.</param>
-        /// <param name="defaultButton">The default button.</param>
-        public void ThrowException(MessageBoxIcon exceptionType, string content, string title, MessageBoxButtons buttons, MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
-        {
-            KryptonMessageBox.Show(content, title, buttons, exceptionType, defaultButton);
         }
         #endregion
     }

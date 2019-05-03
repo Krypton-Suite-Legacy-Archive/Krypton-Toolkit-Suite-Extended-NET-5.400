@@ -132,7 +132,7 @@ namespace GlobalUtilities.Classes
             }
             catch (Exception exc)
             {
-                _exceptionHandler.ShowException(exc.Message, false, false, true, false, false, null, null, "Exception Caught", MessageBoxButtons.OK, MessageBoxDefaultButton.Button1, MessageBoxIcon.Error);
+                ExceptionHandler.CaptureException(exc, "Exception Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "GlobalMethods", "CheckIfTargetPlatformIsSupported(bool useLegacyVistaSupport = false)");
 
                 SetIsTargetPlatformSupported(false);
             }
@@ -576,6 +576,22 @@ namespace GlobalUtilities.Classes
             else
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Not the implemented yet.
+        /// </summary>
+        /// <param name="featureName">Name of the feature.</param>
+        public static void NotImplementedYet(string featureName = null)
+        {
+            if (featureName != null)
+            {
+                KryptonMessageBox.Show($"The feature: { featureName } is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                KryptonMessageBox.Show("This is not implemented or fully functional yet. Please check back again later.", "Incomplete Feature", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion

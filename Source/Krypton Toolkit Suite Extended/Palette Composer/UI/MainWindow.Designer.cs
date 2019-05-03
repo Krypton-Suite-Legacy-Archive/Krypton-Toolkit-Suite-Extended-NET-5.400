@@ -89,7 +89,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 297);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip.Size = new System.Drawing.Size(450, 22);
+            this.statusStrip.Size = new System.Drawing.Size(400, 22);
             this.statusStrip.TabIndex = 0;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -105,7 +105,7 @@
             this.skinsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(450, 24);
+            this.menuStrip.Size = new System.Drawing.Size(400, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -335,11 +335,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.kryptonPanel);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(450, 248);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(400, 248);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(450, 297);
+            this.toolStripContainer1.Size = new System.Drawing.Size(400, 297);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -353,7 +353,7 @@
             this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel.Name = "kryptonPanel";
-            this.kryptonPanel.Size = new System.Drawing.Size(450, 248);
+            this.kryptonPanel.Size = new System.Drawing.Size(400, 248);
             this.kryptonPanel.TabIndex = 0;
             // 
             // toolStrip
@@ -454,7 +454,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 319);
+            this.ClientSize = new System.Drawing.Size(400, 319);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStrip);
             this.Name = "MainWindow";

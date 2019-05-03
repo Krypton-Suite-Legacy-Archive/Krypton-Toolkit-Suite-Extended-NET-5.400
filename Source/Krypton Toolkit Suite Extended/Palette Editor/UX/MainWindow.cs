@@ -1,20 +1,27 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using Classes.Colours;
+using ComponentFactory.Krypton.Toolkit;
+using Core.Classes.Other;
+using Core.Settings.Classes;
+using Core.UX;
+using Core.Interfaces;
+using KryptonExtendedToolkit.Base.Code;
 using PaletteEditor.Classes;
+using PaletteEditor.UX.New;
 using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
-using Tooling.Classes.Other;
-using Tooling.Settings.Classes;
-using Tooling.UX;
 
 namespace PaletteEditor.UX
 {
     public partial class MainWindow : KryptonForm
     {
         #region Variables
-        private bool _dirty, _loaded, _debugMode = true, _useCircularPictureBoxes = true;
+        private bool _dirty, _loaded, _debugMode, _useCircularPictureBoxes;
 
-        private string _filename;
+        private string _fileName;
 
         private KryptonPalette _palette;
 
@@ -24,19 +31,70 @@ namespace PaletteEditor.UX
 
         private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
 
-        private GlobalMethods _globalMethods = new GlobalMethods();
+        private Classes.GlobalMethods _globalMethods = new Classes.GlobalMethods();
+
+        private GlobalStringSettingsManager _globalStringSettingsManager = new GlobalStringSettingsManager();
+
+        private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
+
+        private MostRecentlyUsedFileManager _mostRecentlyUsedFileManager;
+
+        private Version _currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+        private Timer _colourUpdateTimer;
+
+        private IAbout _about;
+        #endregion
+
+        #region Properties
+        public bool DebugMode { get { return _debugMode; } set { _debugMode = value; } }
+
+        public bool Dirty { get { return _dirty; } set { _dirty = value; } }
+
+        public bool Loaded { get { return _loaded; } set { _loaded = value; } }
+
+        public bool UseCircularPictureBoxes { get { return _useCircularPictureBoxes; } set { _useCircularPictureBoxes = value; } }
+
+        public string FileName { get { return _fileName; } set { _fileName = value; } }
+
+        public new KryptonPalette Palette { get { return _palette; } set { _palette = value; } }
+
+        public new PaletteMode PaletteMode { get { return _paletteMode; } set { _paletteMode = value; } }
         #endregion
 
         public MainWindow()
         {
             InitializeComponent();
+
+            _colourUpdateTimer = new Timer();
+
+            _colourUpdateTimer.Interval = 250;
+
+            _colourUpdateTimer.Tick += new EventHandler(ColourUpdateTimer_Tick);
+
+            DebugMode = _globalBooleanSettingsManager.GetDevelopmentMode();
+
+            UseCircularPictureBoxes = _globalBooleanSettingsManager.GetUseCircularPictureBoxes();
+
+            //IAbout.ApplicationIcon = Icon;
+
+            //IAbout.ApplicationIconImage = new Bitmap("Resources\\PE Icon 512 x 512.png");
+
+            //IAbout.ApplicationName = "Palette Editor";
+        }
+
+        private void ColourUpdateTimer_Tick(object sender, EventArgs e)
+        {
+            UpdateColourPalette(UseCircularPictureBoxes);
+
+            ShowCircularPreviewBoxes(UseCircularPictureBoxes);
         }
 
         #region Operations
         private void New()
         {
             // If the current palette has been changed
-            if (_dirty)
+            if (Dirty)
             {
                 // Ask user if the current palette should be saved
                 switch (KryptonMessageBox.Show(this,
@@ -61,8 +119,10 @@ namespace PaletteEditor.UX
 
         private void Open()
         {
+            tslStatus.Text = "Attempting to inport colours from selected palette. Please wait...";
+
             // If the current palette has been changed
-            if (_dirty)
+            if (Dirty)
             {
                 // Ask user if the current palette should be saved
                 switch (KryptonMessageBox.Show(this,
@@ -94,43 +154,61 @@ namespace PaletteEditor.UX
             if (filename.Length > 0)
             {
                 // Need to unhook from any existing palette
-                if (_palette != null)
-                    _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                if (Palette != null)
+                    Palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
 
                 // Use the new instance instead
-                _palette = palette;
+                Palette = palette;
 
                 // We need to know when a change occurs to the palette settings
-                _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+                Palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
 
                 // Hook up the property grid to the palette
-                labelGridNormal.SelectedObject = _palette;
+                labelGridNormal.SelectedObject = Palette;
 
                 // Use the loaded filename
-                _filename = filename;
+                FileName = filename;
 
                 // Reset the state flags
-                _loaded = true;
-                _dirty = false;
+                Loaded = true;
+                Dirty = false;
 
                 // Define the initial title bar string
                 UpdateTitlebar();
             }
+
+            PaletteImportManager paletteImportManager = new PaletteImportManager();
+
+            paletteImportManager.ImportColourScheme(palette);
+
+            kchkUpdateColours.Enabled = true;
+
+            kcmbBasePaletteMode.Text = _globalStringSettingsManager.GetBasePaletteMode();
+
+            tslStatus.Text = _globalStringSettingsManager.GetFeedbackText();
+
+            kchkUpdateColours.Checked = true;
+
+            invertColoursToolStripMenuItem.Enabled = true;
+
+            kchkInvertColours.Enabled = true;
+
+            _mostRecentlyUsedFileManager.AddRecentFile(filename);
         }
 
         private void Save()
         {
             // If we already have a file associated with the palette...
-            if (_loaded)
+            if (Loaded)
             {
                 // ...then just save it straight away
                 Cursor = Cursors.WaitCursor;
                 Application.DoEvents();
-                _palette.Export(_filename, true, false);
+                Palette.Export(FileName, true, false);
                 Cursor = Cursors.Default;
 
                 // No longer dirty
-                _dirty = false;
+                Dirty = false;
 
                 // Define the initial title bar string
                 UpdateTitlebar();
@@ -147,18 +225,18 @@ namespace PaletteEditor.UX
             // Get back the filename selected by the user
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
-            string filename = _palette.Export();
+            string filename = Palette.Export();
             Cursor = Cursors.Default;
 
             // If the save succeeded
             if (filename.Length > 0)
             {
                 // Remember associated file details
-                _filename = filename;
-                _loaded = true;
+                FileName = filename;
+                Loaded = true;
 
                 // No longer dirty
-                _dirty = false;
+                Dirty = false;
 
                 // Define the initial title bar string
                 UpdateTitlebar();
@@ -168,7 +246,7 @@ namespace PaletteEditor.UX
         private void Exit()
         {
             // If the current palette has been changed
-            if (_dirty)
+            if (Dirty)
             {
                 // Ask user if the current palette should be saved
                 switch (KryptonMessageBox.Show(this,
@@ -195,24 +273,24 @@ namespace PaletteEditor.UX
         private void CreateNewPalette()
         {
             // Need to unhook from any existing palette
-            if (_palette != null)
-                _palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            if (Palette != null)
+                Palette.PalettePaint -= new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
 
             // Create a fresh palette instance
-            _palette = new KryptonPalette();
+            Palette = new KryptonPalette();
 
             // We need to know when a change occurs to the palette settings
-            _palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
+            Palette.PalettePaint += new EventHandler<PaletteLayoutEventArgs>(OnPalettePaint);
 
             // Hook up the property grid to the palette
-            labelGridNormal.SelectedObject = _palette;
+            labelGridNormal.SelectedObject = Palette;
 
             // Does not have a filename as yet
-            _filename = "(New Palette)";
+            FileName = "(New Palette)";
 
             // Reset the state flags
-            _dirty = false;
-            _loaded = false;
+            Dirty = false;
+            Loaded = false;
 
             // Define the initial title bar string
             UpdateTitlebar();
@@ -221,9 +299,9 @@ namespace PaletteEditor.UX
         private void OnPalettePaint(object sender, PaletteLayoutEventArgs e)
         {
             // Only interested the first time the palette is changed
-            if (!_dirty)
+            if (!Dirty)
             {
-                _dirty = true;
+                Dirty = true;
                 UpdateTitlebar();
             }
 
@@ -234,7 +312,7 @@ namespace PaletteEditor.UX
         private void UpdateTitlebar()
         {
             // Mark a changed file with a star
-            Text = "Palette Editor - " + _filename + (_dirty ? "*" : string.Empty);
+            Text = "Palette Editor - " + FileName + (Dirty ? "*" : string.Empty);
         }
         #endregion
 
@@ -242,14 +320,18 @@ namespace PaletteEditor.UX
         {
             New();
 
+            _mostRecentlyUsedFileManager = new MostRecentlyUsedFileManager(recentPaletteDefinitionsToolStripMenuItem, "Palette Editor", MyOwnRecentPaletteFileGotClicked_Handler, MyOwnRecentPaletteFilesGotCleared_Handler);
+
             ColourUtilities.PropagateBasePaletteModes(kcmbBasePaletteMode);
 
-            _colourSettingsManager.ResetSettings(_debugMode);
+            _colourSettingsManager.ResetSettings(DebugMode);
 
-            if (_useCircularPictureBoxes)
+            if (UseCircularPictureBoxes)
             {
-                ShowCircularPreviewBoxes(false);
+                ShowCircularPreviewBoxes(_globalBooleanSettingsManager.GetUseCircularPictureBoxes());
             }
+
+            TextExtra = $"(Build: { _currentVersion.Build.ToString() })";
         }
 
         #region Picture Box Mouse Enter Events
@@ -398,9 +480,14 @@ namespace PaletteEditor.UX
 
         private void kbtnGenerate_Click(object sender, EventArgs e)
         {
-            ColourMixer colourMixer = new ColourMixer();
-
-            colourMixer.Show();
+            if (UseCircularPictureBoxes)
+            {
+                GenerateColourScheme(cbxBaseColourPreview.BackColor);
+            }
+            else
+            {
+                GenerateColourScheme(pbxBaseColour.BackColor);
+            }
         }
 
         private void newPaletteDefinitionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -435,13 +522,7 @@ namespace PaletteEditor.UX
 
         private void kbtnGetColours_Click(object sender, EventArgs e)
         {
-
-            if (_useCircularPictureBoxes)
-            {
-                UpdateColourPalette(_useCircularPictureBoxes);
-
-                ShowCircularPreviewBoxes(true);
-            }
+            GrabPaletteColours(UseCircularPictureBoxes);
         }
 
         private void pbxBaseColour_MouseLeave(object sender, EventArgs e)
@@ -471,13 +552,13 @@ namespace PaletteEditor.UX
 
         private void ExitPaletteEditor()
         {
-            if (_dirty)
+            if (Dirty)
             {
                 DialogResult result = KryptonMessageBox.Show("The palette has not yet been saved.\nDo you want to save now?", "Palette Editor Save Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
-                    if (_loaded)
+                    if (Loaded)
                     {
                         Save();
 
@@ -571,7 +652,7 @@ namespace PaletteEditor.UX
 
         private void cbxBaseColourPreview_MouseEnter(object sender, EventArgs e)
         {
-            Tooling.Classes.Other.ToolTipManager.DisplayToolTip(ttInformation, cbxBaseColourPreview, "Base", cbxBaseColourPreview.BackColor, true);
+            Core.Classes.Other.ToolTipManager.DisplayToolTip(ttInformation, cbxBaseColourPreview, "Base", cbxBaseColourPreview.BackColor, true);
         }
 
         private void kcmbBasePaletteMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -649,9 +730,7 @@ namespace PaletteEditor.UX
         {
             //PaletteEditorEngine.ExportPaletteTheme(palette, PaletteMode.Office2007Silver, pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, tslStatus);
 
-            PaletteEditorEngine.ExportPalette(_globalMethods.GetSelectedPaletteMode(), pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview, tslStatus);
-
-            PaletteEditorEngine.ExportPalette(_globalMethods.GetSelectedPaletteMode(), cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview, tslStatus);
+            ExportPaletteColours(UseCircularPictureBoxes);
         }
 
         #region Misc        
@@ -663,11 +742,191 @@ namespace PaletteEditor.UX
             tslStatus.Text = $"The current palette mode is: { _globalMethods.GetSelectedPaletteMode() }";
         }
 
+        private void ExportPaletteColours(bool useCircularPictureBoxes)
+        {
+            if (useCircularPictureBoxes)
+            {
+                //? TODO: Fix me!
+                //PaletteEditorEngine.ExportPalette(_globalMethods.GetSelectedPaletteMode(), cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview, tslStatus);
+            }
+            else
+            {
+                //? TODO: Fix me!
+                //PaletteEditorEngine.ExportPalette(_globalMethods.GetSelectedPaletteMode(), pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview, tslStatus);
+            }
+        }
+
         private void kbtnGetColourInformation_Click(object sender, EventArgs e)
         {
-            ColourInformation colourInformation = new ColourInformation();
+            ColourInformation colourInformation = new ColourInformation(DebugMode);
 
             colourInformation.Show();
+        }
+
+        private void kbtnImportColourScheme_Click(object sender, EventArgs e)
+        {
+            Open();
+        }
+
+        private void kchkUpdateColours_CheckedChanged(object sender, EventArgs e)
+        {
+            _colourUpdateTimer.Enabled = kchkUpdateColours.Checked;
+        }
+
+        private void ResetColours(bool useCircularPictureBoxes)
+        {
+            if (useCircularPictureBoxes)
+            {
+                kgbPreviewPane.Visible = false;
+
+                kgbCircularColourPreviewPane.Visible = true;
+
+                //? TODO: Complete cbxRibbonTabTextColourPreview
+                //ColourUtilities.ResetColourDefinitions(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkFocusedColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview, cbxRibbonTabTextColourPreview);
+            }
+            else
+            {
+                kgbPreviewPane.Visible = true;
+
+                kgbCircularColourPreviewPane.Visible = false;
+
+                //? TODO: Complete pbxRibbonTabTextColourPreview
+                //ColourUtilities.ResetColourDefinitions(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkFocusedColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview, pbxRibbonTabTextColourPreview);
+            }
+        }
+
+        private void kchkInvertColours_CheckedChanged(object sender, EventArgs e)
+        {
+            if (kchkInvertColours.Checked)
+            {
+                InvertColours(UseCircularPictureBoxes);
+            }
+            else
+            {
+                RevertColours(UseCircularPictureBoxes);
+            }
+        }
+
+        private void RevertColours(bool useCircularPictureBoxes)
+        {
+            if (useCircularPictureBoxes)
+            {
+                //? TODO: Fix me!
+                //ColourUtilities.RevertColours(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview);
+
+                invertColoursToolStripMenuItem.Checked = false;
+
+                kchkInvertColours.Checked = false;
+            }
+        }
+
+        private void InvertColours(bool useCircularPictureBoxes)
+        {
+            if (useCircularPictureBoxes)
+            {
+                //? TODO: Fix me!
+                //ColourUtilities.InvertColours(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview);
+
+                invertColoursToolStripMenuItem.Checked = true;
+
+                kchkInvertColours.Checked = true;
+            }
+            else
+            {
+                //? TODO: Fix me!
+                //ColourUtilities.InvertColours(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview);
+
+                invertColoursToolStripMenuItem.Checked = true;
+
+                kchkInvertColours.Checked = true;
+            }
+        }
+
+        private void generateColoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (UseCircularPictureBoxes)
+            {
+                GenerateColourScheme(cbxBaseColourPreview.BackColor);
+            }
+            else
+            {
+                GenerateColourScheme(pbxBaseColour.BackColor);
+            }
+        }
+
+        private void getColoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GrabPaletteColours(UseCircularPictureBoxes);
+        }
+
+        private void exportPaletteColoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportPaletteColours(UseCircularPictureBoxes);
+        }
+
+        private void viewPaletteFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Core.Classes.Other.GlobalMethods.NotImplementedYet();
+        }
+
+        private void generateContrastColoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Core.Classes.Other.GlobalMethods.NotImplementedYet();
+        }
+
+        private void getColourInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Core.Classes.Other.GlobalMethods.NotImplementedYet();
+        }
+
+        private void importColourSchemeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Open();
+        }
+
+        private void invertColoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InvertColours(UseCircularPictureBoxes);
+        }
+
+        private void updateColoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Core.Classes.Other.GlobalMethods.NotImplementedYet();
+        }
+
+        private void resetColoursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetColours(UseCircularPictureBoxes);
+        }
+
+        private void standardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowCircularPreviewBoxes(false);
+
+            standardToolStripMenuItem.Checked = true;
+
+            circularToolStripMenuItem.Checked = UseCircularPictureBoxes;
+        }
+
+        private void circularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowCircularPreviewBoxes(true);
+
+            standardToolStripMenuItem.Checked = false;
+
+            circularToolStripMenuItem.Checked = UseCircularPictureBoxes;
+        }
+
+        private void submitFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/issues/35");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutDialog aboutDialog = new AboutDialog();
+
+            aboutDialog.Show();
         }
 
         /// <summary>
@@ -697,7 +956,8 @@ namespace PaletteEditor.UX
 
                 kgbCircularColourPreviewPane.Visible = true;
 
-                ColourUtilities.GrabColourDefinitions(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview);
+                //? TODO: Fix me!
+                //ColourUtilities.GrabColourDefinitions(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview);
             }
             else
             {
@@ -705,7 +965,68 @@ namespace PaletteEditor.UX
 
                 kgbCircularColourPreviewPane.Visible = false;
 
-                ColourUtilities.GrabColourDefinitions(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview);
+                //? TODO: Fix me!
+                //ColourUtilities.GrabColourDefinitions(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview);
+            }
+        }
+
+        private void utiliseAsBaseColourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (UseCircularPictureBoxes)
+            {
+                GenerateColourScheme(cbxBaseColourPreview.BackColor);
+            }
+            else
+            {
+                GenerateColourScheme(pbxBaseColour.BackColor);
+            }
+        }
+
+        private void toolStripMenuItem17_Click(object sender, EventArgs e)
+        {
+            if (UseCircularPictureBoxes)
+            {
+                GenerateColourScheme(cbxDarkColourPreview.BackColor);
+            }
+            else
+            {
+                GenerateColourScheme(pbxDarkColour.BackColor);
+            }
+        }
+
+        private void toolStripMenuItem18_Click(object sender, EventArgs e)
+        {
+            if (UseCircularPictureBoxes)
+            {
+                GenerateColourScheme(cbxMiddleColourPreview.BackColor);
+            }
+            else
+            {
+                GenerateColourScheme(pbxMiddleColour.BackColor);
+            }
+        }
+
+        private void toolStripMenuItem19_Click(object sender, EventArgs e)
+        {
+            if (UseCircularPictureBoxes)
+            {
+                GenerateColourScheme(cbxLightColourPreview.BackColor);
+            }
+            else
+            {
+                GenerateColourScheme(pbxLightColour.BackColor);
+            }
+        }
+
+        private void toolStripMenuItem20_Click(object sender, EventArgs e)
+        {
+            if (UseCircularPictureBoxes)
+            {
+                GenerateColourScheme(cbxLightestColourPreview.BackColor);
+            }
+            else
+            {
+                GenerateColourScheme(pbxLightestColour.BackColor);
             }
         }
 
@@ -715,59 +1036,152 @@ namespace PaletteEditor.UX
         /// <param name="value">if set to <c>true</c> [value].</param>
         private void ShowCircularPreviewBoxes(bool value)
         {
-            pbxBaseColour.Visible = value;
+            GlobalBooleanSettingsManager globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
 
-            pbxDarkColour.Visible = value;
+            #region Old Code
+            //pbxBaseColour.Visible = value;
 
-            pbxMiddleColour.Visible = value;
+            //pbxDarkColour.Visible = value;
 
-            pbxLightColour.Visible = value;
+            //pbxMiddleColour.Visible = value;
 
-            pbxLightestColour.Visible = value;
+            //pbxLightColour.Visible = value;
 
-            pbxBorderColourPreview.Visible = value;
+            //pbxLightestColour.Visible = value;
 
-            pbxAlternativeNormalTextColour.Visible = value;
+            //pbxBorderColourPreview.Visible = value;
 
-            pbxNormalTextColourPreview.Visible = value;
+            //pbxAlternativeNormalTextColour.Visible = value;
 
-            pbxDisabledTextColourPreview.Visible = value;
+            //pbxNormalTextColourPreview.Visible = value;
 
-            pbxFocusedTextColourPreview.Visible = value;
+            //pbxDisabledTextColourPreview.Visible = value;
 
-            pbxPressedTextColourPreview.Visible = value;
+            //pbxFocusedTextColourPreview.Visible = value;
 
-            pbxDisabledColourPreview.Visible = value;
+            //pbxPressedTextColourPreview.Visible = value;
 
-            pbxLinkNormalColourPreview.Visible = value;
+            //pbxDisabledColourPreview.Visible = value;
 
-            pbxLinkHoverColourPreview.Visible = value;
+            //pbxLinkNormalColourPreview.Visible = value;
 
-            pbxLinkVisitedColourPreview.Visible = value;
+            //pbxLinkHoverColourPreview.Visible = value;
 
-            pbxCustomColourOnePreview.Visible = value;
+            //pbxLinkVisitedColourPreview.Visible = value;
 
-            pbxCustomColourTwoPreview.Visible = value;
+            //pbxCustomColourOnePreview.Visible = value;
 
-            pbxCustomColourThreePreview.Visible = value;
+            //pbxCustomColourTwoPreview.Visible = value;
 
-            pbxCustomColourFourPreview.Visible = value;
+            //pbxCustomColourThreePreview.Visible = value;
 
-            pbxCustomColourFivePreview.Visible = value;
+            //pbxCustomColourFourPreview.Visible = value;
 
-            pbxCustomTextColourOnePreview.Visible = value;
+            //pbxCustomColourFivePreview.Visible = value;
 
-            pbxCustomTextColourTwoPreview.Visible = value;
+            //pbxCustomTextColourOnePreview.Visible = value;
 
-            pbxCustomTextColourThreePreview.Visible = value;
+            //pbxCustomTextColourTwoPreview.Visible = value;
 
-            pbxCustomTextColourFourPreview.Visible = value;
+            //pbxCustomTextColourThreePreview.Visible = value;
 
-            pbxCustomTextColourFivePreview.Visible = value;
+            //pbxCustomTextColourFourPreview.Visible = value;
 
-            pbxMenuTextColourPreview.Visible = value;
+            //pbxCustomTextColourFivePreview.Visible = value;
 
-            pbxStatusTextColourPreview.Visible = value;
+            //pbxMenuTextColourPreview.Visible = value;
+
+            //pbxStatusTextColourPreview.Visible = value;
+            #endregion
+
+            if (value)
+            {
+                kgbCircularColourPreviewPane.Visible = true;
+
+                kgbPreviewPane.Visible = false;
+
+                standardToolStripMenuItem.Checked = false;
+
+                circularToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                kgbCircularColourPreviewPane.Visible = false;
+
+                kgbPreviewPane.Visible = true;
+
+                standardToolStripMenuItem.Checked = true;
+
+                circularToolStripMenuItem.Checked = false;
+            }
+
+            _globalBooleanSettingsManager.SetUseCircularPictureBoxes(value);
+
+            UseCircularPictureBoxes = _globalBooleanSettingsManager.GetUseCircularPictureBoxes();
+
+            _globalBooleanSettingsManager.SaveBooleanSettings();
+        }
+
+        private void GenerateColourScheme(Color baseColour)
+        {
+            ColourMixer colourMixer = new ColourMixer(true, baseColour);
+
+            colourMixer.Show();
+        }
+
+        private void newUXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            New.MainWindow mainWindow = new New.MainWindow();
+
+            mainWindow.Show();
+        }
+
+        private void ribbonUXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RibbonWindow ribbonWindow = new RibbonWindow();
+
+            ribbonWindow.Show();
+        }
+
+        private void factoryResetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _colourSettingsManager.ResetSettings(DebugMode);
+        }
+
+        private void GrabPaletteColours(bool useCircularPictureBoxes)
+        {
+            if (useCircularPictureBoxes)
+            {
+                UpdateColourPalette(useCircularPictureBoxes);
+
+                ShowCircularPreviewBoxes(true);
+            }
+        }
+
+        private void MyOwnRecentPaletteFileGotClicked_Handler(object sender, EventArgs e)
+        {
+            string fileName = (sender as ToolStripItem).Text;
+
+            if (!File.Exists(fileName))
+            {
+                if (KryptonMessageBox.Show($"{ fileName } doesn't exist. Remove from recent workspaces?", "File not found", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    _mostRecentlyUsedFileManager.RemoveRecentFile(fileName);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            _palette.Import(fileName);
+
+            //OpenFile(fileName);
+        }
+
+        private void MyOwnRecentPaletteFilesGotCleared_Handler(object sender, EventArgs e)
+        {
+
         }
         #endregion
     }

@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Update File Creator")]
-[assembly: AssemblyCopyright("Copyright © Peter Wagner (aka Wagnerp) & Simon Coghlan (aka Smurf-IV) 2018. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © Peter Wagner (aka Wagnerp) & Simon Coghlan (aka Smurf-IV) 2018 - 2019. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,8 +32,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("4.00.*")]
-[assembly: AssemblyVersion("4.00.415.0")]
-[assembly: AssemblyFileVersion("4.00.415.0")]
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("5.400.429.0")]
+[assembly: AssemblyFileVersion("5.400.429.0")]
 [assembly: NeutralResourcesLanguage("en-GB")]
 

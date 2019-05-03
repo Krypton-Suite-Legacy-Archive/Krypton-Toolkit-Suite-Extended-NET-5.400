@@ -1,10 +1,88 @@
-# Krypton-Toolkit-Suite-Extended-NET-4.00
+# <img src="https://raw.githubusercontent.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/master/Assets/PNG/64%20x%2064/KR%2064%20%20x%2064%20Orange.png" /> Toolkit Suite Extended .NET 5.400
 
 =======
 
+| NuGet | Current NuGet Version | Github License |
+|---|---|---|
+| [![NuGet](https://img.shields.io/badge/NuGet-Krypton%20Extended%20.NET%205.400-brightgreen.svg)](https://www.nuget.org/packages/KryptonExtendedToolkit5400/) | ![Nuget](https://img.shields.io/nuget/v/KryptonExtendedToolkit5400.svg) | ![GitHub](https://img.shields.io/github/license/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400.svg)
+
+=======
 ## An extension to the Krypton Toolkit suite of controls for .NET framework 4.0
 
 ## NOTE: 20/06/2018 Background menu colours will be implemented in the comming weeks. Stay tuned for updates!
+
+======
+
+# Building this repository from code
+
+## In order to compile the code, you MUST restore/update the NuGet packages in order to build successfully!
+
+======
+
+## Control Examples
+
+Please refer to [examples](https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.470/blob/master/Examples.md) to see what each control looks like.
+
+======
+
+## 2019-05-03 Build 934 - May Update
+* Outlook 2003 style toast notification
+* File checksum calculator (MD5, SHA-1, SHA-256, SHA-384, SHA-512 and RIPEMD-160)
+* New `KryptonPaletteManager` class for dealing with creating custom `KryptonPalette`'s
+* Ribbon enhancements, merge two ribbons together [#150](https://github.com/Wagnerp/Krypton-NET-5.470/issues/150)
+* Capture version information from another file
+* Playground application reorganisation
+* Images of controls to show developers what they look like
+* Image resizing utility - resize & save images on the fly
+* New palette explorer user controls - will make it quicker to design the application
+* Fix palette theme selector, issue [#71](https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.470/issues/71)
+* General tidyup of code & API updates
+* XML documentation files for DLLs
+* New palette theme selector
+* New `KryptonToastNotification` window
+* New circular progressbar control
+* Random password generator (for use on future user creation dialog)
+* New developer API tools for internal development of the toolkit
+* Begun re-working the `Palette Explorer` application
+* New `Palette Upgrade Tool` application for upgrading any older palette `xml` files
+* Theme `*.xml` files are now available to view and edit in the Visual Studio solution under the **themes** folder
+* All theme files are now bundled with the NuGet package
+* New colour wheel colour dialog
+* New toggle switch control
+* New rounded textbox control
+* Integrated `ookii.dialogs` code
+* Working on new folder browser dialog and file browser
+* New theme chooser component (proof of concept for a more sophisticated UI for next update)
+* Removed **LinqBridge** requirement, [#48](https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.470/issues/48)
+* Reorganised `Playground` test application
+* Fully merged the `ExtendedRenderer` project codebase
+* Tidy up control placement in code
+* New control, `KryptonCommandLinkButton`
+* Add Designer to allow drag and drop in IDE
+* Add defaults to demonstrate layout and then allow user to change the values
+* Add Code to the Playground to show defaults
+* Complete the optional font usage for the `ExtendedKryptonMessageBox` 
+* Add code behind the PlayGrounds `MessageBox Test` button.
+* New controls, including a new, theme-able scrollbar - need help implementing it into controls i.e ComboBox, rich textbox etc.
+* Partially implemented the `ExtendedRenderer` project - due to be completed in early 2019.
+* **Tooling.dll** has now been renamed to **Core.dll**
+* Consolidate settings
+* Begun work on a new colour dialog
+* Refinements to code
+* Set your own colour intensity
+* Automatic updating of colours has been centralised
+* Work on a new ribbonised `Palette Explorer` is in progress
+* New floating toolbar/window feature
+* Re-work of `Palette Editor` UI to tidy up (ribbon UI is a possibility)
+* Started feasibility work on a "Kryptonised" common file dialog (any help is appreciated)
+* New splash screen for `Palette Editor` application
+* Removed requirement for DLLs in favor of NuGet management
+* General bug fixes
+* Allow users to define **any** colour in the `Palette Editor` using a context menu
+* Begun work on a new typeface/font dialog box
+* Begun work on a new `Define Basic Palette Colours` UI to allow users to define custom basic palette colours (currently in pre-alpha stages)
+* Updated the required Krypton DLLs to build 643 (build date Tuesday 25th September, 2018)
+* General code updates
 
 ======
 

@@ -1,4 +1,4 @@
-﻿namespace Tooling.Enumerations
+﻿namespace Core.Enumerations
 {
     /// <summary>
     /// The RGBA channel
@@ -258,6 +258,10 @@
         /// </summary>
         LINKNORMALTEXTCOLOUR,
         /// <summary>
+        /// The link disabled text colour
+        /// </summary>
+        LINKDISABLEDTEXTCOLOUR,
+        /// <summary>
         /// The link hover text colour
         /// </summary>
         LINKHOVERTEXTCOLOUR,
@@ -316,6 +320,58 @@
         /// <summary>
         /// The status text colour
         /// </summary>
+        STATUSTEXTCOLOUR,
+        RIBBONTABTEXTCOLOUR
+    }
+
+    public enum BasicPaletteColourDefinitions
+    {
+        BASECOLOUR = 0,
+        DARKESTCOLOUR = 1,
+        MIDDLECOLOUR = 2,
+        LIGHTCOLOUR = 3,
+        LIGHTESTCOLOUR = 4
+    }
+
+    public enum AllAvailableColourTypes
+    {
+        ALTERNATIVENORMALTEXTCOLOUR,
+        BASECOLOUR,
+        BORDERCOLOUR,
+        CUSTOMCOLOURONE,
+        CUSTOMCOLOURTWO,
+        CUSTOMCOLOURTHREE,
+        CUSTOMCOLOURFOUR,
+        CUSTOMCOLOURFIVE,
+        CUSTOMTEXTCOLOURONE,
+        CUSTOMTEXTCOLOURTWO,
+        CUSTOMTEXTCOLOURTHREE,
+        CUSTOMTEXTCOLOURFOUR,
+        CUSTOMTEXTCOLOURFIVE,
+        DARKESTCOLOUR,
+        DISABLEDCONTROLCOLOUR,
+        DISABLEDTEXTCOLOUR,
+        FOCUSEDTEXTCOLOUR,
+        LIGHTCOLOUR,
+        LIGHTESTCOLOUR,
+        LINKDISABLEDCOLOUR,
+        LINKHOVERCOLOUR,
+        LINKNORMALCOLOUR,
+        LINKVISITEDCOLOUR,
+        MEDIUMCOLOUR,
+        MENUTEXTCOLOUR,
+        NORMALTEXTCOLOUR,
+        PRESSEDTEXTCOLOUR,
         STATUSTEXTCOLOUR
+    }
+
+    public enum SettingTypes
+    {
+        BOOLEAN,
+        COLOUR,
+        COLOURSTRING,
+        COLOURINTEGER,
+        STRING,
+        INTEGER
     }
 }

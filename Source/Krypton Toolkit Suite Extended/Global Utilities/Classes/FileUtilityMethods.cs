@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace GlobalUtilities.Classes
+namespace Core.Classes
 {
     /// <summary>
     /// This class is used to retrieve data for the downloaded file.
@@ -14,6 +14,9 @@ namespace GlobalUtilities.Classes
     {
         //GlobalMethods globalMethods = new GlobalMethods();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileUtilityMethods"/> class.
+        /// </summary>
         public FileUtilityMethods()
         {
 

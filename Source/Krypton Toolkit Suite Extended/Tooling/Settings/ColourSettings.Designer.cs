@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tooling.Settings {
+namespace Core.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -113,12 +113,12 @@ namespace Tooling.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color DisabledColour {
+        public global::System.Drawing.Color DisabledControlColour {
             get {
-                return ((global::System.Drawing.Color)(this["DisabledColour"]));
+                return ((global::System.Drawing.Color)(this["DisabledControlColour"]));
             }
             set {
-                this["DisabledColour"] = value;
+                this["DisabledControlColour"] = value;
             }
         }
         
@@ -135,12 +135,12 @@ namespace Tooling.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color FocusTextColour {
+        public global::System.Drawing.Color FocusedTextColour {
             get {
-                return ((global::System.Drawing.Color)(this["FocusTextColour"]));
+                return ((global::System.Drawing.Color)(this["FocusedTextColour"]));
             }
             set {
-                this["FocusTextColour"] = value;
+                this["FocusedTextColour"] = value;
             }
         }
         
@@ -311,12 +311,45 @@ namespace Tooling.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color StatusTextColour {
+        public global::System.Drawing.Color StatusStripTextColour {
             get {
-                return ((global::System.Drawing.Color)(this["StatusTextColour"]));
+                return ((global::System.Drawing.Color)(this["StatusStripTextColour"]));
             }
             set {
-                this["StatusTextColour"] = value;
+                this["StatusStripTextColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color LinkDisabledColour {
+            get {
+                return ((global::System.Drawing.Color)(this["LinkDisabledColour"]));
+            }
+            set {
+                this["LinkDisabledColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color LinkFocusedColour {
+            get {
+                return ((global::System.Drawing.Color)(this["LinkFocusedColour"]));
+            }
+            set {
+                this["LinkFocusedColour"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color RibbonTabTextColour {
+            get {
+                return ((global::System.Drawing.Color)(this["RibbonTabTextColour"]));
+            }
+            set {
+                this["RibbonTabTextColour"] = value;
             }
         }
     }

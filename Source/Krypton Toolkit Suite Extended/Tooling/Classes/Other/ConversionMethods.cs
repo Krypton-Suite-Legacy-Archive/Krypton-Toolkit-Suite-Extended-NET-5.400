@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Tooling.Classes.Other
+namespace Core.Classes.Other
 {
     public class ConversionMethods
     {
@@ -97,15 +97,15 @@ namespace Tooling.Classes.Other
         /// <returns></returns>
         public Color ConvertHexadecimalToRGB(string hexColour)
         {
-            int red = 0, green = 0, blue = 0;
+            //int red = 0, green = 0, blue = 0;
 
-            Color rgbColour = ColorTranslator.FromHtml(hexColour);
+            //Color rgbColour = ColorTranslator.FromHtml(hexColour);
 
-            red = Convert.ToInt32(rgbColour.R);
+            //red = Convert.ToInt32(rgbColour.R);
 
-            green = Convert.ToInt32(rgbColour.G);
+            //green = Convert.ToInt32(rgbColour.G);
 
-            blue = Convert.ToInt32(rgbColour.B);
+            //blue = Convert.ToInt32(rgbColour.B);
 
             /*if (hexColour.IndexOf('#') != -1)
             {
@@ -129,9 +129,11 @@ namespace Tooling.Classes.Other
                 blue = int.Parse(hexColour[2].ToString() + hexColour[2].ToString(), NumberStyles.AllowHexSpecifier);
             }*/
 
-            SetRGB(red, green, blue);
+            //SetRGB(red, green, blue);
 
-            return rgbColour;
+            Color output = ColorTranslator.FromHtml(hexColour);
+
+            return output;
         }
 
         //public Color ConvertHexadecimalToRGBTest(string hexColour)

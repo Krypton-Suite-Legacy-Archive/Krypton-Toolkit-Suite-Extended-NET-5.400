@@ -1,21 +1,18 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using Core.Classes;
+using GlobalUtilities.Classes;
+using KryptonApplicationUpdater.Classes.SettingsManager;
+using KryptonApplicationUpdater.Enumerations;
+using KryptonApplicationUpdater.Interfaces;
+using Core;
+using KryptonExtendedToolkit.ExtendedToolkit.Controls;
+using Microsoft.WindowsAPICodePack.Taskbar;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
-
-using ComponentFactory.Krypton.Toolkit;
-
-using GlobalUtilities.Classes;
-
-using KryptonApplicationUpdater.Classes.SettingsManager;
-using KryptonApplicationUpdater.Enumerations;
-using KryptonApplicationUpdater.Interfaces;
-
-using KryptonExtendedToolkit.ExtendedToolkit.Controls;
-
-using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace KryptonApplicationUpdater.Classes
 {
@@ -33,15 +30,13 @@ namespace KryptonApplicationUpdater.Classes
 
         private KryptonButton _kryptonInstallUpdateButton = null;
 
-        private KryptonUACShieldButton _kryptonUACShieldInstallUpdateButton = null;
+        private KryptonUACElevatedButton _kryptonUACShieldInstallUpdateButton = null;
 
         private Stopwatch stopwatch = new Stopwatch();
 
         private WebClient downloadClient;
 
         private GlobalMethods _globalMethods = new GlobalMethods();
-
-        private ExceptionHandler _exceptionHandler = new ExceptionHandler();
 
         private XMLFileParser _parser = new XMLFileParser();
 
@@ -227,7 +222,7 @@ namespace KryptonApplicationUpdater.Classes
         /// <value>
         /// The krypton UAC shield install update button.
         /// </value>
-        private KryptonUACShieldButton KryptonUACShieldInstallUpdateButton
+        private KryptonUACElevatedButton KryptonUACShieldInstallUpdateButton
         {
             get
             {
@@ -310,7 +305,7 @@ namespace KryptonApplicationUpdater.Classes
             {
                 if (_globalMethods.GetIsTargetPlatformSupported())
                 {
-                    _exceptionHandler.ShowException($"Error: { e.Message }", true, false, false, false, false, null, null, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxDefaultButton.Button1, MessageBoxIcon.Error);
+                    ExceptionHandler.CaptureException(e, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "UpdaterLogic", "CheckForUpdates(string xmlFilePath, Version currentVersion, string pingURL)");
                 }
                 else
                 {
@@ -339,7 +334,7 @@ namespace KryptonApplicationUpdater.Classes
         /// <param name="kryptonInstallUpdateButton">The krypton install update button.</param>
         /// <param name="kryptonUACShieldInstallUpdateButton">The krypton UAC shield install update button.</param>
         /// <param name="hypertextTransferProtocolType">Type of the hypertext transfer protocol.</param>
-        public void DownloadFile(WebClient downloadClient, string sourcePath, string destinationPath, KryptonLabel downloadSource = null, KryptonLabel downloadDestination = null, KryptonLabel amountDownloaded = null, KryptonLabel currentSpeed = null, KryptonLabel downloadPercentage = null, ProgressBar downloadProgress = null, Button installUpdateButton = null, KryptonButton kryptonInstallUpdateButton = null, KryptonUACShieldButton kryptonUACShieldInstallUpdateButton = null, HypertextTransferProtocolType hypertextTransferProtocolType = HypertextTransferProtocolType.HYPERTEXTTRANSFERPROTOCOL)
+        public void DownloadFile(WebClient downloadClient, string sourcePath, string destinationPath, KryptonLabel downloadSource = null, KryptonLabel downloadDestination = null, KryptonLabel amountDownloaded = null, KryptonLabel currentSpeed = null, KryptonLabel downloadPercentage = null, ProgressBar downloadProgress = null, Button installUpdateButton = null, KryptonButton kryptonInstallUpdateButton = null, KryptonUACElevatedButton kryptonUACShieldInstallUpdateButton = null, HypertextTransferProtocolType hypertextTransferProtocolType = HypertextTransferProtocolType.HYPERTEXTTRANSFERPROTOCOL)
         {
             try
             {
@@ -397,7 +392,7 @@ namespace KryptonApplicationUpdater.Classes
                         {
                             if (_globalMethods.GetIsTargetPlatformSupported())
                             {
-                                _exceptionHandler.ShowException($"Error: { e.Message }", true, false, false, false, false, null, null, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxDefaultButton.Button1, MessageBoxIcon.Error);
+                                ExceptionHandler.CaptureException(e, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "UpdaterLogic", "DownloadFile(WebClient downloadClient, string sourcePath, string destinationPath, KryptonLabel downloadSource = null, KryptonLabel downloadDestination = null, KryptonLabel amountDownloaded = null, KryptonLabel currentSpeed = null, KryptonLabel downloadPercentage = null, ProgressBar downloadProgress = null, Button installUpdateButton = null, KryptonButton kryptonInstallUpdateButton = null, KryptonUACElevatedButton kryptonUACShieldInstallUpdateButton = null, HypertextTransferProtocolType hypertextTransferProtocolType = HypertextTransferProtocolType.HYPERTEXTTRANSFERPROTOCOL)");
                             }
                             else
                             {
@@ -411,7 +406,7 @@ namespace KryptonApplicationUpdater.Classes
             {
                 if (_globalMethods.GetIsTargetPlatformSupported())
                 {
-                    _exceptionHandler.ShowException($"Error: { e.Message }", true, false, false, false, false, null, null, "An Error has Occurred", MessageBoxButtons.OK, MessageBoxDefaultButton.Button1, MessageBoxIcon.Error);
+                    ExceptionHandler.CaptureException(e, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "UpdaterLogic", "DownloadFile(WebClient downloadClient, string sourcePath, string destinationPath, KryptonLabel downloadSource = null, KryptonLabel downloadDestination = null, KryptonLabel amountDownloaded = null, KryptonLabel currentSpeed = null, KryptonLabel downloadPercentage = null, ProgressBar downloadProgress = null, Button installUpdateButton = null, KryptonButton kryptonInstallUpdateButton = null, KryptonUACElevatedButton kryptonUACShieldInstallUpdateButton = null, HypertextTransferProtocolType hypertextTransferProtocolType = HypertextTransferProtocolType.HYPERTEXTTRANSFERPROTOCOL)");
                 }
                 else
                 {
@@ -525,7 +520,7 @@ namespace KryptonApplicationUpdater.Classes
             }
             catch (Exception e)
             {
-                _exceptionHandler.ShowException($"Error: { e.Message }", true);
+                ExceptionHandler.CaptureException(e, "Error Thrown", MessageBoxButtons.OK, MessageBoxIcon.Error, "UpdaterLogic", "IsNewerThan(Version currentApplicationVersion)");
 
                 return false;
             }
@@ -683,7 +678,7 @@ namespace KryptonApplicationUpdater.Classes
         /// Sets the KryptonUACShieldInstallUpdateButton to the value of value.
         /// </summary>
         /// <param name="value">The desired value of KryptonUACShieldInstallUpdateButton.</param>
-        private void SetKryptonUACShieldInstallUpdateButton(KryptonUACShieldButton value)
+        private void SetKryptonUACShieldInstallUpdateButton(KryptonUACElevatedButton value)
         {
             KryptonUACShieldInstallUpdateButton = value;
         }
@@ -692,7 +687,7 @@ namespace KryptonApplicationUpdater.Classes
         /// Returns the value of the KryptonUACShieldInstallUpdateButton.
         /// </summary>
         /// <returns>The value of the KryptonUACShieldInstallUpdateButton.</returns>
-        private KryptonUACShieldButton GetKryptonUACShieldInstallUpdateButton()
+        private KryptonUACElevatedButton GetKryptonUACShieldInstallUpdateButton()
         {
             return KryptonUACShieldInstallUpdateButton;
         }

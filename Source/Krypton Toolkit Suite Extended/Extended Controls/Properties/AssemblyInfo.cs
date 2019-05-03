@@ -1,5 +1,5 @@
-﻿using System.Resources;
-using System.Reflection;
+﻿using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Extended Controls")]
-[assembly: AssemblyDescription("An extention to the Krypton toolkit suite for .NET framework 4.00 (https://github.com/Wagnerp/Krypton-NET-4.00).")]
+[assembly: AssemblyDescription("An extention to the Krypton toolkit suite for .NET framework 4.7 (https://github.com/Wagnerp/Krypton-NET-5.400).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Extended Controls")]
-[assembly: AssemblyCopyright("Copyright © Peter Wagner (aka Wagnerp) & Simon Coghlan (aka Smurf-IV) 2018. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © Peter Wagner (aka Wagnerp) & Simon Coghlan (aka Smurf-IV) 2018 - 2019. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,8 +32,13 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("4.00.*")]
-[assembly: AssemblyVersion("4.00.487.0")]
-[assembly: AssemblyFileVersion("4.00.487.0")]
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("5.400.937.0")]
+[assembly: AssemblyFileVersion("5.400.937.0")]
 [assembly: NeutralResourcesLanguage("en-GB")]
+[assembly: Dependency("System", LoadHint.Always)]
+[assembly: Dependency("System.Xml", LoadHint.Always)]
+[assembly: Dependency("System.Drawing", LoadHint.Always)]
+[assembly: Dependency("System.Windows.Forms", LoadHint.Always)]
+[assembly: Dependency("ComponentFactory.Krypton.Toolkit", LoadHint.Always)]
 

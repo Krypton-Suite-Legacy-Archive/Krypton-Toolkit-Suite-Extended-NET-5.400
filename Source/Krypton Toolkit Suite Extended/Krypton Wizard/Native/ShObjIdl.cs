@@ -1808,9 +1808,9 @@ namespace KryptonWizard.Native
             /// <para>Name:     System.Contact.Anniversary -- PKEY_Contact_Anniversary</para>
             /// <para>Description:</para>
             /// <para>Type:     DateTime -- VT_FILETIME (For variants: VT_DATE)</para>
-            /// <para>FormatID: {9AD5BADB-CEA7-4470-A03D-B84E51B9949E}, 100</para>
+            /// <para>FormatID: {9AD5BADB-CEA7-4400-A03D-B84E51B9949E}, 100</para>
             /// </summary>
-            public static ShellItemPropertyKey Anniversary => new ShellItemPropertyKey(new Guid("{9AD5BADB-CEA7-4470-A03D-B84E51B9949E}"), 100);
+            public static ShellItemPropertyKey Anniversary => new ShellItemPropertyKey(new Guid("{9AD5BADB-CEA7-4400-A03D-B84E51B9949E}"), 100);
 
             /// <summary>
             /// <para>Name:     System.Contact.AssistantName -- PKEY_Contact_AssistantName</para>
@@ -2975,9 +2975,9 @@ namespace KryptonWizard.Native
             /// <para>Name:     System.Document.Contributor -- PKEY_Document_Contributor</para>
             /// <para>Description:</para>
             /// <para>Type:     Multivalue String -- VT_VECTOR | VT_LPWSTR (For variants: VT_ARRAY | VT_BSTR)</para>
-            /// <para>FormatID: {F334115E-DA1B-4509-9B3D-119504DC7ABB}, 100</para>
+            /// <para>FormatID: {F334115E-DA1B-4009-9B3D-119504DC7ABB}, 100</para>
             /// </summary>
-            public static ShellItemPropertyKey Contributor => new ShellItemPropertyKey(new Guid("{F334115E-DA1B-4509-9B3D-119504DC7ABB}"), 100);
+            public static ShellItemPropertyKey Contributor => new ShellItemPropertyKey(new Guid("{F334115E-DA1B-4009-9B3D-119504DC7ABB}"), 100);
 
             /// <summary>
             /// <para>Name:     System.Document.DateCreated -- PKEY_Document_DateCreated</para>
@@ -3174,45 +3174,45 @@ namespace KryptonWizard.Native
             /// <para>Description: Indicates when play expires for digital rights management.
             ///</para>
             /// <para>Type:     DateTime -- VT_FILETIME  (For variants: VT_DATE)</para>
-            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}, 6 (PIDDRSI_PLAYEXPIRES)</para>
+            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}, 6 (PIDDRSI_PLAYEXPIRES)</para>
             /// </summary>
-            public static ShellItemPropertyKey DatePlayExpires => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}"), 6);
+            public static ShellItemPropertyKey DatePlayExpires => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}"), 6);
 
             /// <summary>
             /// <para>Name:     System.DRM.DatePlayStarts -- PKEY_DRM_DatePlayStarts</para>
             /// <para>Description: Indicates when play starts for digital rights management.
             ///</para>
             /// <para>Type:     DateTime -- VT_FILETIME  (For variants: VT_DATE)</para>
-            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}, 5 (PIDDRSI_PLAYSTARTS)</para>
+            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}, 5 (PIDDRSI_PLAYSTARTS)</para>
             /// </summary>
-            public static ShellItemPropertyKey DatePlayStarts => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}"), 5);
+            public static ShellItemPropertyKey DatePlayStarts => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}"), 5);
 
             /// <summary>
             /// <para>Name:     System.DRM.Description -- PKEY_DRM_Description</para>
             /// <para>Description: Displays the description for digital rights management.
             ///</para>
             /// <para>Type:     String -- VT_LPWSTR  (For variants: VT_BSTR)</para>
-            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}, 3 (PIDDRSI_DESCRIPTION)</para>
+            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}, 3 (PIDDRSI_DESCRIPTION)</para>
             /// </summary>
-            public static ShellItemPropertyKey Description => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}"), 3);
+            public static ShellItemPropertyKey Description => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}"), 3);
 
             /// <summary>
             /// <para>Name:     System.DRM.IsProtected -- PKEY_DRM_IsProtected</para>
             /// <para>Description:
             ///</para>
             /// <para>Type:     Boolean -- VT_BOOL</para>
-            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}, 2 (PIDDRSI_PROTECTED)</para>
+            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}, 2 (PIDDRSI_PROTECTED)</para>
             /// </summary>
-            public static ShellItemPropertyKey IsProtected => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}"), 2);
+            public static ShellItemPropertyKey IsProtected => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}"), 2);
 
             /// <summary>
             /// <para>Name:     System.DRM.PlayCount -- PKEY_DRM_PlayCount</para>
             /// <para>Description: Indicates the play count for digital rights management.
             ///</para>
             /// <para>Type:     UInt32 -- VT_UI4</para>
-            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}, 4 (PIDDRSI_PLAYCOUNT)</para>
+            /// <para>FormatID: (FMTID_DRM) {AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}, 4 (PIDDRSI_PLAYCOUNT)</para>
             /// </summary>
-            public static ShellItemPropertyKey PlayCount => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4508-B9B7-BB867ABEE2ED}"), 4);
+            public static ShellItemPropertyKey PlayCount => new ShellItemPropertyKey(new Guid("{AEAC19E4-89AE-4008-B9B7-BB867ABEE2ED}"), 4);
         }
 
         /// <summary>GPS Properties</summary>
@@ -3343,9 +3343,9 @@ namespace KryptonWizard.Native
             /// <para>Description: Indicates the unit used to express the distance to the destination.  (eg: kilometers, miles, knots)
             ///</para>
             /// <para>Type:     String -- VT_LPWSTR  (For variants: VT_BSTR)</para>
-            /// <para>FormatID: {ED4DF2D3-8695-450B-856F-F5C1C53ACB66}, 100</para>
+            /// <para>FormatID: {ED4DF2D3-8695-400B-856F-F5C1C53ACB66}, 100</para>
             /// </summary>
-            public static ShellItemPropertyKey DestDistanceRef => new ShellItemPropertyKey(new Guid("{ED4DF2D3-8695-450B-856F-F5C1C53ACB66}"), 100);
+            public static ShellItemPropertyKey DestDistanceRef => new ShellItemPropertyKey(new Guid("{ED4DF2D3-8695-400B-856F-F5C1C53ACB66}"), 100);
 
             /// <summary>
             /// <para>Name:     System.GPS.DestLatitude -- PKEY_GPS_DestLatitude</para>
@@ -3825,9 +3825,9 @@ namespace KryptonWizard.Native
             /// <para>Description: Denominator of PKEY_Image_CompressedBitsPerPixel.
             ///</para>
             /// <para>Type:     UInt32 -- VT_UI4</para>
-            /// <para>FormatID: {1F8844E1-24AD-4508-9DFD-5326A415CE02}, 100</para>
+            /// <para>FormatID: {1F8844E1-24AD-4008-9DFD-5326A415CE02}, 100</para>
             /// </summary>
-            public static ShellItemPropertyKey CompressedBitsPerPixelDenominator => new ShellItemPropertyKey(new Guid("{1F8844E1-24AD-4508-9DFD-5326A415CE02}"), 100);
+            public static ShellItemPropertyKey CompressedBitsPerPixelDenominator => new ShellItemPropertyKey(new Guid("{1F8844E1-24AD-4008-9DFD-5326A415CE02}"), 100);
 
             /// <summary>
             /// <para>Name:     System.Image.CompressedBitsPerPixelNumerator -- PKEY_Image_CompressedBitsPerPixelNumerator</para>
@@ -5472,9 +5472,9 @@ namespace KryptonWizard.Native
             ///picture is taken.
             ///</para>
             /// <para>Type:     UInt32 -- VT_UI4</para>
-            /// <para>FormatID: {6D217F6D-3F6A-4825-B470-5F03CA2FBE9B}, 100</para>
+            /// <para>FormatID: {6D217F6D-3F6A-4825-B400-5F03CA2FBE9B}, 100</para>
             /// </summary>
-            public static ShellItemPropertyKey ProgramMode => new ShellItemPropertyKey(new Guid("{6D217F6D-3F6A-4825-B470-5F03CA2FBE9B}"), 100);
+            public static ShellItemPropertyKey ProgramMode => new ShellItemPropertyKey(new Guid("{6D217F6D-3F6A-4825-B400-5F03CA2FBE9B}"), 100);
 
             /// <summary>
             /// <para>Name:     System.Photo.ProgramModeText -- PKEY_Photo_ProgramModeText</para>

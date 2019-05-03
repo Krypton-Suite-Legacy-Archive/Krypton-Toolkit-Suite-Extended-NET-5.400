@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Tooling")]
-[assembly: AssemblyDescription("Some core code for the Krypton Extended Toolkit 4.00")]
+[assembly: AssemblyTitle("Core")]
+[assembly: AssemblyDescription("Some core code for the Krypton Extended Toolkit 5.400")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Tooling")]
-[assembly: AssemblyCopyright("Copyright © Peter Wagner (aka Wagnerp) & Simon Coghlan (aka Smurf-IV) 2018. All rights reserved.")]
+[assembly: AssemblyProduct("Core")]
+[assembly: AssemblyCopyright("Copyright © Peter Wagner (aka Wagnerp) & Simon Coghlan (aka Smurf-IV) 2018 - 2019. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,8 +32,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("4.00.*")]
-[assembly: AssemblyVersion("4.00.525.0")]
-[assembly: AssemblyFileVersion("4.00.525.0")]
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("5.400.889.0")]
+[assembly: AssemblyFileVersion("5.400.889.0")]
 [assembly: NeutralResourcesLanguage("en-GB")]
 

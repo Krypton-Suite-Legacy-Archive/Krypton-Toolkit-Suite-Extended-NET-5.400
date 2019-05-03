@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tooling.Properties {
+namespace Core.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Tooling.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tooling.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Core.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -97,6 +97,26 @@ namespace Tooling.Properties {
             get {
                 object obj = ResourceManager.GetObject("color", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Colour_Wheel_16_x_16 {
+            get {
+                object obj = ResourceManager.GetObject("Colour_Wheel_16_x_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Critical_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Critical_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -164,6 +184,26 @@ namespace Tooling.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hand_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Hand_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Information_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Information_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon palette {
@@ -196,6 +236,26 @@ namespace Tooling.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Question_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Question_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stop_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Stop_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap System_Information_tool_icon {
             get {
                 object obj = ResourceManager.GetObject("System_Information_tool_icon", resourceCulture);
@@ -210,6 +270,16 @@ namespace Tooling.Properties {
             get {
                 object obj = ResourceManager.GetObject("System_Information_tool_icon1", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Warning_32_x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Warning_32_x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
 using GlobalUtilities.Classes;
 using KryptonExtendedToolkit.ExtendedToolkit.ToolstripControls;
 using Microsoft.Win32;
@@ -70,11 +70,11 @@ namespace KryptonExtendedToolkit.Base.Code
                     {
                         if (globalMethods.GetIsTargetPlatformSupported())
                         {
-                            if (KryptonMessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (ExtendedKryptonMessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 ClearRecentFiles();
                             }
-                            else if (MessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            else if (ExtendedKryptonMessageBox.Show("You are about to clear your recent files list. Do you want to continue?", "Clear Recent Files", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 ClearRecentFiles();
                             }
