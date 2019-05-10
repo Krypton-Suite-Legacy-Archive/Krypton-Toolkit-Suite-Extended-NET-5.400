@@ -1,14 +1,9 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.Base.Code.Exceptions;
-using ExtendedControls.Base.Code.Security;
-using ExtendedControls.Base.Code.Settings;
-using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
 {
@@ -123,7 +118,6 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
             popupPositionValues4.PlacementTarget = null;
             this.kbtnSubmit.ToolTipValues.ToolTipPosition = popupPositionValues4;
             this.kbtnSubmit.Values.Text = "Upload && &Analyse";
-            this.kbtnSubmit.Click += new System.EventHandler(this.kbtnSubmit_ClickAsync);
             // 
             // kbtnCancel
             // 
@@ -187,10 +181,10 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
             InitializeComponent();
         }
 
-        private async void kbtnSubmit_ClickAsync(object sender, EventArgs e)
-        {
-            await RunScan(kptxtFilePath.Text);
-        }
+        //private async void kbtnSubmit_ClickAsync(object sender, EventArgs e)
+        //{
+        //    //await RunScan(kptxtFilePath.Text);
+        //}
 
         private void kbtnBrowse_Click(object sender, EventArgs e)
         {
@@ -216,76 +210,75 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
 
         }
 
-        private async Task RunScan(string filePath)
-        {
-            try
-            {
-                VirusTotalAPI virusTotal = new VirusTotalAPI(SettingsManager.GetVirusTotalAPIKey());
+        //private async Task RunScan(string filePath)
+        //{
+        //    try
+        //{
+        //VirusTotalAPI virusTotal = new VirusTotalAPI(SettingsManager.GetVirusTotalAPIKey());
 
-                virusTotal.UseTLS = SettingsManager.GetVirusTotalUseTLS();
+        //virusTotal.UseTLS = SettingsManager.GetVirusTotalUseTLS();
 
-                byte[] file = File.ReadAllBytes(filePath);
+        //byte[] file = File.ReadAllBytes(filePath);
 
-                FileReport report = await virusTotal.GetFileReportAsync(file);
+        //FileReport report = await virusTotal.GetFileReportAsync(file);
 
-                bool hasBeenSeenBefore = report.ResponseCode == FileReportResponseCode.Present;
+        //bool hasBeenSeenBefore = report.ResponseCode == FileReportResponseCode.Present;
 
-                if (hasBeenSeenBefore)
-                {
-                    DialogResult result = ExtendedKryptonMessageBox.Show($"The file: '{ Path.GetFileName(filePath) }' has been scanned before.\nDo you want to rescan it?", "Scanning File", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+        //if (hasBeenSeenBefore)
+        //{
+        //    DialogResult result = ExtendedKryptonMessageBox.Show($"The file: '{ Path.GetFileName(filePath) }' has been scanned before.\nDo you want to rescan it?", "Scanning File", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                    if (result == DialogResult.Yes)
-                    {
-                        ScanResult scanResult = await virusTotal.ScanFileAsync(file, filePath + ".vtr");
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        ScanResult scanResult = await virusTotal.ScanFileAsync(file, filePath + ".vtr");
 
-                        ShowResults(scanResult);
-                    }
-                    else
-                    {
-                        ShowResults(report);
-                    }
-                }
-                else
-                {
-                    ScanResult scanResult = await virusTotal.ScanFileAsync(file, filePath + ".vtr");
+        //        ShowResults(scanResult);
+        //    }
+        //    else
+        //    {
+        //        ShowResults(report);
+        //    }
+        //}
+        //else
+        //{
+        //    ScanResult scanResult = await virusTotal.ScanFileAsync(file, filePath + ".vtr");
 
-                    ShowResults(scanResult);
-                }
-            }
-            catch (Exception exc)
-            {
-                ExceptionHandler.CaptureException(exc);
-            }
-        }
+        //    ShowResults(scanResult);
+        //}
+        //    }
+        //    catch (Exception exc)
+        //    {
+        //        ExceptionHandler.CaptureException(exc);
+        //    }
+        //}
 
-        private void ShowResults(ScanResult scanResult)
-        {
-            ReportViewer reportViewer = new ReportViewer(kptxtFilePath.Text);
+        //private void ShowResults(ScanResult scanResult)
+        //{
+        //    ReportViewer reportViewer = new ReportViewer(kptxtFilePath.Text);
 
-            reportViewer.ReportBox.Items.Add($"Scan ID: { scanResult.ScanId }");
+        //    reportViewer.ReportBox.Items.Add($"Scan ID: { scanResult.ScanId }");
 
-            reportViewer.ReportBox.Items.Add($"Message: { scanResult.VerboseMsg }");
+        //    reportViewer.ReportBox.Items.Add($"Message: { scanResult.VerboseMsg }");
 
-            reportViewer.Show();
-        }
+        //    reportViewer.Show();
+        //}
 
-        private void ShowResults(FileReport report)
-        {
-            ReportViewer reportViewer = new ReportViewer(kptxtFilePath.Text);
+        //private void ShowResults(FileReport report)
+        //{
+        //    ReportViewer reportViewer = new ReportViewer(kptxtFilePath.Text);
 
-            reportViewer.ReportBox.Items.Add($"Scan ID: { report.ScanId }");
+        //    reportViewer.ReportBox.Items.Add($"Scan ID: { report.ScanId }");
 
-            reportViewer.ReportBox.Items.Add($"Message: { report.VerboseMsg }");
+        //    reportViewer.ReportBox.Items.Add($"Message: { report.VerboseMsg }");
 
-            if (report.ResponseCode == FileReportResponseCode.Present)
-            {
-                foreach (KeyValuePair<string, ScanEngine> scan in report.Scans)
-                {
-                    reportViewer.ReportBox.Items.Add(string.Format("{0,-25} Detected: {1}", scan.Key, scan.Value.Detected));
-                }
-            }
+        //    if (report.ResponseCode == FileReportResponseCode.Present)
+        //    {
+        //        foreach (KeyValuePair<string, ScanEngine> scan in report.Scans)
+        //        {
+        //            reportViewer.ReportBox.Items.Add(string.Format("{0,-25} Detected: {1}", scan.Key, scan.Value.Detected));
+        //        }
+        //    }
 
-            reportViewer.Show();
-        }
+        // reportViewer.Show();
     }
 }

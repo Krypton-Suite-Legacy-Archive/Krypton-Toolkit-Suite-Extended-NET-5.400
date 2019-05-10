@@ -25,7 +25,7 @@ Please refer to [examples](https://github.com/Wagnerp/Krypton-Toolkit-Suite-Exte
 
 ======
 
-## 2019-05-03 Build 934 - May Update
+## 2019-05-10 Build 945 - May Update
 * Outlook 2003 style toast notification
 * File checksum calculator (MD5, SHA-1, SHA-256, SHA-384, SHA-512 and RIPEMD-160)
 * New `KryptonPaletteManager` class for dealing with creating custom `KryptonPalette`'s

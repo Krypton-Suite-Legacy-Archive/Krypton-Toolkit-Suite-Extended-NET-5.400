@@ -98,9 +98,9 @@ namespace KryptonExtendedToolkit.Base.ButtonSpec
                     if (GetView().ClientRectangle.Contains(mea.Location))
                     {
                         // Toggle between maximized and restored
-                        KryptonForm.SendSysCommand(KryptonForm.WindowState == FormWindowState.Maximized
-                            ? PI.SC_RESTORE
-                            : PI.SC_MAXIMIZE);
+                        //KryptonForm.SendSysCommand(KryptonForm.WindowState == FormWindowState.Maximized
+                        //    ? PI.SC_RESTORE
+                        //    : PI.SC_MAXIMIZE);
 
                         // Let base class fire any other attached events
                         base.OnClick(e);

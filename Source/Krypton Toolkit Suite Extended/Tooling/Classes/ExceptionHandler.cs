@@ -96,14 +96,14 @@ namespace Core
         {
             try
             {
-                ExceptionDispatchInfo exceptionInfo = null;
+                //ExceptionDispatchInfo exceptionInfo = null;
 
                 if (!File.Exists(fileName))
                 {
                     File.Create(fileName);
                 }
 
-                exceptionInfo = ExceptionDispatchInfo.Capture(exc);
+                //exceptionInfo = ExceptionDispatchInfo.Capture(exc);
 
                 StreamWriter writer = new StreamWriter(fileName);
 
