@@ -7,9 +7,13 @@
 | [![NuGet](https://img.shields.io/badge/NuGet-Krypton%20Extended%20.NET%205.400-brightgreen.svg)](https://www.nuget.org/packages/KryptonExtendedToolkit5400/) | ![Nuget](https://img.shields.io/nuget/v/KryptonExtendedToolkit5400.svg) | ![GitHub](https://img.shields.io/github/license/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400.svg)
 
 =======
-## An extension to the Krypton Toolkit suite of controls for .NET framework 4.0
 
-## NOTE: 20/06/2018 Background menu colours will be implemented in the comming weeks. Stay tuned for updates!
+## Note on NuGet package servicing
+**Due to API changes in later .NET 4.x revisions, the 5.400 version will not be updated as regualary as 5.450 versions and above, as some code is written with some APIs that are only supported in later versions. Sorry for the inconvinence that this may cause.**
+, as some code is written with some APIs that are only supported in later versions
+=======
+
+## An extension to the Krypton Toolkit suite of controls for .NET framework 4.0.
 
 ======
 
