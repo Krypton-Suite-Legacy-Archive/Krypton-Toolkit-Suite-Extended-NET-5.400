@@ -8,9 +8,9 @@
 
 =======
 
-## Note on NuGet package servicing
+# Note on NuGet package servicing
 **Due to API changes in later .NET 4.x revisions, the 5.400 version will not be updated as regualary as 5.450 versions and above, as some code is written with some APIs that are only supported in later versions. Sorry for the inconvinence that this may cause.**
-, as some code is written with some APIs that are only supported in later versions
+
 =======
 
 ## An extension to the Krypton Toolkit suite of controls for .NET framework 4.0.
