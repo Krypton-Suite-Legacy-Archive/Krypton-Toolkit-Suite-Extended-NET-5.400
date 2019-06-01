@@ -1,15 +1,25 @@
-﻿using Classes.Colours;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using Classes.Colours;
 using ComponentFactory.Krypton.Toolkit;
 using Core.Classes.Other;
 using Core.Classes.Palette;
-using Core.Settings.Classes;
-using Core.UX;
 using Core.Interfaces;
+using Core.UX;
 using PaletteEditor.Classes;
 using System;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
+using ToolkitSettings.Classes.Global;
+using ToolkitSettings.Classes.PaletteExplorer.Colours;
 
 namespace PaletteEditor.UX.New
 {
@@ -26,7 +36,7 @@ namespace PaletteEditor.UX.New
 
         private ConversionMethods _conversionMethods = new ConversionMethods();
 
-        private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
 
         private Classes.GlobalMethods _globalMethods = new Classes.GlobalMethods();
 
@@ -38,7 +48,7 @@ namespace PaletteEditor.UX.New
 
         private Timer _colourUpdateTimer;
 
-        private IAbout _about;
+        private IAboutStripped _about;
         #endregion
 
         #region Properties
@@ -67,7 +77,7 @@ namespace PaletteEditor.UX.New
 
             _colourUpdateTimer.Tick += new EventHandler(ColourUpdateTimer_Tick);
 
-            DebugMode = _globalBooleanSettingsManager.GetDevelopmentMode();
+            DebugMode = _globalBooleanSettingsManager.GetIsInDeveloperMode();
 
             UseCircularPictureBoxes = _globalBooleanSettingsManager.GetUseCircularPictureBoxes();
         }
@@ -79,7 +89,7 @@ namespace PaletteEditor.UX.New
 
             PaletteCompisitionEngine.PropagateThemes(krgcbBasePaletteMode);
 
-            _colourSettingsManager.ResetSettings(DebugMode);
+            _colourSettingsManager.ResetToDefaults();
 
             if (UseCircularPictureBoxes)
             {
@@ -455,7 +465,7 @@ namespace PaletteEditor.UX.New
 
                 kgbCircularColourPreviewPane.Visible = true;
 
-                ColourUtilities.ResetColourDefinitions(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkFocusedColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview, cbxRibbonTabTextColourPreview);
+                //ColourUtilities.ResetColourDefinitions(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkFocusedColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview, cbxRibbonTabTextColourPreview);
             }
             else
             {
@@ -463,7 +473,7 @@ namespace PaletteEditor.UX.New
 
                 kgbCircularColourPreviewPane.Visible = false;
 
-                ColourUtilities.ResetColourDefinitions(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkFocusedColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview, pbxRibbonTabTextColourPreview);
+                //ColourUtilities.ResetColourDefinitions(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkFocusedColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview, pbxRibbonTabTextColourPreview);
             }
         }
 
@@ -529,7 +539,7 @@ namespace PaletteEditor.UX.New
 
                 kgbCircularColourPreviewPane.Visible = true;
 
-                ColourUtilities.GrabColourDefinitions(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkFocusedColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview, cbxRibbonTabTextColourPreview);
+                //ColourUtilities.GrabColourDefinitions(cbxBaseColourPreview, cbxDarkColourPreview, cbxMiddleColourPreview, cbxLightColourPreview, cbxLightestColourPreview, cbxBorderColourPreview, cbxAlternativeNormalTextColourPreview, cbxNormalTextColourPreview, cbxDisabledTextColourPreview, cbxFocusedTextColourPreview, cbxPressedTextColourPreview, cbxDisabledColourPreview, cbxLinkNormalColourPreview, cbxLinkFocusedColourPreview, cbxLinkHoverColourPreview, cbxLinkVisitedColourPreview, cbxCustomColourOnePreview, cbxCustomColourTwoPreview, cbxCustomColourThreePreview, cbxCustomColourFourPreview, cbxCustomColourFivePreview, cbxCustomTextColourOnePreview, cbxCustomTextColourTwoPreview, cbxCustomTextColourThreePreview, cbxCustomTextColourFourPreview, cbxCustomTextColourFivePreview, cbxMenuTextColourPreview, cbxStatusTextColourPreview, cbxRibbonTabTextColourPreview);
             }
             else
             {
@@ -537,7 +547,7 @@ namespace PaletteEditor.UX.New
 
                 kgbCircularColourPreviewPane.Visible = false;
 
-                ColourUtilities.GrabColourDefinitions(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkFocusedColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview, pbxRibbonTabTextColourPreview);
+                //ColourUtilities.GrabColourDefinitions(pbxBaseColour, pbxDarkColour, pbxMiddleColour, pbxLightColour, pbxLightestColour, pbxBorderColourPreview, pbxAlternativeNormalTextColour, pbxNormalTextColourPreview, pbxDisabledTextColourPreview, pbxFocusedTextColourPreview, pbxPressedTextColourPreview, pbxDisabledColourPreview, pbxLinkNormalColourPreview, pbxLinkFocusedColourPreview, pbxLinkHoverColourPreview, pbxLinkVisitedColourPreview, pbxCustomColourOnePreview, pbxCustomColourTwoPreview, pbxCustomColourThreePreview, pbxCustomColourFourPreview, pbxCustomColourFivePreview, pbxCustomTextColourOnePreview, pbxCustomTextColourTwoPreview, pbxCustomTextColourThreePreview, pbxCustomTextColourFourPreview, pbxCustomTextColourFivePreview, pbxMenuTextColourPreview, pbxStatusTextColourPreview, pbxRibbonTabTextColourPreview);
             }
         }
 

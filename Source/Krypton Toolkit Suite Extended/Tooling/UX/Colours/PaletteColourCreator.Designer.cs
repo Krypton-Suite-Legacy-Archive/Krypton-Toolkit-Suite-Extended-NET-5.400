@@ -177,7 +177,7 @@
             // cpbMiddleColourPreview
             // 
             this.cpbMiddleColourPreview.BackColor = System.Drawing.Color.Transparent;
-            this.cpbMiddleColourPreview.Location = new System.Drawing.Point(400, 44);
+            this.cpbMiddleColourPreview.Location = new System.Drawing.Point(450, 44);
             this.cpbMiddleColourPreview.Name = "cpbMiddleColourPreview";
             this.cpbMiddleColourPreview.Size = new System.Drawing.Size(128, 128);
             this.cpbMiddleColourPreview.TabIndex = 73;
@@ -504,7 +504,7 @@
             // 
             this.pbxMiddleColour.BackColor = System.Drawing.Color.Transparent;
             this.pbxMiddleColour.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxMiddleColour.Location = new System.Drawing.Point(400, 44);
+            this.pbxMiddleColour.Location = new System.Drawing.Point(450, 44);
             this.pbxMiddleColour.Name = "pbxMiddleColour";
             this.pbxMiddleColour.Size = new System.Drawing.Size(128, 128);
             this.pbxMiddleColour.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

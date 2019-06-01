@@ -1,10 +1,19 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using Core.Settings.Classes;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections;
 using System.IO;
 using System.Windows.Forms;
+using ToolkitSettings.Classes.PaletteExplorer;
 
 namespace Core.UX.Options
 {

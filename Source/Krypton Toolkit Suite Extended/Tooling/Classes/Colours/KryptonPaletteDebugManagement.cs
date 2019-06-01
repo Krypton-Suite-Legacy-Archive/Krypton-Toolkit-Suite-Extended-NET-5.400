@@ -1,6 +1,15 @@
-﻿using ComponentFactory.Krypton.Toolkit;
-using Core.Settings.Classes;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using System.Drawing;
+using ToolkitSettings.Classes.PaletteExplorer.Colours;
 
 namespace Core.Classes.Colours
 {
@@ -13,13 +22,13 @@ namespace Core.Classes.Colours
 
         public static void PropagateHEXColourValues(KryptonListBox hexValues, bool useUppercase)
         {
-            ColourSettingsManager colourSettingsManager = new ColourSettingsManager();
+            AllMergedColourSettingsManager colourSettingsManager = new AllMergedColourSettingsManager();
 
             if (useUppercase)
             {
                 hexValues.Items.Add($"Base Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetBaseColour()) }");
 
-                hexValues.Items.Add($"Darkest Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetDarkestColour()) }");
+                hexValues.Items.Add($"Darkest Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetDarkColour()) }");
 
                 hexValues.Items.Add($"Medium Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetMediumColour()) }");
 
@@ -81,7 +90,7 @@ namespace Core.Classes.Colours
             {
                 hexValues.Items.Add($"Base Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetBaseColour()).ToUpper() }");
 
-                hexValues.Items.Add($"Darkest Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetDarkestColour()).ToUpper() }");
+                hexValues.Items.Add($"Darkest Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetDarkColour()).ToUpper() }");
 
                 hexValues.Items.Add($"Medium Colour: { ColorTranslator.ToHtml(colourSettingsManager.GetMediumColour()).ToUpper() }");
 

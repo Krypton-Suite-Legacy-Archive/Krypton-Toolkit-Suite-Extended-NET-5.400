@@ -1,9 +1,18 @@
-﻿using Base.Code.Security;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using Base.Code.Security;
 using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.Base.Code.Development;
 using ExtendedControls.Base.Code.Settings;
 using ExtendedControls.Base.Enumerations;
-using ExtendedControls.ExtendedToolkit.Controls;
+using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -241,17 +250,18 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security
 
         private void RandomPasswordGenerator_FormClosing(object sender, FormClosingEventArgs e)
         {
+            HideWindow();
+        }
+
+        private void HideWindow()
+        {
             if (ktxtOutput.Text != null)
             {
-                DialogResult result = KryptonMessageBoxExtended.Show($"There is a password of: '{ ktxtOutput.Text }' still in the field. Do you want to exit?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Information, messageboxTypeface: new Font("Segoe UI", 12));
+                DialogResult result = ExtendedKryptonMessageBox.Show($"There is a password of: '{ ktxtOutput.Text }' still in the field. Do you want to exit?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Information, messageboxTypeface: new Font("Segoe UI", 12));
 
                 if (result == DialogResult.Yes)
                 {
                     Close();
-                }
-                else
-                {
-                    return;
                 }
             }
         }

@@ -1,6 +1,15 @@
-﻿using System;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using System;
 using System.Drawing;
-using Core.Settings.Classes;
+using ToolkitSettings.Classes.PaletteExplorer.Colours;
 
 namespace Classes.Colours
 {
@@ -18,7 +27,7 @@ namespace Classes.Colours
 
         private Random randomColour = new Random(DateTime.Now.Millisecond);
 
-        private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
         #endregion
 
         #region Constructor

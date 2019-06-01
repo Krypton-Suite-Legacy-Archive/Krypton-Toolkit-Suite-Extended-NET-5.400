@@ -1,6 +1,15 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
 using System.Drawing;
 using System.Windows.Forms;
+using ToolkitSettings.BackEnd;
 using ToolkitSettings.Settings.Palette_Explorer.Colours;
 
 namespace ToolkitSettings.Classes.PaletteExplorer.Colours
@@ -440,6 +449,24 @@ namespace ToolkitSettings.Classes.PaletteExplorer.Colours
         }
 
         /// <summary>
+        /// Sets the value of LinkDisabledColour to colour.
+        /// </summary>
+        /// <param name="colour">The value of LinkDisabledColour.</param>
+        public void SetLinkDisabledColour(Color colour)
+        {
+            _allMergedColourSettings.LinkDisabledColour = colour;
+        }
+
+        /// <summary>
+        /// Returns the value of LinkDisabledColour.
+        /// </summary>
+        /// <returns>The value of LinkDisabledColour.</returns>
+        public Color GetLinkDisabledColour()
+        {
+            return _allMergedColourSettings.LinkDisabledColour;
+        }
+
+        /// <summary>
         /// Sets the value of LinkFocusedColour to colour.
         /// </summary>
         /// <param name="colour">The value of LinkFocusedColour.</param>
@@ -726,7 +753,7 @@ namespace ToolkitSettings.Classes.PaletteExplorer.Colours
         /// </summary>
         public void ResetToDefaults()
         {
-            if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (ExtendedKryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 SetBaseColour(Color.Empty);
 
@@ -762,6 +789,8 @@ namespace ToolkitSettings.Classes.PaletteExplorer.Colours
 
                 SetCustomTextColourSix(Color.Empty);
 
+                SetLinkDisabledColour(Color.Empty);
+
                 SetLinkFocusedColour(Color.Empty);
 
                 SetLinkHoverColour(Color.Empty);
@@ -788,7 +817,9 @@ namespace ToolkitSettings.Classes.PaletteExplorer.Colours
 
                 SetPressedTextColour(Color.Empty);
 
-                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                SaveAllMergedColourSettings();
+
+                if (ExtendedKryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }
@@ -796,14 +827,14 @@ namespace ToolkitSettings.Classes.PaletteExplorer.Colours
         }
 
         /// <summary>
-        /// Saves the XML file application updater settings.
+        /// Saves all merged colour settings.
         /// </summary>
         /// <param name="alwaysUsePrompt">if set to <c>true</c> [always use prompt].</param>
-        public void SaveXMLFileApplicationUpdaterSettings(bool alwaysUsePrompt = false)
+        public void SaveAllMergedColourSettings(bool alwaysUsePrompt = false)
         {
             if (alwaysUsePrompt)
             {
-                if (KryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (ExtendedKryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     _allMergedColourSettings.Save();
 

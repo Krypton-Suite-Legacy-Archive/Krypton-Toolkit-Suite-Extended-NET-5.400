@@ -1,4 +1,13 @@
-﻿using ExtendedControls.ExtendedToolkit.Controls.Drawing.UI;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ExtendedControls.ExtendedToolkit.Controls.Drawing.UI;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -49,7 +58,7 @@ namespace ExtendedControls.ExtendedToolkit.Controls.Drawing.Controls
         public event EventHandler SelectedColourChanged;
 
         [Browsable(true)]
-        public Color Color
+        public Color SelectedColour
         {
             get { return this._colourPlate.ColourPlate.SelectedColour; }
             set
@@ -128,7 +137,7 @@ namespace ExtendedControls.ExtendedToolkit.Controls.Drawing.Controls
             if (e.Index > -1)
             {
                 // Paints the rectangle by the current color.
-                e.Graphics.FillRectangle(new SolidBrush(this.Color), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(this.SelectedColour), e.Bounds);
                 Rectangle rec = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width - 1, e.Bounds.Height - 1);
 
                 if ((e.State & DrawItemState.Focus) == 0)

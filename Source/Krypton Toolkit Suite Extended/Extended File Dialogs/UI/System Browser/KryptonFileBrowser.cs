@@ -1,11 +1,19 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
-using Core.Classes;
+using GlobalUtilities.Classes;
 using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using GlobalUtilities.Classes;
 
 namespace ExtendedControls.ExtendedToolkit.UI.SystemBrowser
 {
@@ -81,7 +89,7 @@ namespace ExtendedControls.ExtendedToolkit.UI.SystemBrowser
             this.tvFileList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvFileList.Location = new System.Drawing.Point(11, 50);
             this.tvFileList.Name = "tvFileList";
-            this.tvFileList.Size = new System.Drawing.Size(467, 400);
+            this.tvFileList.Size = new System.Drawing.Size(467, 450);
             this.tvFileList.TabIndex = 3;
             this.tvFileList.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvFileList_AfterSelect);
             // 
@@ -89,7 +97,7 @@ namespace ExtendedControls.ExtendedToolkit.UI.SystemBrowser
             // 
             this.ktvFileList.Location = new System.Drawing.Point(12, 50);
             this.ktvFileList.Name = "ktvFileList";
-            this.ktvFileList.Size = new System.Drawing.Size(467, 400);
+            this.ktvFileList.Size = new System.Drawing.Size(467, 450);
             this.ktvFileList.StateNormal.Node.Content.LongText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ktvFileList.StateNormal.Node.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ktvFileList.TabIndex = 0;

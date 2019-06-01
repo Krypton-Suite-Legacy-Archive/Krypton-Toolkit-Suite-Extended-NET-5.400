@@ -1,13 +1,20 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Drawing.Drawing2D;
 
 namespace Playground
 {
     public class StatusStripControls : KryptonForm
     {
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private ExtendedControls.ExtendedToolkit.ToolstripControls.ExtendedToolStripStatusLabel extsslTest;
         private ExtendedControls.ExtendedToolkit.ToolstripControls.KryptonNumericUpDownToolStripItem knudtsiTest;
         private ExtendedControls.ExtendedToolkit.Controls.Drawing.Controls.Office2007ColorPickerToolStripMenuItem o07cptsiTest;
         private ExtendedControls.ExtendedToolkit.Controls.KryptonControls.KryptonColourButtonToolStripMenuItem kcbtsmiTest;
@@ -18,7 +25,6 @@ namespace Playground
         private ExtendedControls.ExtendedToolkit.Controls.KryptonControls.KryptonPropertyGrid kpgStatusStripItems;
         private ExtendedControls.ExtendedToolkit.Controls.KryptonToolStripStatusLabelExtended ktssleTest;
         private System.ComponentModel.IContainer components;
-        private ExtendedControls.ExtendedToolkit.ToolstripControls.ExtendedToolStripStatusLabel etslTest;
         private KryptonCheckButton kcbtnBackwardDiagonal;
         private KryptonCheckButton kcbtnForwardDiagonal;
         private KryptonCheckButton kcbtnVertical;
@@ -49,7 +55,6 @@ namespace Playground
             this.kvbTest = new ExtendedControls.ExtendedToolkit.Controls.KryptonControls.KryptonViewBar();
             this.ksbTest = new ExtendedControls.ExtendedToolkit.Controls.KryptonControls.ToolbarItems.KryptonSliderBar();
             this.tsmiuacsTest = new KryptonExtendedToolkit.ExtendedToolkit.ToolstripControls.ToolStripMenuItemUACSheld();
-            this.etslTest = new ExtendedControls.ExtendedToolkit.ToolstripControls.ExtendedToolStripStatusLabel();
             this.kpgStatusStripItems = new ExtendedControls.ExtendedToolkit.Controls.KryptonControls.KryptonPropertyGrid();
             this.kcbtnBackwardDiagonal = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
             this.kcbtnForwardDiagonal = new ComponentFactory.Krypton.Toolkit.KryptonCheckButton();
@@ -82,8 +87,7 @@ namespace Playground
             this.ktbtsmiTest,
             this.kvbTest,
             this.ksbTest,
-            this.tsmiuacsTest,
-            this.etslTest});
+            this.tsmiuacsTest});
             this.statusStrip1.Location = new System.Drawing.Point(0, -3);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
@@ -111,7 +115,7 @@ namespace Playground
             // o07cptsiTest
             // 
             this.o07cptsiTest.Office2007ColourPickerControl.AccessibleName = "o07cptsiTest";
-            this.o07cptsiTest.Office2007ColourPickerControl.Color = System.Drawing.Color.Black;
+            this.o07cptsiTest.Office2007ColourPickerControl.SelectedColour = System.Drawing.Color.Black;
             this.o07cptsiTest.Office2007ColourPickerControl.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.o07cptsiTest.Office2007ColourPickerControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.o07cptsiTest.Office2007ColourPickerControl.Items.AddRange(new object[] {
@@ -193,21 +197,6 @@ namespace Playground
             this.tsmiuacsTest.Name = "tsmiuacsTest";
             this.tsmiuacsTest.Size = new System.Drawing.Size(194, 25);
             this.tsmiuacsTest.Text = "toolStripMenuItemUACSheld1";
-            // 
-            // etslTest
-            // 
-            this.etslTest.BackColor = System.Drawing.Color.Empty;
-            this.etslTest.BkClr = false;
-            this.etslTest.BlinkDuration = ((long)(10));
-            this.etslTest.BlinkState = ExtendedControls.Base.Enumerations.BlinkState.NormalBlink;
-            this.etslTest.CycleInterval = ((short)(2000));
-            this.etslTest.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.etslTest.GradientColourOne = System.Drawing.Color.Empty;
-            this.etslTest.GradientColourTwo = System.Drawing.Color.Empty;
-            this.etslTest.Name = "etslTest";
-            this.etslTest.Size = new System.Drawing.Size(76, 20);
-            this.etslTest.Text = "Gradient Test";
-            this.etslTest.Click += new System.EventHandler(this.EtslTest_Click);
             // 
             // kpgStatusStripItems
             // 
@@ -335,10 +324,6 @@ namespace Playground
 
         }
 
-        private void EtslTest_Click(object sender, EventArgs e)
-        {
-            kpgStatusStripItems.SelectedObject = etslTest;
-        }
 
         private void KnudtsiTest_Click(object sender, EventArgs e)
         {
@@ -347,8 +332,6 @@ namespace Playground
 
         private void KcbtnHorizontal_Click(object sender, EventArgs e)
         {
-            etslTest.GradientMode = LinearGradientMode.Horizontal;
-
             kcbtnHorizontal.Checked = true;
 
             kcbtnVertical.Checked = false;
@@ -360,8 +343,6 @@ namespace Playground
 
         private void KcbtnVertical_Click(object sender, EventArgs e)
         {
-            etslTest.GradientMode = LinearGradientMode.Vertical;
-
             kcbtnHorizontal.Checked = false;
 
             kcbtnVertical.Checked = true;
@@ -373,8 +354,6 @@ namespace Playground
 
         private void KcbtnForwardDiagonal_Click(object sender, EventArgs e)
         {
-            etslTest.GradientMode = LinearGradientMode.ForwardDiagonal;
-
             kcbtnHorizontal.Checked = false;
 
             kcbtnVertical.Checked = false;
@@ -386,8 +365,6 @@ namespace Playground
 
         private void KcbtnBackwardDiagonal_Click(object sender, EventArgs e)
         {
-            etslTest.GradientMode = LinearGradientMode.BackwardDiagonal;
-
             kcbtnHorizontal.Checked = false;
 
             kcbtnVertical.Checked = false;
@@ -399,17 +376,17 @@ namespace Playground
 
         private void KcbtnGradientColour1_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            etslTest.GradientColourOne = kcbtnGradientColour1.SelectedColor;
+
         }
 
         private void KcbtnGradientColour2_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            etslTest.GradientColourTwo = kcbtnGradientColour2.SelectedColor;
+
         }
 
         private void KcbtnTextColour_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            etslTest.ForeColor = kcbtnTextColour.SelectedColor;
+
         }
     }
 }

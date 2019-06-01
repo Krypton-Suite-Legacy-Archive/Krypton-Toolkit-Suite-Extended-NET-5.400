@@ -1,6 +1,16 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using System.Drawing;
 using System.Windows.Forms;
-using ToolkitSettings.Settings.PaletteExplorer;
+using ToolkitSettings.BackEnd;
+using ToolkitSettings.Settings.Palette_Explorer;
 
 namespace ToolkitSettings.Classes.PaletteExplorer
 {
@@ -99,6 +109,24 @@ namespace ToolkitSettings.Classes.PaletteExplorer
 
         #region Setters and Getters
         /// <summary>
+        /// Sets the value of ShowAdvancedDetails to value.
+        /// </summary>
+        /// <param name="value">The value of ShowAdvancedDetails.</param>
+        public void SetShowAdvancedDetails(bool value)
+        {
+            _generalPaletteExplorerSettings.ShowAdvancedDetails = value;
+        }
+
+        /// <summary>
+        /// Returns the value of ShowAdvancedDetails.
+        /// </summary>
+        /// <returns>The value of ShowAdvancedDetails.</returns>
+        public bool GetShowAdvancedDetails()
+        {
+            return _generalPaletteExplorerSettings.ShowAdvancedDetails;
+        }
+
+        /// <summary>
         /// Sets the value of ShowColourPropertiesPane to value.
         /// </summary>
         /// <param name="value">The value of ShowColourPropertiesPane.</param>
@@ -137,6 +165,78 @@ namespace ToolkitSettings.Classes.PaletteExplorer
         {
             return _generalPaletteExplorerSettings.ShowPalettePropertiesPane;
         }
+
+        /// <summary>
+        /// Sets the value of ShowCircularDisplay to value.
+        /// </summary>
+        /// <param name="value">The value of ShowCircularDisplay.</param>
+        public void SetShowCircularDisplay(bool value)
+        {
+            _generalPaletteExplorerSettings.ShowCircularDisplay = value;
+        }
+
+        /// <summary>
+        /// Returns the value of ShowCircularDisplay.
+        /// </summary>
+        /// <returns>The value of ShowCircularDisplay.</returns>
+        public bool GetShowCircularDisplay()
+        {
+            return _generalPaletteExplorerSettings.ShowCircularDisplay;
+        }
+
+        /// <summary>
+        /// Sets the value of ShowStandardDisplay to value.
+        /// </summary>
+        /// <param name="value">The value of ShowStandardDisplay.</param>
+        public void SetShowStandardDisplay(bool value)
+        {
+            _generalPaletteExplorerSettings.ShowStandardDisplay = value;
+        }
+
+        /// <summary>
+        /// Returns the value of ShowStandardDisplay.
+        /// </summary>
+        /// <returns>The value of ShowStandardDisplay.</returns>
+        public bool GetShowStandardDisplay()
+        {
+            return _generalPaletteExplorerSettings.ShowStandardDisplay;
+        }
+
+        /// <summary>
+        /// Sets the value of DefaultColour to colour.
+        /// </summary>
+        /// <param name="colour">The value of DefaultColour.</param>
+        public void SetDefaultColour(Color colour)
+        {
+            _generalPaletteExplorerSettings.DefaultColour = colour;
+        }
+
+        /// <summary>
+        /// Returns the value of DefaultColour.
+        /// </summary>
+        /// <returns>The value of DefaultColour.</returns>
+        public Color GetDefaultColour()
+        {
+            return _generalPaletteExplorerSettings.DefaultColour;
+        }
+
+        /// <summary>
+        /// Sets the value of DisplayIndex to value.
+        /// </summary>
+        /// <param name="value">The value of DisplayIndex.</param>
+        public void SetDisplayIndex(int value)
+        {
+            _generalPaletteExplorerSettings.DisplayIndex = value;
+        }
+
+        /// <summary>
+        /// Returns the value of DisplayIndex.
+        /// </summary>
+        /// <returns>The value of DisplayIndex.</returns>
+        public int GetDisplayIndex()
+        {
+            return _generalPaletteExplorerSettings.DisplayIndex;
+        }
         #endregion
 
         #region Methods
@@ -145,13 +245,25 @@ namespace ToolkitSettings.Classes.PaletteExplorer
         /// </summary>
         public void ResetToDefaults()
         {
-            if (KryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (ExtendedKryptonMessageBox.Show("WARNING! You are about to reset these settings back to their original state. This action cannot be undone!\nDo you want to proceed?", "Reset Settings", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
+                SetShowAdvancedDetails(false);
+
                 SetShowColourPropertiesPane(false);
 
                 SetShowPalettePropertiesPane(false);
 
-                if (KryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                SetShowCircularDisplay(false);
+
+                SetShowStandardDisplay(true);
+
+                SetDefaultColour(Color.Transparent);
+
+                SetDisplayIndex(0);
+
+                SaveGeneralPaletteExplorerSettings();
+
+                if (ExtendedKryptonMessageBox.Show($"Done! Do you want to restart the application now?", "Action Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Application.Restart();
                 }
@@ -159,14 +271,14 @@ namespace ToolkitSettings.Classes.PaletteExplorer
         }
 
         /// <summary>
-        /// Saves the XML file application updater settings.
+        /// Saves the general palette explorer settings.
         /// </summary>
         /// <param name="alwaysUsePrompt">if set to <c>true</c> [always use prompt].</param>
-        public void SaveXMLFileApplicationUpdaterSettings(bool alwaysUsePrompt = false)
+        public void SaveGeneralPaletteExplorerSettings(bool alwaysUsePrompt = false)
         {
             if (alwaysUsePrompt)
             {
-                if (KryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (ExtendedKryptonMessageBox.Show("You have changed a setting value. Do you want to save these changes?", "Setting Values Changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     _generalPaletteExplorerSettings.Save();
 

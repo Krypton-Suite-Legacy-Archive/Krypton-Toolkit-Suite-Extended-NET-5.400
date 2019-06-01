@@ -1,4 +1,13 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.ExtendedToolkit.Controls.Drawing.Classes;
 using System;
 using System.ComponentModel;
@@ -370,7 +379,7 @@ namespace ExtendedControls.ExtendedToolkit.UI.Colours
             this.kbtnCancel.AutoSize = true;
             this.kbtnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.kbtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.kbtnCancel.Location = new System.Drawing.Point(400, 12);
+            this.kbtnCancel.Location = new System.Drawing.Point(450, 12);
             this.kbtnCancel.Name = "kbtnCancel";
             this.kbtnCancel.Size = new System.Drawing.Size(60, 30);
             this.kbtnCancel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

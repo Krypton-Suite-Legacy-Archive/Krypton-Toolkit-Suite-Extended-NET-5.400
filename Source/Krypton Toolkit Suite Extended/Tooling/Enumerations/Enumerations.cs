@@ -1,4 +1,13 @@
-﻿namespace Core.Enumerations
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+namespace Core.Enumerations
 {
     /// <summary>
     /// The RGBA channel
@@ -343,11 +352,13 @@
         CUSTOMCOLOURTHREE,
         CUSTOMCOLOURFOUR,
         CUSTOMCOLOURFIVE,
+        CUSTOMCOLOURSIX,
         CUSTOMTEXTCOLOURONE,
         CUSTOMTEXTCOLOURTWO,
         CUSTOMTEXTCOLOURTHREE,
         CUSTOMTEXTCOLOURFOUR,
         CUSTOMTEXTCOLOURFIVE,
+        CUSTOMTEXTCOLOURSIX,
         DARKESTCOLOUR,
         DISABLEDCONTROLCOLOUR,
         DISABLEDTEXTCOLOUR,

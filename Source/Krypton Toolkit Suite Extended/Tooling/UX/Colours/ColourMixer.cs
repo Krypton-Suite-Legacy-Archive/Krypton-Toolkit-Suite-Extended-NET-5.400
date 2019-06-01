@@ -1,11 +1,21 @@
-﻿using Classes.Colours;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using Classes.Colours;
 using ComponentFactory.Krypton.Toolkit;
 using Core.Classes.Other;
-using Core.Settings.Classes;
 using Core.UX.Colours;
 using Core.UX.Options;
 using System;
 using System.Drawing;
+using ToolkitSettings.Classes.Core;
+using ToolkitSettings.Classes.PaletteExplorer.Colours;
 
 namespace Core.UX
 {
@@ -18,7 +28,7 @@ namespace Core.UX
 
         private RandomNumberGenerator _randomNumberGenerator = new RandomNumberGenerator();
 
-        private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
 
         private ColourIntegerSettingsManager _colourIntegerSettingsManager = new ColourIntegerSettingsManager();
 

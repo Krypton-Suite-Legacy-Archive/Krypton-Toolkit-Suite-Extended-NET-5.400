@@ -1,18 +1,26 @@
-﻿using Classes.Colours;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using Classes.Colours;
 using ComponentFactory.Krypton.Toolkit;
 using Core.Classes.Other;
-using Core.Settings.Classes;
-using Core.UX;
 using Core.Interfaces;
+using Core.UX;
 using KryptonExtendedToolkit.Base.Code;
-using PaletteEditor.Classes;
-using PaletteEditor.UX.New;
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using ToolkitSettings.Classes.Global;
+using ToolkitSettings.Classes.PaletteExplorer.Colours;
 
 namespace PaletteEditor.UX
 {
@@ -29,7 +37,7 @@ namespace PaletteEditor.UX
 
         private ConversionMethods _conversionMethods = new ConversionMethods();
 
-        private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
 
         private Classes.GlobalMethods _globalMethods = new Classes.GlobalMethods();
 
@@ -43,7 +51,7 @@ namespace PaletteEditor.UX
 
         private Timer _colourUpdateTimer;
 
-        private IAbout _about;
+        private IAboutStripped _about;
         #endregion
 
         #region Properties
@@ -72,7 +80,7 @@ namespace PaletteEditor.UX
 
             _colourUpdateTimer.Tick += new EventHandler(ColourUpdateTimer_Tick);
 
-            DebugMode = _globalBooleanSettingsManager.GetDevelopmentMode();
+            DebugMode = _globalBooleanSettingsManager.GetIsInDeveloperMode();
 
             UseCircularPictureBoxes = _globalBooleanSettingsManager.GetUseCircularPictureBoxes();
 
@@ -324,7 +332,7 @@ namespace PaletteEditor.UX
 
             ColourUtilities.PropagateBasePaletteModes(kcmbBasePaletteMode);
 
-            _colourSettingsManager.ResetSettings(DebugMode);
+            _colourSettingsManager.ResetToDefaults();
 
             if (UseCircularPictureBoxes)
             {
@@ -1145,7 +1153,7 @@ namespace PaletteEditor.UX
 
         private void factoryResetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _colourSettingsManager.ResetSettings(DebugMode);
+            _colourSettingsManager.ResetToDefaults();
         }
 
         private void GrabPaletteColours(bool useCircularPictureBoxes)

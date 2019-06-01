@@ -1,17 +1,27 @@
-﻿using Classes.Colours;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using Classes.Colours;
 using ComponentFactory.Krypton.Toolkit;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.IO;
 using System.Windows.Forms;
-using Core.Settings.Classes;
+using ToolkitSettings.Classes.Global;
+using ToolkitSettings.Classes.PaletteExplorer;
 
 namespace Core.UX.Options
 {
     public partial class ColourBlendingOptions : KryptonForm
     {
         #region Variables
-        private ColourBlendingSettingsManager _colourBlendingSettingsManager = new ColourBlendingSettingsManager();
+        private ColourIntensitySettingsManager _colourBlendingSettingsManager = new ColourIntensitySettingsManager();
         private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
         private GlobalStringSettingsManager _globalStringSettingsManager = new GlobalStringSettingsManager();
 

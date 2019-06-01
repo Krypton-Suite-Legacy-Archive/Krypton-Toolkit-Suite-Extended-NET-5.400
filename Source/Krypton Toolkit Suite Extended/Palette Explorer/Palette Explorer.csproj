@@ -54,14 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ColourHelpers.cs" />
     <Compile Include="Classes\InternalColourSettingsManager.cs" />
     <Compile Include="Classes\GlobalMethods.cs" />
     <Compile Include="Classes\Models\ColourContextMenuModel.cs" />
     <Compile Include="Classes\PaletteComposerEngine.cs" />
     <Compile Include="Classes\PaletteUtilities.cs" />
+    <Compile Include="Classes\RandomisePaletteColours.cs" />
     <Compile Include="Classes\SettingsCopier.cs" />
     <Compile Include="Classes\UserInterfaceManager.cs" />
     <Compile Include="Controls\CircularPictureBoxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CircularPictureBoxControlOld.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\PalettePropertyGrid.cs">
@@ -69,6 +74,15 @@
     </Compile>
     <Compile Include="Controls\StandardPictureBoxControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UX\Colour\ColourMixerAdvanced.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UX\Colour\ColourMixerBasic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UX\Debugging\ColourDebugConsole.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UX\KryptonPalettePropertiesWindow.cs">
       <SubType>Form</SubType>
@@ -107,6 +121,9 @@
     <EmbeddedResource Include="Controls\CircularPictureBoxControl.resx">
       <DependentUpon>CircularPictureBoxControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CircularPictureBoxControlOld.resx">
+      <DependentUpon>CircularPictureBoxControlOld.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\PalettePropertyGrid.resx">
       <DependentUpon>PalettePropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +140,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UX\Colour\ColourMixerAdvanced.resx">
+      <DependentUpon>ColourMixerAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UX\Colour\ColourMixerBasic.resx">
+      <DependentUpon>ColourMixerBasic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UX\Debugging\ColourDebugConsole.resx">
+      <DependentUpon>ColourDebugConsole.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UX\KryptonColourPalettePropertiesWindow.resx">
       <DependentUpon>KryptonColourPalettePropertiesWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,7 +321,7 @@
       <Version>3.6.3</Version>
     </PackageReference>
     <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.968</Version>
+      <Version>5.400.1204</Version>
     </PackageReference>
     <PackageReference Include="snt.ScintillaNet.FindReplaceDialog">
       <Version>1.4.0</Version>
@@ -312,6 +338,10 @@
     <ProjectReference Include="..\Tooling\Core.csproj">
       <Project>{efb997fb-1e05-444b-ba02-16c004e1a111}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toolkit Settings\Toolkit Settings.csproj">
+      <Project>{ea6e7878-fccb-416c-8fe1-e626d478a7a7}</Project>
+      <Name>Toolkit Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -346,6 +376,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Undo 128 x 128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_16_x_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_32_x_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light_bulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light_bulb_16_x_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light_bulb_32_x_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light_bulb_48_x_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

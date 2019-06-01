@@ -1,9 +1,18 @@
-﻿using Classes.Colours;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using Classes.Colours;
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections;
 using System.Windows.Forms;
-using Core.Settings.Classes;
+using ToolkitSettings.Classes.PaletteExplorer.Colours;
 
 namespace PaletteEditor.UX
 {
@@ -11,7 +20,7 @@ namespace PaletteEditor.UX
     {
         #region Variables
         private ArrayList _colourSettingsArray;
-        private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
         #endregion
 
         public ColourInformation(bool debugMode = false)
@@ -40,7 +49,7 @@ namespace PaletteEditor.UX
 
             _colourSettingsArray.Add($"Base Colour: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetBaseColour()) }");
 
-            _colourSettingsArray.Add($"Dark Colour: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetDarkestColour()) }");
+            _colourSettingsArray.Add($"Dark Colour: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetDarkColour()) }");
 
             _colourSettingsArray.Add($"Middle Colour: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetMediumColour()) }");
 
@@ -80,6 +89,8 @@ namespace PaletteEditor.UX
 
             _colourSettingsArray.Add($"Custom Colour Five: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetCustomColourFive()) }");
 
+            _colourSettingsArray.Add($"Custom Colour Six: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetCustomColourSix()) }");
+
             _colourSettingsArray.Add($"Custom Text Colour One: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetCustomTextColourOne()) }");
 
             _colourSettingsArray.Add($"Custom Text Colour Two: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetCustomTextColourTwo()) }");
@@ -89,6 +100,8 @@ namespace PaletteEditor.UX
             _colourSettingsArray.Add($"Custom Text Colour Four: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetCustomTextColourFour()) }");
 
             _colourSettingsArray.Add($"Custom Text Colour Five: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetCustomTextColourFive()) }");
+
+            _colourSettingsArray.Add($"Custom Text Colour Six: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetCustomTextColourSix()) }");
 
             _colourSettingsArray.Add($"Menu Text Colour: { ColourUtilities.FormatColourRGBString(_colourSettingsManager.GetMenuTextColour()) }");
 

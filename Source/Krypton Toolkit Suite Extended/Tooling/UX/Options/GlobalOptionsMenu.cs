@@ -1,8 +1,17 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using Core.Classes.Options.Theming;
-using Core.Settings.Classes;
 using System;
 using System.Windows.Forms;
+using ToolkitSettings.Classes.PaletteExplorer;
 
 namespace Core.UX.Options
 {
@@ -321,7 +330,7 @@ namespace Core.UX.Options
             this.kryptonPage4,
             this.kryptonPage5});
             this.kryptonDockableNavigator1.SelectedIndex = 0;
-            this.kryptonDockableNavigator1.Size = new System.Drawing.Size(627, 400);
+            this.kryptonDockableNavigator1.Size = new System.Drawing.Size(627, 450);
             this.kryptonDockableNavigator1.TabIndex = 36;
             this.kryptonDockableNavigator1.Text = "kryptonDockableNavigator1";
             // 

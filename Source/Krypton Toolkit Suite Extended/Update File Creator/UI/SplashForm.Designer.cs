@@ -41,7 +41,7 @@
             this.kpnlBackground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kpnlBackground.Location = new System.Drawing.Point(0, 0);
             this.kpnlBackground.Name = "kpnlBackground";
-            this.kpnlBackground.Size = new System.Drawing.Size(800, 400);
+            this.kpnlBackground.Size = new System.Drawing.Size(800, 450);
             this.kpnlBackground.TabIndex = 0;
             // 
             // tmrLoad
@@ -61,7 +61,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
             this.Controls.Add(this.pbLoad);
             this.Controls.Add(this.kpnlBackground);

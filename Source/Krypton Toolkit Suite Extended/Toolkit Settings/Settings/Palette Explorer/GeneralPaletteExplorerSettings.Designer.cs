@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ToolkitSettings.Settings.PaletteExplorer {
+namespace ToolkitSettings.Settings.Palette_Explorer {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -44,6 +44,66 @@ namespace ToolkitSettings.Settings.PaletteExplorer {
             }
             set {
                 this["ShowColourPropertiesPane"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowCircularDisplay {
+            get {
+                return ((bool)(this["ShowCircularDisplay"]));
+            }
+            set {
+                this["ShowCircularDisplay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowStandardDisplay {
+            get {
+                return ((bool)(this["ShowStandardDisplay"]));
+            }
+            set {
+                this["ShowStandardDisplay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DisplayIndex {
+            get {
+                return ((int)(this["DisplayIndex"]));
+            }
+            set {
+                this["DisplayIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowAdvancedDetails {
+            get {
+                return ((bool)(this["ShowAdvancedDetails"]));
+            }
+            set {
+                this["ShowAdvancedDetails"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Transparent")]
+        public global::System.Drawing.Color DefaultColour {
+            get {
+                return ((global::System.Drawing.Color)(this["DefaultColour"]));
+            }
+            set {
+                this["DefaultColour"] = value;
             }
         }
     }

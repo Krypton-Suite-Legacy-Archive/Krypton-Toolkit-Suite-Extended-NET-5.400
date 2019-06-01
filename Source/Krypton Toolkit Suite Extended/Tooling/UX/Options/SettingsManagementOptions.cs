@@ -1,16 +1,28 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Windows.Forms;
-using Core.Settings.Classes;
+using ToolkitSettings.Classes.Core;
+using ToolkitSettings.Classes.Global;
+using ToolkitSettings.Classes.PaletteExplorer;
+using ToolkitSettings.Classes.PaletteExplorer.Colours;
 
 namespace Core.UX.Options
 {
     public partial class SettingsManagementOptions : KryptonForm
     {
         #region Variables
-        private ColourBlendingSettingsManager _colourBlendingSettingsManager = new ColourBlendingSettingsManager();
+        private ColourIntensitySettingsManager _colourBlendingSettingsManager = new ColourIntensitySettingsManager();
         private ColourIntegerSettingsManager _colourIntegerSettingsManager = new ColourIntegerSettingsManager();
-        private ColourSettingsManager _colourSettingsManager = new ColourSettingsManager();
+        private AllMergedColourSettingsManager _colourSettingsManager = new AllMergedColourSettingsManager();
         private ColourStringSettingsManager _colourStringSettingsManager = new ColourStringSettingsManager();
         private GlobalBooleanSettingsManager _globalBooleanSettingsManager = new GlobalBooleanSettingsManager();
         private GlobalStringSettingsManager _globalStringSettingsManager = new GlobalStringSettingsManager();
@@ -272,9 +284,9 @@ namespace Core.UX.Options
 
         private void kbtnResetColourSettings_Click(object sender, EventArgs e)
         {
-            _colourSettingsManager.ResetSettings(kchkAskForConfirmation.Checked);
+            _colourSettingsManager.ResetToDefaults(); // (kchkAskForConfirmation.Checked);
 
-            _colourSettingsManager.SaveColourSettings(kchkAskForConfirmation.Checked);
+            _colourSettingsManager.SaveAllMergedColourSettings(kchkAskForConfirmation.Checked);
 
             kbtnResetColourSettings.Enabled = false;
         }
@@ -340,9 +352,9 @@ namespace Core.UX.Options
 
                     kbtnResetColourIntegerSettings.Enabled = false;
 
-                    _colourSettingsManager.ResetSettings();
+                    _colourSettingsManager.ResetToDefaults();
 
-                    _colourSettingsManager.SaveColourSettings();
+                    _colourSettingsManager.SaveAllMergedColourSettings();
 
                     kbtnResetColourSettings.Enabled = false;
 

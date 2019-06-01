@@ -1,4 +1,13 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using System.Drawing;
 using System.Windows.Forms;
 using ToolkitSettings.Settings.Palette_Explorer.Colours;
@@ -248,10 +257,10 @@ namespace ToolkitSettings.Classes.PaletteExplorer.Colours
         }
 
         /// <summary>
-        /// Saves the XML file application updater settings.
+        /// Saves the custom text colour settings.
         /// </summary>
         /// <param name="alwaysUsePrompt">if set to <c>true</c> [always use prompt].</param>
-        public void SaveXMLFileApplicationUpdaterSettings(bool alwaysUsePrompt = false)
+        public void SaveCustomTextColourSettings(bool alwaysUsePrompt = false)
         {
             if (alwaysUsePrompt)
             {
@@ -267,6 +276,22 @@ namespace ToolkitSettings.Classes.PaletteExplorer.Colours
                 _customTextColourSettings.Save();
 
                 SetSettingsModified(false);
+            }
+        }
+        #endregion
+
+        #region Detection
+        public static bool AreCustomPaletteTextColoursEmpty()
+        {
+            CustomTextColourSettingsManager customPaletteTextColourManager = new CustomTextColourSettingsManager();
+
+            if (customPaletteTextColourManager.GetCustomTextColourOne() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourTwo() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourThree() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourFour() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourFive() == Color.Empty || customPaletteTextColourManager.GetCustomTextColourSix() == Color.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         #endregion

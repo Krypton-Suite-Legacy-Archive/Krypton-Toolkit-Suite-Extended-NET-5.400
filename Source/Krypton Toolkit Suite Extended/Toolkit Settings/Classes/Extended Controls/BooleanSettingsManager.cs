@@ -1,4 +1,13 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using System.Windows.Forms;
 using ToolkitSettings.Settings.Extended_Controls;
 
@@ -140,7 +149,7 @@ namespace ToolkitSettings.Classes.ExtendedControls
         /// Saves the XML file application updater settings.
         /// </summary>
         /// <param name="alwaysUsePrompt">if set to <c>true</c> [always use prompt].</param>
-        public void SaveXMLFileApplicationUpdaterSettings(bool alwaysUsePrompt = false)
+        public void SaveBooleanSettings(bool alwaysUsePrompt = false)
         {
             if (alwaysUsePrompt)
             {

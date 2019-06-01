@@ -1,4 +1,13 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.Base.Code.Development;
 using ExtendedControls.Base.Code.Settings;
 using ExtendedControls.Base.Enumerations;
@@ -194,7 +203,7 @@ namespace ExtendedControls.ExtendedToolkit.UI.Theming
             this.kbtnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.kbtnApply.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.kbtnApply.Enabled = false;
-            this.kbtnApply.Location = new System.Drawing.Point(400, 11);
+            this.kbtnApply.Location = new System.Drawing.Point(450, 11);
             this.kbtnApply.Name = "kbtnApply";
             this.kbtnApply.Size = new System.Drawing.Size(117, 29);
             this.kbtnApply.StateCommon.Content.LongText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

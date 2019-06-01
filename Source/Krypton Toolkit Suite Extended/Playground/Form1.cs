@@ -1,4 +1,13 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using Core.Classes.Other;
 using Core.UX;
 using Core.UX.Colours;
@@ -6,17 +15,15 @@ using Core.UX.Options;
 using ExtendedControls.Base.Code.Development;
 using ExtendedControls.Base.Enumerations;
 using ExtendedControls.Enumerations;
-using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
 using ExtendedControls.ExtendedToolkit.UI.Colours;
 using ExtendedControls.ExtendedToolkit.UI.Dialogues;
 using ExtendedControls.ExtendedToolkit.UI.Drawing;
-using ExtendedControls.ExtendedToolkit.UI.SystemBrowser;
-using ExtendedFileDialogs.UI.SystemBrowser;
+//using ExtendedControls.ExtendedToolkit.UI.SystemBrowser;
+//using ExtendedFileDialogs.UI.SystemBrowser;
 using KryptonApplicationUpdater.Classes.SettingsManager;
 //using KryptonApplicationUpdater.Interfaces;
 
 using KryptonExtendedToolkit.Base.Code;
-using KryptonExtendedToolkit.ExtendedToolkit.Controls;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -76,7 +83,7 @@ namespace Playground
 
             lblVersion.Text = $"Version: { currentVersion.ToString() }";
 
-            etslBlinkTest.SoftBlink(etslBlinkTest.AlertColourOne, etslBlinkTest.AlertColourTwo, etslBlinkTest.AlertTextColour, 2000, false, 5);
+            //etslBlinkTest.SoftBlink(etslBlinkTest.AlertColourOne, etslBlinkTest.AlertColourTwo, etslBlinkTest.AlertTextColour, 2000, false, 5);
 
             foreach (LinearGradientMode lgm in Enum.GetValues(typeof(LinearGradientMode)))
             {
@@ -186,22 +193,22 @@ namespace Playground
 
         private void tsAlignLeft_Click(object sender, EventArgs e)
         {
-            rxrbTextPad.SelectionAlignment = TextAlignment.LEFT;
+            //rxrbTextPad.SelectionAlignment = TextAlignment.LEFT;
         }
 
         private void tsAlignCentre_Click(object sender, EventArgs e)
         {
-            rxrbTextPad.SelectionAlignment = TextAlignment.CENTRE;
+            //rxrbTextPad.SelectionAlignment = TextAlignment.CENTRE;
         }
 
         private void tsAlignRight_Click(object sender, EventArgs e)
         {
-            rxrbTextPad.SelectionAlignment = TextAlignment.RIGHT;
+            //rxrbTextPad.SelectionAlignment = TextAlignment.RIGHT;
         }
 
         private void tsJustify_Click(object sender, EventArgs e)
         {
-            rxrbTextPad.SelectionAlignment = TextAlignment.JUSTIFY;
+            //rxrbTextPad.SelectionAlignment = TextAlignment.JUSTIFY;
         }
 
         private void kbtnHexToRGB_Click(object sender, EventArgs e)
@@ -227,17 +234,17 @@ namespace Playground
 
         private void kcbtnGradientColour1_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-           
+
         }
 
         private void kcbtnGradientColour2_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            
+
         }
 
         private void kcbtnTextColour_SelectedColorChanged(object sender, ColorEventArgs e)
         {
-            
+
         }
 
         private void kcmbGradientDirection_SelectedIndexChanged(object sender, EventArgs e)
@@ -252,22 +259,22 @@ namespace Playground
 
         private void kcbtnHorizontal_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void kcbtnVertical_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void kcbtnForwardDiagonal_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void kcbtnBackwardDiagonal_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void kryptonButton2_Click(object sender, EventArgs e)
@@ -279,7 +286,7 @@ namespace Playground
 
         private void kbtnMessageboxTest_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void kbtnPaletteEditor_Click(object sender, EventArgs e)
@@ -362,7 +369,7 @@ namespace Playground
 
         private void kryptonCommandLinkButton2_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void kryptonCheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -377,9 +384,9 @@ namespace Playground
 
         private void kryptonButton12_Click(object sender, EventArgs e)
         {
-            WizardTest wt = new WizardTest();
+            //WizardTest wt = new WizardTest();
 
-            wt.Show();
+            //wt.Show();
         }
 
         private void kryptonButton13_Click(object sender, EventArgs e)
@@ -405,16 +412,16 @@ namespace Playground
 
         private void kryptonButton16_Click(object sender, EventArgs e)
         {
-            KryptonFileBrowser kryptonFileBrowser = new KryptonFileBrowser();
+            //KryptonFileBrowser kryptonFileBrowser = new KryptonFileBrowser();
 
-            kryptonFileBrowser.Show();
+            //kryptonFileBrowser.Show();
         }
 
         private void kryptonButton17_Click(object sender, EventArgs e)
         {
-            KryptonFileExplorer kfe = new KryptonFileExplorer();
+            //KryptonFileExplorer kfe = new KryptonFileExplorer();
 
-            kfe.Show();
+            //kfe.Show();
         }
 
         private void kryptonButton18_Click(object sender, EventArgs e)

@@ -91,7 +91,7 @@
       <Version>1.6.1</Version>
     </PackageReference>
     <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.968</Version>
+      <Version>5.400.1204</Version>
     </PackageReference>
     <PackageReference Include="WindowsAPICodePack">
       <Version>1.1.0</Version>

@@ -1,10 +1,17 @@
-﻿using ComponentFactory.Krypton.Toolkit;
+﻿#region BSD License
+/*
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE.md file or at
+ * https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.400/blob/master/LICENSE
+ *
+ */
+#endregion
+
+using ComponentFactory.Krypton.Toolkit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToolkitSettings.Classes.PaletteExplorer;
+using ToolkitSettings.Classes.PaletteExplorer.Properties;
 
 namespace PaletteExplorer.UX
 {
@@ -15,7 +22,9 @@ namespace PaletteExplorer.UX
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ppgColours = new PaletteExplorer.Controls.PalettePropertyGrid();
+            this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // ppgColours
@@ -34,20 +43,37 @@ namespace PaletteExplorer.UX
             this.Name = "KryptonColourPalettePropertiesWindow";
             this.ShowInTaskbar = false;
             this.Text = "Colour Properties for - {0}";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KryptonColourPalettePropertiesWindow_FormClosing);
+            this.Load += new System.EventHandler(this.KryptonColourPalettePropertiesWindow_Load);
+            this.LocationChanged += new System.EventHandler(this.KryptonColourPalettePropertiesWindow_LocationChanged);
             this.ResumeLayout(false);
 
         }
+
+        private ToolTip ttInfo;
+        private System.ComponentModel.IContainer components;
+        #endregion
+
+        #region Variables
+        private Timer _uiUpdateTimer = null;
+        private ColourPropertyWindowSettingsManager _colourPropertyWindowSettingsManager = new ColourPropertyWindowSettingsManager();
+        private WindowLocationSettingsManager _locationSettingsManager = new WindowLocationSettingsManager();
+        private GeneralPaletteExplorerSettingsManager _generalPaletteExplorerSettingsManager = new GeneralPaletteExplorerSettingsManager();
         #endregion
 
         #region Constructor
         public KryptonColourPalettePropertiesWindow()
         {
             InitializeComponent();
+
+            SetupUITimer();
         }
 
         public KryptonColourPalettePropertiesWindow(Control control)
         {
             InitializeComponent();
+
+            SetupUITimer();
 
             ppgColours.PalettePropertyGridControl.SelectedObject = control;
 
@@ -75,5 +101,48 @@ namespace PaletteExplorer.UX
             Text = text;
         }
         #endregion
+
+        private void UIUpdateTimer_Tick(object sender, EventArgs e)
+        {
+            UpdateUI(_colourPropertyWindowSettingsManager.GetHotColourControl(), _colourPropertyWindowSettingsManager.GetColourControlText());
+        }
+
+        private void KryptonColourPalettePropertiesWindow_LocationChanged(object sender, EventArgs e)
+        {
+            ttInfo.SetToolTip(this, $"Current Location: (X: { Location.X.ToString() }, Y: { Location.Y.ToString() })");
+
+            ttInfo.Show($"Current Location: (X: { Location.X.ToString() }, Y: { Location.Y.ToString() })", this, Location.X, Location.Y);
+
+            _locationSettingsManager.SetColourPropertiesWindowLocation(Location);
+        }
+
+        private void KryptonColourPalettePropertiesWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _locationSettingsManager.SaveWindowLocationSettings();
+
+            _generalPaletteExplorerSettingsManager.SetShowColourPropertiesPane(false);
+
+            _generalPaletteExplorerSettingsManager.SaveGeneralPaletteExplorerSettings();
+        }
+
+        private void KryptonColourPalettePropertiesWindow_Load(object sender, EventArgs e)
+        {
+            Location = _locationSettingsManager.GetColourPropertiesWindowLocation();
+
+            _generalPaletteExplorerSettingsManager.SetShowColourPropertiesPane(true);
+
+            _generalPaletteExplorerSettingsManager.SaveGeneralPaletteExplorerSettings();
+        }
+
+        private void SetupUITimer()
+        {
+            _uiUpdateTimer = new Timer();
+
+            _uiUpdateTimer.Enabled = true;
+
+            _uiUpdateTimer.Interval = 500;
+
+            _uiUpdateTimer.Tick += UIUpdateTimer_Tick;
+        }
     }
 }
