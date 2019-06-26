@@ -1374,7 +1374,7 @@
             // buttonSpecAny28
             // 
             this.buttonSpecAny28.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.ArrowDown;
-            this.buttonSpecAny28.UniqueName = "5C9E40DBFF67400B5C9E40DBFF67400B";
+            this.buttonSpecAny28.UniqueName = "5C9E40DBFF67470B5C9E40DBFF67470B";
             // 
             // buttonSpecAny27
             // 

@@ -120,7 +120,6 @@
     <Compile Include="Base\Code\IconExtractor.cs" />
     <Compile Include="Base\Code\IO\FileUtilities.cs" />
     <Compile Include="Base\Code\IO\StringHandler.cs" />
-    <Compile Include="Base\Code\KryptonMessageBoxBase.cs" />
     <Compile Include="Base\Code\Linq\LinqBridge-1.3.cs" />
     <Compile Include="Base\Code\ListViewColumnSorter.cs" />
     <Compile Include="Base\Code\Models\Typeface\PropertiesModel.cs" />
@@ -145,6 +144,11 @@
     <Compile Include="Base\Code\Settings\SettingsManager.cs" />
     <Compile Include="Base\Code\Theming\KryptonPaletteManager.cs" />
     <Compile Include="Base\Code\Theming\KryptonThemeManager.cs" />
+    <Compile Include="Base\Code\Time Span\StringCollectionEditor.cs" />
+    <Compile Include="Base\Code\Time Span\StrongListWrapper.cs" />
+    <Compile Include="Base\Code\Time Span\TimeSpan2Converter.cs" />
+    <Compile Include="Base\Code\Time Span\TimeSpanExtended.cs" />
+    <Compile Include="Base\Code\Time Span\TimeSpanFormatInfo.cs" />
     <Compile Include="Base\Code\TypefaceHelper.cs" />
     <Compile Include="Base\Code\UAC\UACHandler.cs" />
     <Compile Include="Base\Code\Utilities\FileVersionUtility.cs" />
@@ -310,6 +314,12 @@
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\CircularProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\FileSystemTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonFileSystemTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonFlashingLabel.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonLineNumberedRichTextBox.cs">
       <SubType>Component</SubType>
@@ -337,6 +347,12 @@
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonToggleSwitch.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonTreeViewExtended.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonTreeViewExtended.Designer.cs">
+      <DependentUpon>KryptonTreeViewExtended.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\PasswordStrengthControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -346,6 +362,7 @@
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\RoundedTextbox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\ShellIcon.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\ToggleSwitch.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -358,6 +375,8 @@
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\Toolbar Items\KryptonToggleSwitchToolbarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ExtendedToolkit\Controls\Standard Controls\CustomTreeView\ShellIcon.cs" />
+    <Compile Include="ExtendedToolkit\Controls\Time Span\KryptonTimeSpanPicker.cs" />
     <Compile Include="ExtendedToolkit\Crash Report Tool\Classes\DrDump\AnonymousData.cs" />
     <Compile Include="ExtendedToolkit\Crash Report Tool\Classes\DrDump\DrDumpService.cs" />
     <Compile Include="ExtendedToolkit\Crash Report Tool\UX\CrashReportToolMainWindow.cs">
@@ -368,6 +387,32 @@
     <Compile Include="ExtendedToolkit\Error Reporting\Classes\DrDump\SendRequestCompletedEventArgs.cs" />
     <Compile Include="ExtendedToolkit\Error Reporting\Classes\ScreenCapture.cs" />
     <Compile Include="ExtendedToolkit\Error Reporting\UX\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\Classes\MenuStripPanelCollectionEditor.cs" />
+    <Compile Include="ExtendedToolkit\FloatingFramework\Classes\ToolStripPanelCollectionEditor.cs" />
+    <Compile Include="ExtendedToolkit\FloatingFramework\Controls\FloatableMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\Controls\FloatableToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\Controls\MenuStripPanelExtened.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\Controls\ToolStripPanelExtened.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\UX\ExistingComponentChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\UX\MenuStripContainerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\UX\MenuStripExistingComponentChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendedToolkit\FloatingFramework\UX\ToolStripContainerWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ExtendedToolkit\Ribbon\RibbonMerger.cs" />
@@ -562,9 +607,6 @@
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonTreeViewExt.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonUACShieldButton.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonViewBar.cs">
       <SubType>Component</SubType>
@@ -694,11 +736,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ExtendedToolkit\Controls\Standard Controls\ListView\ListViewSort.cs" />
-    <Compile Include="ExtendedToolkit\Controls\Standard Controls\TreeView\FileSystemTreeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ExtendedToolkit\Controls\Standard Controls\TreeView\ShellIcon.cs" />
-    <Compile Include="ExtendedToolkit\Controls\Standard Controls\TreeView\TreeViewPrintHelper.cs" />
+    <Compile Include="ExtendedToolkit\Controls\Standard Controls\CustomTreeView\TreeViewPrintHelper.cs" />
     <Compile Include="ExtendedToolkit\Controls\TreeGridView\TreeGridCell.cs" />
     <Compile Include="ExtendedToolkit\Controls\TreeGridView\TreeGridEvents.cs" />
     <Compile Include="ExtendedToolkit\Controls\TreeGridView\TreeGridNode.cs" />
@@ -751,7 +789,9 @@
     <Compile Include="ExtendedToolkit\Ribbon\RibbonRoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExtendedToolkit\ToolstripControls\ExtendedToolStripStatusLabel.cs" />
+    <Compile Include="ExtendedToolkit\ToolstripControls\ExtendedToolStripStatusLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonCommandLinkVersion1.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonCommandLinkVersion2.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonCueComboBox.cs" />
@@ -935,6 +975,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Strings\TimeSpanResources.Designer.cs">
+      <DependentUpon>TimeSpanResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -944,6 +989,7 @@
     <Compile Include="ExtendedToolkit\Controls\Standard Controls\Common\ScrollingLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Content Include="ExtendedToolkit\Controls\Standard Controls\CustomTreeView\Icons\Folder_16_x_16.ico" />
     <Content Include="ExtendedToolkit\Controls\Standard Controls\Images\ActiveBell.ico" />
     <Content Include="ExtendedToolkit\Controls\Standard Controls\Images\AnalogClock.bmp" />
     <Content Include="ExtendedToolkit\Controls\Standard Controls\Images\Down.ico" />
@@ -965,6 +1011,7 @@
     </Compile>
     <Content Include="ExtendedToolkit\Wizard\Images\Wizard.bmp" />
     <Content Include="ExtendedToolkit\Wizard\Images\wizBigOnlineFolder.gif" />
+    <Content Include="Icons\Folder.ico" />
     <Content Include="Notes\IMPORTANT.txt" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -993,10 +1040,39 @@
     <None Include="Resources\NaviGroup.bmp" />
     <None Include="Resources\NaviDown.png" />
     <None Include="Resources\NaviUp.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\collapse.png" />
+    <None Include="Resources\collapsed.png" />
+    <None Include="Resources\collapsible.png" />
+    <None Include="Resources\expended.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\maximize.png" />
+    <None Include="Resources\minimize.png" />
+    <None Include="Resources\restore.png" />
+    <Content Include="ToolboxBitmaps\CheckGroupBox.bmp" />
     <Content Include="ToolboxBitmaps\CircularProgressBar.bmp" />
+    <Content Include="ToolboxBitmaps\CollapsibleGroupBox.bmp" />
+    <Content Include="ToolboxBitmaps\CollapsiblePanel.bmp" />
+    <Content Include="ToolboxBitmaps\CollapsiblePanelSplitter.bmp" />
+    <Content Include="ToolboxBitmaps\CollapsibleSplitter.bmp" />
+    <Content Include="ToolboxBitmaps\ColorListBox.bmp" />
+    <Content Include="ToolboxBitmaps\ColorPickerCtrl.bmp" />
+    <Content Include="ToolboxBitmaps\ColorTable.bmp" />
+    <Content Include="ToolboxBitmaps\ColorWheelCtrl.bmp" />
+    <Content Include="ToolboxBitmaps\ComboBoxEx.bmp" />
     <Content Include="ToolboxBitmaps\DataBar.bmp" />
     <Content Include="ToolboxBitmaps\DataChart.bmp" />
+    <Content Include="ToolboxBitmaps\FloatableToolStrip.bmp" />
     <Content Include="ToolboxBitmaps\KR 48 x 48 Orange.ico" />
+    <Content Include="ToolboxBitmaps\LabelRotate.bmp" />
+    <Content Include="ToolboxBitmaps\ListBoxEx.bmp" />
+    <Content Include="ToolboxBitmaps\ListViewEx.bmp" />
+    <Content Include="ToolboxBitmaps\MultiLabel.bmp" />
+    <Content Include="ToolboxBitmaps\NavigateBar.bmp" />
+    <Content Include="ToolboxBitmaps\None.bmp" />
+    <Content Include="ToolboxBitmaps\RadioGroupBox.bmp" />
+    <Content Include="ToolboxBitmaps\SplitButton.bmp" />
+    <Content Include="ToolboxBitmaps\TextBoxButton.bmp" />
     <Content Include="ToolboxBitmaps\ToggleSwich.bmp" />
     <Content Include="ToolboxBitmaps\UACButton.bmp" />
     <None Include="Resources\help2.png" />
@@ -1127,14 +1203,32 @@
     <EmbeddedResource Include="ExtendedToolkit\Controls\Krypton Controls\KryptonToastNotification.resx">
       <DependentUpon>KryptonToastNotification.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExtendedToolkit\Controls\Krypton Controls\KryptonTreeViewExtended.resx">
+      <DependentUpon>KryptonTreeViewExtended.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExtendedToolkit\Controls\Krypton Controls\PasswordStrengthControl.resx">
       <DependentUpon>PasswordStrengthControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendedToolkit\Controls\Navigator\Controls\FlatTabControl.resx">
+      <DependentUpon>FlatTabControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExtendedToolkit\Crash Report Tool\UX\CrashReportToolMainWindow.resx">
       <DependentUpon>CrashReportToolMainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExtendedToolkit\Error Reporting\UX\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendedToolkit\FloatingFramework\UX\ExistingComponentChooser.resx">
+      <DependentUpon>ExistingComponentChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendedToolkit\FloatingFramework\UX\MenuStripContainerWindow.resx">
+      <DependentUpon>MenuStripContainerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendedToolkit\FloatingFramework\UX\MenuStripExistingComponentChooser.resx">
+      <DependentUpon>MenuStripExistingComponentChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtendedToolkit\FloatingFramework\UX\ToolStripContainerWindow.resx">
+      <DependentUpon>ToolStripContainerWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExtendedToolkit\SystemDialogs\Typeface\TypefaceProperties.resx">
       <DependentUpon>TypefaceProperties.cs</DependentUpon>
@@ -1251,19 +1345,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings\TimeSpanResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TimeSpanResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExtendedToolkit\UI\SoftwareUpdater\Classes\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1204</Version>
+      <Version>5.400.1222</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
     </PackageReference>
     <PackageReference Include="Resource.Embedder">
-      <Version>2.0.0</Version>
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="WindowsAPICodePack">
       <Version>1.1.0</Version>
@@ -1283,6 +1381,10 @@
     <ProjectReference Include="..\Krypton Outlook Grid\Krypton Outlook Grid.csproj">
       <Project>{2a10c696-45ad-48aa-8ead-2cb322672972}</Project>
       <Name>Krypton Outlook Grid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toolkit Resources\Toolkit Resources.csproj">
+      <Project>{cfb34c40-6461-4ea1-a81c-5e207f2d7bfe}</Project>
+      <Name>Toolkit Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Toolkit Settings\Toolkit Settings.csproj">
       <Project>{EA6E7878-FCCB-416C-8FE1-E626D478A7A7}</Project>

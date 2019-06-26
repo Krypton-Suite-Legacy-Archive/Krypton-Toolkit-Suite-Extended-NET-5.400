@@ -1808,9 +1808,9 @@ namespace KryptonWizard.Native
             /// <para>Name:     System.Contact.Anniversary -- PKEY_Contact_Anniversary</para>
             /// <para>Description:</para>
             /// <para>Type:     DateTime -- VT_FILETIME (For variants: VT_DATE)</para>
-            /// <para>FormatID: {9AD5BADB-CEA7-4400-A03D-B84E51B9949E}, 100</para>
+            /// <para>FormatID: {9AD5BADB-CEA7-4470-A03D-B84E51B9949E}, 100</para>
             /// </summary>
-            public static ShellItemPropertyKey Anniversary => new ShellItemPropertyKey(new Guid("{9AD5BADB-CEA7-4400-A03D-B84E51B9949E}"), 100);
+            public static ShellItemPropertyKey Anniversary => new ShellItemPropertyKey(new Guid("{9AD5BADB-CEA7-4470-A03D-B84E51B9949E}"), 100);
 
             /// <summary>
             /// <para>Name:     System.Contact.AssistantName -- PKEY_Contact_AssistantName</para>
@@ -5472,9 +5472,9 @@ namespace KryptonWizard.Native
             ///picture is taken.
             ///</para>
             /// <para>Type:     UInt32 -- VT_UI4</para>
-            /// <para>FormatID: {6D217F6D-3F6A-4825-B400-5F03CA2FBE9B}, 100</para>
+            /// <para>FormatID: {6D217F6D-3F6A-4825-B470-5F03CA2FBE9B}, 100</para>
             /// </summary>
-            public static ShellItemPropertyKey ProgramMode => new ShellItemPropertyKey(new Guid("{6D217F6D-3F6A-4825-B400-5F03CA2FBE9B}"), 100);
+            public static ShellItemPropertyKey ProgramMode => new ShellItemPropertyKey(new Guid("{6D217F6D-3F6A-4825-B470-5F03CA2FBE9B}"), 100);
 
             /// <summary>
             /// <para>Name:     System.Photo.ProgramModeText -- PKEY_Photo_ProgramModeText</para>

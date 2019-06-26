@@ -1,5 +1,5 @@
-﻿using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
 
 namespace Playground
 {
@@ -128,6 +128,7 @@ namespace Playground
             this.klblAdminMode = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.etslBlinkTest = new ExtendedControls.ExtendedToolkit.ToolstripControls.ExtendedToolStripStatusLabel();
             this.flashingLabel1 = new ExtendedControls.ExtendedToolkit.ToolstripControls.FlashingLabel();
             this.kryptonCheckSet1 = new ComponentFactory.Krypton.Toolkit.KryptonCheckSet(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -186,7 +187,7 @@ namespace Playground
             // 
             this.rtbTextPad.Location = new System.Drawing.Point(16, 45);
             this.rtbTextPad.Name = "rtbTextPad";
-            this.rtbTextPad.Size = new System.Drawing.Size(475, 400);
+            this.rtbTextPad.Size = new System.Drawing.Size(475, 470);
             this.rtbTextPad.TabIndex = 7;
             this.rtbTextPad.Text = "";
             // 
@@ -596,8 +597,8 @@ namespace Playground
             this.kryptonCommandLinkButton2.Location = new System.Drawing.Point(902, 23);
             this.kryptonCommandLinkButton2.Name = "kryptonCommandLinkButton2";
             this.kryptonCommandLinkButton2.OverrideFocus.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
-            this.kryptonCommandLinkButton2.OverrideFocus.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left)
+            this.kryptonCommandLinkButton2.OverrideFocus.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.kryptonCommandLinkButton2.OverrideFocus.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.kryptonCommandLinkButton2.Size = new System.Drawing.Size(250, 55);
@@ -897,6 +898,7 @@ namespace Playground
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
+            this.etslBlinkTest,
             this.flashingLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 637);
             this.statusStrip1.Name = "statusStrip1";
@@ -910,6 +912,21 @@ namespace Playground
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // etslBlinkTest
+            // 
+            this.etslBlinkTest.BackColor = System.Drawing.Color.Empty;
+            this.etslBlinkTest.BkClr = false;
+            this.etslBlinkTest.BlinkDuration = ((long)(10));
+            this.etslBlinkTest.BlinkState = ExtendedControls.Base.Enumerations.BlinkState.NormalBlink;
+            this.etslBlinkTest.CycleInterval = ((short)(2000));
+            this.etslBlinkTest.EnableBlinking = true;
+            this.etslBlinkTest.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.etslBlinkTest.GradientColourOne = System.Drawing.Color.Lime;
+            this.etslBlinkTest.GradientColourTwo = System.Drawing.Color.Red;
+            this.etslBlinkTest.Name = "etslBlinkTest";
+            this.etslBlinkTest.Size = new System.Drawing.Size(168, 17);
+            this.etslBlinkTest.Text = "extendedToolStripStatusLabel2";
             // 
             // flashingLabel1
             // 
@@ -1031,6 +1048,7 @@ namespace Playground
         private System.Windows.Forms.ToolStripButton pasteToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private ExtendedControls.ExtendedToolkit.ToolstripControls.ExtendedToolStripStatusLabel etslBlinkTest;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton tsAlignLeft;
         private System.Windows.Forms.ToolStripButton tsAlignCentre;

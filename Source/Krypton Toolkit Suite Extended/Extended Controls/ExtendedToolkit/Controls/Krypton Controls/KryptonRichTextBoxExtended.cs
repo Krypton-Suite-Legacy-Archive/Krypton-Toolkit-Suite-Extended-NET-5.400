@@ -18,9 +18,9 @@ using System.Runtime.InteropServices;
 
 namespace ExtendedControls.ExtendedToolkit.Controls
 {
-    /// <summary>
-    /// A <see cref="KryptonRichTextBox"/> control with some extra features.
-    /// </summary>
+    ///// <summary>
+    ///// A <see cref="KryptonRichTextBox"/> control with some extra features.
+    ///// </summary>
     //[Description("A KryptonRichTextBox control with some extra features.")]
     //[ToolboxBitmap(typeof(KryptonRichTextBox))]
     //[ToolboxItem(true)]

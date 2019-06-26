@@ -621,7 +621,7 @@ namespace ExtendedFileDialogs.Controls.Old
         DefaultView = 0x461,
         LeftToolBar = 0x4A0,
         ComboFileName = 0x47c,
-        ComboFileType = 0x400,
+        ComboFileType = 0x470,
         ComboFolder = 0x471,
         CheckBoxReadOnly = 0x410
     }

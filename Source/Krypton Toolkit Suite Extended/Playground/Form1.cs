@@ -14,13 +14,9 @@ using Core.UX.Colours;
 using Core.UX.Options;
 using ExtendedControls.Base.Code.Development;
 using ExtendedControls.Base.Enumerations;
-using ExtendedControls.Enumerations;
 using ExtendedControls.ExtendedToolkit.UI.Colours;
 using ExtendedControls.ExtendedToolkit.UI.Dialogues;
 using ExtendedControls.ExtendedToolkit.UI.Drawing;
-//using ExtendedControls.ExtendedToolkit.UI.SystemBrowser;
-//using ExtendedFileDialogs.UI.SystemBrowser;
-using KryptonApplicationUpdater.Classes.SettingsManager;
 //using KryptonApplicationUpdater.Interfaces;
 
 using KryptonExtendedToolkit.Base.Code;
@@ -37,7 +33,6 @@ namespace Playground
     public partial class Form1 : KryptonForm/*, IUpdatable <- Commented this out to allow the designers to work correctly*/
     {
         private UtilityMethods utilityMethods = new UtilityMethods();
-        private InternalApplicationUpdaterSettingsManager internalApplicationUpdaterSettingsManager = new InternalApplicationUpdaterSettingsManager();
         private MostRecentlyUsedFileManager mostRecentlyUsedFileManager;
         private Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
         private ToolStripNonClientRenderer toolStripNonClientRenderer;
@@ -67,7 +62,7 @@ namespace Playground
 
             if (ServerXMLFileURL != null)
             {
-                internalApplicationUpdaterSettingsManager.SetXMLFileURL(ServerXMLFileURL);
+                //internalApplicationUpdaterSettingsManager.SetXMLFileURL(ServerXMLFileURL);
             }
 
             if (UtilityMethods.GetHasElevateProcessWithAdministrativeRights())

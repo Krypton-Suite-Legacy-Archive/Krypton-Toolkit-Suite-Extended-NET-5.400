@@ -73,6 +73,8 @@
     <Compile Include="Classes\Colours\SettingsManager.cs" />
     <Compile Include="Classes\Colours\WIN32.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
+    <Compile Include="Classes\IO\Helpers.cs" />
+    <Compile Include="Classes\IO\Path.cs" />
     <Compile Include="Classes\MessageBoxes\ExtendedKryptonMessageBox.cs" />
     <Compile Include="Classes\Options\Theming\ThemingLogic.cs" />
     <Compile Include="Classes\Colours\ColourControlManager.cs" />
@@ -364,7 +366,7 @@
       <Version>1.0.5</Version>
     </PackageReference>
     <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1204</Version>
+      <Version>5.400.1222</Version>
     </PackageReference>
     <PackageReference Include="snt.ScintillaNet.FindReplaceDialog">
       <Version>1.4.0</Version>

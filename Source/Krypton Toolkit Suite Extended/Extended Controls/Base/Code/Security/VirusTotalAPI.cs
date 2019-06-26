@@ -7,19 +7,6 @@
  */
 #endregion
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExtendedControls.Base.Code.Security
 {
