@@ -14,6 +14,7 @@ using Core.UX.Colours;
 using Core.UX.Options;
 using ExtendedControls.Base.Code.Development;
 using ExtendedControls.Base.Enumerations;
+using ExtendedControls.Enumerations;
 using ExtendedControls.ExtendedToolkit.UI.Colours;
 using ExtendedControls.ExtendedToolkit.UI.Dialogues;
 using ExtendedControls.ExtendedToolkit.UI.Drawing;
@@ -78,7 +79,7 @@ namespace Playground
 
             lblVersion.Text = $"Version: { currentVersion.ToString() }";
 
-            //etslBlinkTest.SoftBlink(etslBlinkTest.AlertColourOne, etslBlinkTest.AlertColourTwo, etslBlinkTest.AlertTextColour, 2000, false, 5);
+            etslBlinkTest.SoftBlink(etslBlinkTest.AlertColourOne, etslBlinkTest.AlertColourTwo, etslBlinkTest.AlertTextColour, 2000, false, 5);
 
             foreach (LinearGradientMode lgm in Enum.GetValues(typeof(LinearGradientMode)))
             {
@@ -188,22 +189,22 @@ namespace Playground
 
         private void tsAlignLeft_Click(object sender, EventArgs e)
         {
-            //rxrbTextPad.SelectionAlignment = TextAlignment.LEFT;
+            rxrbTextPad.SelectionAlignment = TextAlignment.LEFT;
         }
 
         private void tsAlignCentre_Click(object sender, EventArgs e)
         {
-            //rxrbTextPad.SelectionAlignment = TextAlignment.CENTRE;
+            rxrbTextPad.SelectionAlignment = TextAlignment.CENTRE;
         }
 
         private void tsAlignRight_Click(object sender, EventArgs e)
         {
-            //rxrbTextPad.SelectionAlignment = TextAlignment.RIGHT;
+            rxrbTextPad.SelectionAlignment = TextAlignment.RIGHT;
         }
 
         private void tsJustify_Click(object sender, EventArgs e)
         {
-            //rxrbTextPad.SelectionAlignment = TextAlignment.JUSTIFY;
+            rxrbTextPad.SelectionAlignment = TextAlignment.JUSTIFY;
         }
 
         private void kbtnHexToRGB_Click(object sender, EventArgs e)

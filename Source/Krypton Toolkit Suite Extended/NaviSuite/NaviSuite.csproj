@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NaviSuite</RootNamespace>
     <AssemblyName>NaviSuite</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -141,6 +141,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="KryptonToolkitSuite5400">
+      <Version>5.400.1231</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -157,11 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Up.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1222</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

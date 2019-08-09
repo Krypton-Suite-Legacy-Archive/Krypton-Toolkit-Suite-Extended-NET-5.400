@@ -103,6 +103,26 @@ namespace ExtendedControls.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ButtonColorImageSmall {
+            get {
+                object obj = ResourceManager.GetObject("ButtonColorImageSmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonNoColor {
+            get {
+                object obj = ResourceManager.GetObject("ButtonNoColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Check {
             get {
                 object obj = ResourceManager.GetObject("Check", resourceCulture);
@@ -176,6 +196,16 @@ namespace ExtendedControls.Properties {
         internal static System.Drawing.Bitmap colorbarIndicators {
             get {
                 object obj = ResourceManager.GetObject("colorbarIndicators", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ColourButton {
+            get {
+                object obj = ResourceManager.GetObject("ColourButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -20,6 +20,7 @@ using ExtendedControls.ExtendedToolkit.UI.Colours;
 using ExtendedControls.ExtendedToolkit.UI.GraphicsTools;
 using ExtendedControls.ExtendedToolkit.UI.Security;
 using ExtendedControls.ExtendedToolkit.UI.Security.FileHashing;
+using ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal;
 using ExtendedControls.ExtendedToolkit.UI.Theming;
 using Playground.Properties;
 using System;
@@ -75,12 +76,18 @@ namespace Playground
         private KryptonButton kbtnFloatingToolStrip;
         private KryptonButton kbtnFloatingMenuStrip;
         private KryptonButton kbtnTreeViews;
+        private KryptonButton kbtnKryptonColourButtonExtended;
+        private KryptonButton kryptonButton3;
+        private KryptonButton kbtnFileSystemExamples;
+        private KryptonButton kryptonButton1;
         private System.ComponentModel.IContainer components;
 
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Examples));
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kbtnKryptonColourButtonExtended = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kbtnTreeViews = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnFloatingMenuStrip = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnFloatingToolStrip = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnUAC = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -122,13 +129,19 @@ namespace Playground
             this.kbtnColourMixer = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnHexToRGB = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnConvertColour = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kbtnTreeViews = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kbtnFileSystemExamples = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonButton3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kryptonButton3);
+            this.kryptonPanel1.Controls.Add(this.kbtnFileSystemExamples);
+            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
+            this.kryptonPanel1.Controls.Add(this.kbtnKryptonColourButtonExtended);
             this.kryptonPanel1.Controls.Add(this.kbtnTreeViews);
             this.kryptonPanel1.Controls.Add(this.kbtnFloatingMenuStrip);
             this.kryptonPanel1.Controls.Add(this.kbtnFloatingToolStrip);
@@ -177,12 +190,38 @@ namespace Playground
             this.kryptonPanel1.Size = new System.Drawing.Size(971, 597);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // kbtnKryptonColourButtonExtended
+            // 
+            this.kbtnKryptonColourButtonExtended.Location = new System.Drawing.Point(737, 408);
+            this.kbtnKryptonColourButtonExtended.Name = "kbtnKryptonColourButtonExtended";
+            this.kbtnKryptonColourButtonExtended.Size = new System.Drawing.Size(218, 25);
+            this.kbtnKryptonColourButtonExtended.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnKryptonColourButtonExtended.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnKryptonColourButtonExtended.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
+            this.kbtnKryptonColourButtonExtended.TabIndex = 95;
+            this.kbtnKryptonColourButtonExtended.Values.Text = "Krypton Colour Button Extended";
+            this.kbtnKryptonColourButtonExtended.Click += new System.EventHandler(this.KbtnKryptonColourButtonExtended_Click);
+            // 
+            // kbtnTreeViews
+            // 
+            this.kbtnTreeViews.Location = new System.Drawing.Point(255, 408);
+            this.kbtnTreeViews.Name = "kbtnTreeViews";
+            this.kbtnTreeViews.Size = new System.Drawing.Size(218, 25);
+            this.kbtnTreeViews.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnTreeViews.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnTreeViews.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
+            this.kbtnTreeViews.TabIndex = 94;
+            this.kbtnTreeViews.Values.Text = "Tree Views";
+            this.kbtnTreeViews.Click += new System.EventHandler(this.KbtnTreeViews_Click);
+            // 
             // kbtnFloatingMenuStrip
             // 
             this.kbtnFloatingMenuStrip.Location = new System.Drawing.Point(12, 408);
             this.kbtnFloatingMenuStrip.Name = "kbtnFloatingMenuStrip";
             this.kbtnFloatingMenuStrip.Size = new System.Drawing.Size(218, 25);
             this.kbtnFloatingMenuStrip.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnFloatingMenuStrip.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnFloatingMenuStrip.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnFloatingMenuStrip.TabIndex = 93;
             this.kbtnFloatingMenuStrip.Values.Text = "Floating Menu Strip";
             this.kbtnFloatingMenuStrip.Click += new System.EventHandler(this.KbtnFloatingMenuStrip_Click);
@@ -193,6 +232,8 @@ namespace Playground
             this.kbtnFloatingToolStrip.Name = "kbtnFloatingToolStrip";
             this.kbtnFloatingToolStrip.Size = new System.Drawing.Size(218, 25);
             this.kbtnFloatingToolStrip.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnFloatingToolStrip.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnFloatingToolStrip.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnFloatingToolStrip.TabIndex = 92;
             this.kbtnFloatingToolStrip.Values.Text = "Floating Tool Strip";
             this.kbtnFloatingToolStrip.Click += new System.EventHandler(this.KbtnFloatingToolStrip_Click);
@@ -203,6 +244,8 @@ namespace Playground
             this.kbtnUAC.Name = "kbtnUAC";
             this.kbtnUAC.Size = new System.Drawing.Size(218, 25);
             this.kbtnUAC.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnUAC.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnUAC.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnUAC.TabIndex = 91;
             this.kbtnUAC.Values.Text = "UAC Elevation";
             this.kbtnUAC.Click += new System.EventHandler(this.KbtnUAC_Click);
@@ -213,6 +256,8 @@ namespace Playground
             this.kbtnFileInformation.Name = "kbtnFileInformation";
             this.kbtnFileInformation.Size = new System.Drawing.Size(218, 25);
             this.kbtnFileInformation.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnFileInformation.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnFileInformation.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnFileInformation.TabIndex = 90;
             this.kbtnFileInformation.Values.Text = "File Information";
             this.kbtnFileInformation.Click += new System.EventHandler(this.KbtnFileInformation_Click);
@@ -223,6 +268,8 @@ namespace Playground
             this.kbtnVarifyHash.Name = "kbtnVarifyHash";
             this.kbtnVarifyHash.Size = new System.Drawing.Size(218, 25);
             this.kbtnVarifyHash.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnVarifyHash.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnVarifyHash.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnVarifyHash.TabIndex = 89;
             this.kbtnVarifyHash.Values.Text = "Varify File Hash";
             this.kbtnVarifyHash.Click += new System.EventHandler(this.KbtnVarifyHash_Click);
@@ -233,6 +280,8 @@ namespace Playground
             this.kbtnResizeImages.Name = "kbtnResizeImages";
             this.kbtnResizeImages.Size = new System.Drawing.Size(218, 25);
             this.kbtnResizeImages.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnResizeImages.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnResizeImages.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnResizeImages.TabIndex = 88;
             this.kbtnResizeImages.Values.Text = "Resize Images";
             this.kbtnResizeImages.Click += new System.EventHandler(this.KbtnResizeImages_Click);
@@ -243,6 +292,8 @@ namespace Playground
             this.kbtnMRU.Name = "kbtnMRU";
             this.kbtnMRU.Size = new System.Drawing.Size(218, 25);
             this.kbtnMRU.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnMRU.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnMRU.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnMRU.TabIndex = 87;
             this.kbtnMRU.Values.Text = "MRU Example";
             this.kbtnMRU.Click += new System.EventHandler(this.KbtnMRU_Click);
@@ -253,6 +304,8 @@ namespace Playground
             this.kbtnFileHashValidator.Name = "kbtnFileHashValidator";
             this.kbtnFileHashValidator.Size = new System.Drawing.Size(218, 25);
             this.kbtnFileHashValidator.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnFileHashValidator.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnFileHashValidator.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnFileHashValidator.TabIndex = 86;
             this.kbtnFileHashValidator.Values.Text = "File Hash Validator";
             this.kbtnFileHashValidator.Click += new System.EventHandler(this.KbtnFileHashValidator_Click);
@@ -263,6 +316,8 @@ namespace Playground
             this.kbtnCircularPictureBox.Name = "kbtnCircularPictureBox";
             this.kbtnCircularPictureBox.Size = new System.Drawing.Size(218, 25);
             this.kbtnCircularPictureBox.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnCircularPictureBox.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnCircularPictureBox.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnCircularPictureBox.TabIndex = 85;
             this.kbtnCircularPictureBox.Values.Text = "Circular Picturebox";
             this.kbtnCircularPictureBox.Click += new System.EventHandler(this.KbtnCircularPictureBox_Click);
@@ -363,6 +418,8 @@ namespace Playground
             this.kbtnPropertyGrid.Name = "kbtnPropertyGrid";
             this.kbtnPropertyGrid.Size = new System.Drawing.Size(218, 25);
             this.kbtnPropertyGrid.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnPropertyGrid.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnPropertyGrid.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnPropertyGrid.TabIndex = 74;
             this.kbtnPropertyGrid.Values.Text = "Property Grid";
             this.kbtnPropertyGrid.Click += new System.EventHandler(this.kbtnPropertyGrid_Click);
@@ -373,6 +430,8 @@ namespace Playground
             this.kbtnMessageboxTest2.Name = "kbtnMessageboxTest2";
             this.kbtnMessageboxTest2.Size = new System.Drawing.Size(218, 25);
             this.kbtnMessageboxTest2.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnMessageboxTest2.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnMessageboxTest2.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnMessageboxTest2.TabIndex = 73;
             this.kbtnMessageboxTest2.Values.Text = "Messagebox Test 2";
             this.kbtnMessageboxTest2.Click += new System.EventHandler(this.kbtnMessageboxTest2_Click);
@@ -509,6 +568,8 @@ namespace Playground
             this.kbtnMessageboxTest.Name = "kbtnMessageboxTest";
             this.kbtnMessageboxTest.Size = new System.Drawing.Size(218, 25);
             this.kbtnMessageboxTest.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnMessageboxTest.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnMessageboxTest.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
             this.kbtnMessageboxTest.TabIndex = 56;
             this.kbtnMessageboxTest.Values.Text = "Messagebox Test";
             this.kbtnMessageboxTest.Click += new System.EventHandler(this.kbtnMessageboxTest_Click);
@@ -558,15 +619,39 @@ namespace Playground
             this.kbtnConvertColour.Values.Text = "Convert Colour";
             this.kbtnConvertColour.Click += new System.EventHandler(this.kbtnConvertColour_Click);
             // 
-            // kbtnTreeViews
+            // kryptonButton1
             // 
-            this.kbtnTreeViews.Location = new System.Drawing.Point(255, 408);
-            this.kbtnTreeViews.Name = "kbtnTreeViews";
-            this.kbtnTreeViews.Size = new System.Drawing.Size(218, 25);
-            this.kbtnTreeViews.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kbtnTreeViews.TabIndex = 94;
-            this.kbtnTreeViews.Values.Text = "Tree Views";
-            this.kbtnTreeViews.Click += new System.EventHandler(this.KbtnTreeViews_Click);
+            this.kryptonButton1.Location = new System.Drawing.Point(255, 449);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(218, 25);
+            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton1.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonButton1.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
+            this.kryptonButton1.TabIndex = 96;
+            this.kryptonButton1.Values.Text = "Tree Views";
+            // 
+            // kbtnFileSystemExamples
+            // 
+            this.kbtnFileSystemExamples.Location = new System.Drawing.Point(12, 449);
+            this.kbtnFileSystemExamples.Name = "kbtnFileSystemExamples";
+            this.kbtnFileSystemExamples.Size = new System.Drawing.Size(218, 25);
+            this.kbtnFileSystemExamples.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnFileSystemExamples.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kbtnFileSystemExamples.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
+            this.kbtnFileSystemExamples.TabIndex = 97;
+            this.kbtnFileSystemExamples.Values.Text = "File System Examples";
+            this.kbtnFileSystemExamples.Click += new System.EventHandler(this.KbtnFileSystemExamples_Click);
+            // 
+            // kryptonButton3
+            // 
+            this.kryptonButton3.Location = new System.Drawing.Point(498, 408);
+            this.kryptonButton3.Name = "kryptonButton3";
+            this.kryptonButton3.Size = new System.Drawing.Size(218, 25);
+            this.kryptonButton3.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton3.StateCommon.Content.ShortText.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
+            this.kryptonButton3.StateCommon.Content.ShortText.Trim = ComponentFactory.Krypton.Toolkit.PaletteTextTrim.Inherit;
+            this.kryptonButton3.TabIndex = 98;
+            this.kryptonButton3.Values.Text = "Tree Views";
             // 
             // Examples
             // 
@@ -799,9 +884,9 @@ namespace Playground
 
         private void kbtnScanFiles_Click(object sender, EventArgs e)
         {
-            //VirusTotalUploader uploader = new VirusTotalUploader();
+            VirusTotalUploader uploader = new VirusTotalUploader();
 
-            //uploader.Show();
+            uploader.Show();
         }
 
         private void kbtnToastV2_Click(object sender, EventArgs e)
@@ -936,6 +1021,20 @@ namespace Playground
             TreeViewExamples tve = new TreeViewExamples();
 
             tve.Show();
+        }
+
+        private void KbtnKryptonColourButtonExtended_Click(object sender, EventArgs e)
+        {
+            KryptonColourButtonExtendedTest test = new KryptonColourButtonExtendedTest();
+
+            test.Show();
+        }
+
+        private void KbtnFileSystemExamples_Click(object sender, EventArgs e)
+        {
+            FileSystemExamples fileSystemExamples = new FileSystemExamples();
+
+            fileSystemExamples.Show();
         }
     }
 }

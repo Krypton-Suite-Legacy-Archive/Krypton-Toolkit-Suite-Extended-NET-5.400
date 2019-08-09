@@ -798,7 +798,7 @@ namespace ExtendedControls.Components.ScintillaNET.Classes
         public const int SCI_SETPASTECONVERTENDINGS = 2467;
         public const int SCI_GETPASTECONVERTENDINGS = 2468;
         public const int SCI_SELECTIONDUPLICATE = 2469;
-        public const int SCI_SETCARETLINEBACKALPHA = 2470;
+        public const int SCI_SETCARETLINEBACKALPHA = 2400;
         public const int SCI_GETCARETLINEBACKALPHA = 2471;
         public const int SCI_SETCARETSTYLE = 2512;
         public const int SCI_GETCARETSTYLE = 2513;
