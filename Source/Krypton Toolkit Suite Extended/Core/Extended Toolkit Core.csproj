@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KryptonToolkitSuiteExtendedCore</RootNamespace>
     <AssemblyName>Krypton Toolkit Suite Extended Core</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Krypton Toolkit Suite Extended Core.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,8 +51,10 @@
     </Compile>
     <Compile Include="Classes\ColourHandler.cs" />
     <Compile Include="Classes\Drawing\DrawingMethods.cs" />
+    <Compile Include="Classes\Drawing\RoundedRectangleF.cs" />
     <Compile Include="Classes\KryptonMessageBoxExtended.cs" />
     <Compile Include="Classes\PI.cs" />
+    <Compile Include="Classes\Ribbon\RibbonMerger.cs" />
     <Compile Include="Classes\ScrollBars\ScrollBarExtendedRenderer.cs" />
     <Compile Include="Classes\ScrollBars\ScrollBarKryptonRenderer.cs" />
     <Compile Include="Classes\ScrollBars\WIN32.cs" />
@@ -78,6 +81,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Break Out\KryptonTreeViewShell.cs" />
+    <Compile Include="Components\KryptonToggleSwitch.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\List View\ListViewColumnSorter.cs" />
     <Compile Include="Components\List View\ListViewItemComparer.cs" />
     <Compile Include="Components\List View\ListViewPrint.cs">
@@ -103,6 +109,7 @@
     <Compile Include="Designers\KryptonCommandLinkButtonDesigner.cs" />
     <Compile Include="Designers\ScrollBarControlDesigner.cs" />
     <Compile Include="Enumerations\Enumerations.cs" />
+    <Compile Include="Interfaces\Ribbon\IRibbonMerger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -117,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1231</Version>
+      <Version>5.400.1251</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
