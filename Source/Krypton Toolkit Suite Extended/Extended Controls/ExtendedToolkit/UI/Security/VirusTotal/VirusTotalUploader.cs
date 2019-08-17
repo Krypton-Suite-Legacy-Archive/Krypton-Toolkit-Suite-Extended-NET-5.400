@@ -7,6 +7,7 @@
  */
 #endregion
 
+ /*
 using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.Base.Code.Exceptions;
 using ExtendedControls.Base.Code.Security;
@@ -298,3 +299,4 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
         }
     }
 }
+*/

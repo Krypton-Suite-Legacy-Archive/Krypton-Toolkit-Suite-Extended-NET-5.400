@@ -7,6 +7,7 @@
  */
 #endregion
 
+/*
 using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.Enumerations;
 using System;
@@ -328,3 +329,4 @@ namespace ExtendedControls.ExtendedToolkit.Controls
         #endregion
     }
 }
+*/

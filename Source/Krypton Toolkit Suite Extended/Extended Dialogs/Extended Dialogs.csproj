@@ -85,7 +85,7 @@
       <Version>1.7.2</Version>
     </PackageReference>
     <PackageReference Include="KryptonToolkitSuite5400CoreModule">
-      <Version>5.400.1251</Version>
+      <Version>5.400.1231</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
