@@ -59,7 +59,7 @@ namespace ExtendedControls.Base.Code.Security
         /// <param name="filePath">The file path.</param>
         public static void ClearAllAttributes(string filePath)
         {
-            File.SetAttributes(filePath, GetFileAttributes(filePath) & ~FileAttributes.Archive | ~FileAttributes.Compressed | ~FileAttributes.Device | ~FileAttributes.Directory | ~FileAttributes.Encrypted | ~FileAttributes.Hidden | ~FileAttributes.IntegrityStream | ~FileAttributes.Normal | ~FileAttributes.NoScrubData | ~FileAttributes.NotContentIndexed | ~FileAttributes.Offline | ~FileAttributes.ReadOnly | ~FileAttributes.ReparsePoint | ~FileAttributes.SparseFile | ~FileAttributes.System | ~FileAttributes.Temporary);
+            File.SetAttributes(filePath, GetFileAttributes(filePath) & ~FileAttributes.Archive | ~FileAttributes.Compressed | ~FileAttributes.Device | ~FileAttributes.Directory | ~FileAttributes.Encrypted | ~FileAttributes.Hidden | ~FileAttributes.Normal | ~FileAttributes.NotContentIndexed | ~FileAttributes.Offline | ~FileAttributes.ReadOnly | ~FileAttributes.ReparsePoint | ~FileAttributes.SparseFile | ~FileAttributes.System | ~FileAttributes.Temporary);
         }
 
         /// <summary>
@@ -96,11 +96,11 @@ namespace ExtendedControls.Base.Code.Security
 
             hidden.Checked = GetHiddenAttributeState(filePath);
 
-            integrityStream.Checked = GetIntegrityStreamAttributeState(filePath);
+            //integrityStream.Checked = GetIntegrityStreamAttributeState(filePath);
 
             normal.Checked = GetNormalAttributeState(filePath);
 
-            noScrubData.Checked = GetNoScrubDataAttributeState(filePath);
+            //noScrubData.Checked = GetNoScrubDataAttributeState(filePath);
 
             notContextIndexed.Checked = GetNotContextIndexedAttributeState(filePath);
 
@@ -226,17 +226,17 @@ namespace ExtendedControls.Base.Code.Security
         /// </summary>
         /// <param name="filePath">The file path.</param>
         /// <returns></returns>
-        public static bool GetIntegrityStreamAttributeState(string filePath)
-        {
-            if (GetFileAttributes(filePath) == FileAttributes.IntegrityStream)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public static bool GetIntegrityStreamAttributeState(string filePath)
+        //{
+        //    if (GetFileAttributes(filePath) == FileAttributes.IntegrityStream)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         /// <summary>
         /// Gets the state of the normal attribute.
@@ -260,17 +260,17 @@ namespace ExtendedControls.Base.Code.Security
         /// </summary>
         /// <param name="filePath">The file path.</param>
         /// <returns></returns>
-        public static bool GetNoScrubDataAttributeState(string filePath)
-        {
-            if (GetFileAttributes(filePath) == FileAttributes.NoScrubData)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public static bool GetNoScrubDataAttributeState(string filePath)
+        //{
+        //    if (GetFileAttributes(filePath) == FileAttributes.NoScrubData)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         /// <summary>
         /// Gets the state of the not context indexed attribute.

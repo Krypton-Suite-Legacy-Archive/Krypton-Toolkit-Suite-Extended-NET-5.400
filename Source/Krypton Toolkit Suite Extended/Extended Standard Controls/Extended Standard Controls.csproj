@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Typeface.cs" />
+    <Compile Include="Controls\Extended Toolkit\Textural\KryptonUACElevatedButtonExtended.cs" />
+    <Compile Include="Controls\Toolkit\Panels\KryptonPanelExtended.cs" />
+    <Compile Include="Controls\Toolkit\Panels\KryptonSplitContainerExtended.cs" />
     <Compile Include="Controls\Toolkit\Textural\KryptonButtonExtended.cs" />
     <Compile Include="Controls\Toolkit\Textural\KryptonCheckBoxExtended.cs" />
     <Compile Include="Controls\Toolkit\Textural\KryptonCheckButtonExtended.cs" />
@@ -55,7 +58,16 @@
     <Compile Include="Controls\Toolkit\Textural\KryptonDropButtonExtended.cs" />
     <Compile Include="Controls\Toolkit\Textural\KryptonGroupBoxExtended.cs" />
     <Compile Include="Controls\Toolkit\Textural\KryptonHeaderExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonLabelExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonLinkLabelExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonListBoxExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonMaskedTextBoxExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonMonthCalendarExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonNumericUpDownExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonRadioButtonExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonRichTextBoxExtended.cs" />
     <Compile Include="Controls\Toolkit\Textural\KryptonTextBoxExtended.cs" />
+    <Compile Include="Controls\Toolkit\Textural\KryptonTreeViewExtended.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -63,6 +75,12 @@
     <PackageReference Include="KryptonToolkitSuite5400">
       <Version>5.400.1251</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Extended Toolkit Core.csproj">
+      <Project>{5F28100D-C9A0-4361-B780-7AC132A421DF}</Project>
+      <Name>Extended Toolkit Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

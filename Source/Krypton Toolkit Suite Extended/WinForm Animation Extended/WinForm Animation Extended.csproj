@@ -46,6 +46,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="KryptonToolkitSuite5400">
+      <Version>5.400.1251</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+      <Version>5.400.1254</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400NavigatorModule">
+      <Version>5.400.763</Version>
+    </PackageReference>
     <PackageReference Include="WinFormAnimation">
       <Version>1.6.0.4</Version>
     </PackageReference>

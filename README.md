@@ -28,6 +28,11 @@
 Please refer to [examples](https://github.com/Wagnerp/Krypton-Toolkit-Suite-Extended-NET-5.470/blob/master/Examples.md) to see what each control looks like.
 
 ======
+
+## Important information: Due to newer features in .NET Framework 4.5 and above and lack of support from Microsoft, the October 2019 release **will** be the last major supported update/release for .NET Framework 4.0.
+
+<!--
+======
 ## 2019-06-01 Build 1030 - June Update
 * New `issue` templates
 * Implemented repository tags for better GitHub SEO
@@ -243,3 +248,4 @@ Please refer to [examples](https://github.com/Wagnerp/Krypton-Toolkit-Suite-Exte
 * Created solution with two class projects inside labelled `Extended Controls` and `Krypton Outlook Grid`
 * Automatic versioning
 * High DPI support configuration 
+-->

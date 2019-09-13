@@ -84,8 +84,11 @@
     <PackageReference Include="Cyotek.Windows.Forms.ColorPicker">
       <Version>1.7.2</Version>
     </PackageReference>
-    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+    <PackageReference Include="KryptonToolkitSuite5400">
       <Version>5.400.1251</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+      <Version>5.400.1254</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Colour\Palettes\KryptonPaletteColourMixerBasic.resx">
       <DependentUpon>KryptonPaletteColourMixerBasic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\Toast\KryptonToastNotificationDialog.resx">
+      <DependentUpon>KryptonToastNotificationDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

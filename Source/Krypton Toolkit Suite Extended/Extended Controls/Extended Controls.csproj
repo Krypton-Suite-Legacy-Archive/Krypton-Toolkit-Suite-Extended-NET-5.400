@@ -806,7 +806,6 @@
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonCueComboBox.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonCueTextBox.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonDateTimePickerExtended.cs" />
-    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonRichTextBoxExtended.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonSearchBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

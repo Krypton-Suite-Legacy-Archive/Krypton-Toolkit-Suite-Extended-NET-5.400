@@ -34,12 +34,12 @@ namespace ExtendedStandardControls
 
             Typeface = Classes.Typeface.DefaultTypeface();
 
-            UpdateAppearance(BackgroundColour, TextColour, Typeface);
+            UpdateCommonAppearanceValues(BackgroundColour, TextColour, Typeface);
         }
         #endregion
 
         #region Methods
-        public void UpdateAppearance(Color backgroundColour, Color textColour, Font typeface)
+        private void UpdateCommonAppearanceValues(Color backgroundColour, Color textColour, Font typeface)
         {
             StateCommon.Back.Color1 = backgroundColour;
 
@@ -52,7 +52,7 @@ namespace ExtendedStandardControls
         #region Overrides
         protected override void OnPaint(PaintEventArgs e)
         {
-            UpdateAppearance(BackgroundColour, TextColour, Typeface);
+            UpdateCommonAppearanceValues(BackgroundColour, TextColour, Typeface);
 
             base.OnPaint(e);
         }

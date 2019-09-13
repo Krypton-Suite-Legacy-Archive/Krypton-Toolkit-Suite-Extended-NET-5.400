@@ -1,11 +1,11 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
-using ComponentFactory.Krypton.Toolkit;
 
 namespace Common
 {
@@ -53,6 +53,39 @@ namespace Common
         }
 
         /// <summary>
+        /// Captures the exception.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
+        /// <param name="currentWindow">The current window.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="buttons">The buttons.</param>
+        /// <param name="icon">The icon.</param>
+        /// <param name="className">Name of the class.</param>
+        /// <param name="methodSignature">The method signature.</param>
+        /// <param name="defaultTypeface">The default typeface.</param>
+        public static void CaptureException(Exception exception, KryptonForm currentWindow, Control control = null, string title = @"Exception Caught", MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Error, string className = "", string methodSignature = "", Font defaultTypeface = null)
+        {
+            defaultTypeface = new Font(currentWindow.Font.FontFamily, currentWindow.Font.Size, currentWindow.Font.Style, currentWindow.Font.Unit);
+
+            if (className != "")
+            {
+                InternalExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
+            else if (methodSignature != "")
+            {
+                InternalExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
+            else if (className != "" && methodSignature != "")
+            {
+                InternalExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.\n\nError in class: '{ className }.cs'.\n\nError in method: '{ methodSignature }'.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
+            else
+            {
+                InternalExtendedKryptonMessageBox.Show($"An unexpected error has occurred: { exception.Message }.", title, buttons, icon, messageboxTypeface: defaultTypeface);
+            }
+        }
+
+        /// <summary>
         /// Shows the exception.
         /// </summary>
         /// <param name="exceptionMessage">The exception message.</param>
@@ -94,33 +127,33 @@ namespace Common
         /// </summary>
         /// <param name="exc">The incoming exception.</param>
         /// <param name="fileName">The file to write the exception stacktrace to.</param>
-        public static void PrintStackTrace(Exception exc, string fileName)
-        {
-            try
-            {
-                ExceptionDispatchInfo exceptionInfo = null;
+        //public static void PrintStackTrace(Exception exc, string fileName)
+        //{
+        //    try
+        //    {
+        //        ExceptionDispatchInfo exceptionInfo = null;
 
-                if (!File.Exists(fileName))
-                {
-                    File.Create(fileName);
-                }
+        //        if (!File.Exists(fileName))
+        //        {
+        //            File.Create(fileName);
+        //        }
 
-                exceptionInfo = ExceptionDispatchInfo.Capture(exc);
+        //        exceptionInfo = ExceptionDispatchInfo.Capture(exc);
 
-                StreamWriter writer = new StreamWriter(fileName);
+        //        StreamWriter writer = new StreamWriter(fileName);
 
-                writer.Write(exc.ToString());
+        //        writer.Write(exc.ToString());
 
-                writer.Close();
+        //        writer.Close();
 
-                writer.Dispose();
-            }
-            catch (Exception ex)
-            {
+        //        writer.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
         /// <summary>
         /// Captures a stacktrace of the exception.

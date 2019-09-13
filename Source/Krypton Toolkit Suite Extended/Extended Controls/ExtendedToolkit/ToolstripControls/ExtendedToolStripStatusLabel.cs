@@ -11,11 +11,9 @@ using ComponentFactory.Krypton.Toolkit;
 using ExtendedControls.Base.Enumerations;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
@@ -486,10 +484,10 @@ namespace ExtendedControls.ExtendedToolkit.ToolstripControls
                 switch (BlinkState)
                 {
                     case BlinkState.NormalBlink:
-                        BlinkLabel(BlinkDuration);
+                        //BlinkLabel(BlinkDuration);
                         break;
                     case BlinkState.SoftBlink:
-                        SoftBlink(AlertColourOne, AlertColourTwo, AlertTextColour, CycleInterval, BkClr, BlinkDuration);
+                        //SoftBlink(AlertColourOne, AlertColourTwo, AlertTextColour, CycleInterval, BkClr, BlinkDuration);
                         break;
                     default:
                         break;
@@ -531,33 +529,33 @@ namespace ExtendedControls.ExtendedToolkit.ToolstripControls
         /// Blinks the label.
         /// </summary>
         /// <param name="blinkDuration">Duration of the blink.</param>
-        public async void BlinkLabel(long blinkDuration)
-        {
-            var sw = Stopwatch.StartNew();
+        //public async void BlinkLabel(long blinkDuration)
+        //{
+        //    var sw = Stopwatch.StartNew();
 
-            var fgc = ForeColor;
+        //    var fgc = ForeColor;
 
-            var bgc = BackColor;
+        //    var bgc = BackColor;
 
-            while (sw.ElapsedMilliseconds < blinkDuration)
-            {
-                await Task.Delay(_flashInterval);
+        //    while (sw.ElapsedMilliseconds < blinkDuration)
+        //    {
+        //        await Task.Delay(_flashInterval);
 
-                base.BackColor = base.BackColor == AlertColourOne ? AlertColourTwo : AlertColourOne;
+        //        base.BackColor = base.BackColor == AlertColourOne ? AlertColourTwo : AlertColourOne;
 
-                base.ForeColor = AlertTextColour;
+        //        base.ForeColor = AlertTextColour;
 
-                Invalidate();
-            }
+        //        Invalidate();
+        //    }
 
-            BackColor = bgc;
+        //    BackColor = bgc;
 
-            ForeColor = fgc;
+        //    ForeColor = fgc;
 
-            Invalidate();
+        //    Invalidate();
 
-            sw.Stop();
-        }
+        //    sw.Stop();
+        //}
 
         /// <summary>
         /// Softs the blink.
@@ -568,52 +566,52 @@ namespace ExtendedControls.ExtendedToolkit.ToolstripControls
         /// <param name="cycleInterval">The cycle interval.</param>
         /// <param name="bkClr">if set to <c>true</c> [bk color].</param>
         /// <param name="blinkDuration">Duration of the blink.</param>
-        public async void SoftBlink(Color alertColour1, Color alertColour2, Color alertTextColour, short cycleInterval, bool bkClr, long blinkDuration)
-        {
-            var sw = Stopwatch.StartNew();
+        //public async void SoftBlink(Color alertColour1, Color alertColour2, Color alertTextColour, short cycleInterval, bool bkClr, long blinkDuration)
+        //{
+        //    var sw = Stopwatch.StartNew();
 
-            var fgc = ForeColor;
+        //    var fgc = ForeColor;
 
-            var bgc = BackColor;
+        //    var bgc = BackColor;
 
-            short halfCycle = (short)Math.Round(cycleInterval * 0.5);
+        //    short halfCycle = (short)Math.Round(cycleInterval * 0.5);
 
-            while (sw.ElapsedMilliseconds < blinkDuration)
-            {
-                await Task.Delay(1);
+        //    while (sw.ElapsedMilliseconds < blinkDuration)
+        //    {
+        //        await Task.Delay(1);
 
-                var n = sw.ElapsedMilliseconds % cycleInterval;
+        //        var n = sw.ElapsedMilliseconds % cycleInterval;
 
-                var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+        //        var per = (double)Math.Abs(n - halfCycle) / halfCycle;
 
-                var red = (short)Math.Round((alertColour2.R - alertColour1.R) * per) + alertColour1.R;
+        //        var red = (short)Math.Round((alertColour2.R - alertColour1.R) * per) + alertColour1.R;
 
-                var grn = (short)Math.Round((alertColour2.G - alertColour1.G) * per) + alertColour1.G;
+        //        var grn = (short)Math.Round((alertColour2.G - alertColour1.G) * per) + alertColour1.G;
 
-                var blw = (short)Math.Round((alertColour2.B - alertColour1.B) * per) + alertColour1.B;
+        //        var blw = (short)Math.Round((alertColour2.B - alertColour1.B) * per) + alertColour1.B;
 
-                var clr = Color.FromArgb(red, grn, blw);
+        //        var clr = Color.FromArgb(red, grn, blw);
 
-                if (bkClr)
-                {
-                    base.BackColor = clr;
-                }
-                else
-                {
-                    base.ForeColor = clr;
-                }
+        //        if (bkClr)
+        //        {
+        //            base.BackColor = clr;
+        //        }
+        //        else
+        //        {
+        //            base.ForeColor = clr;
+        //        }
 
-                Invalidate();
-            }
+        //        Invalidate();
+        //    }
 
-            BackColor = bgc;
+        //    BackColor = bgc;
 
-            ForeColor = fgc;
+        //    ForeColor = fgc;
 
-            Invalidate();
+        //    Invalidate();
 
-            sw.Stop();
-        }
+        //    sw.Stop();
+        //}
         #endregion
     }
 }
