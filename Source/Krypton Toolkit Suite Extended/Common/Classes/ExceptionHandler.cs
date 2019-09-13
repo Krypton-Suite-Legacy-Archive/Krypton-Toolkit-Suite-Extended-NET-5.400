@@ -154,6 +154,33 @@ namespace Common
         //        throw;
         //    }
         //}
+        public static void PrintStackTrace(Exception exc, string fileName)
+        {
+            //try
+            //{
+            //    ExceptionDispatchInfo exceptionInfo = null;
+
+            //    if (!File.Exists(fileName))
+            //    {
+            //        File.Create(fileName);
+            //    }
+
+            //    exceptionInfo = ExceptionDispatchInfo.Capture(exc);
+
+            //    StreamWriter writer = new StreamWriter(fileName);
+
+            //    writer.Write(exc.ToString());
+
+            //    writer.Close();
+
+            //    writer.Dispose();
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw;
+            //}
+        }
 
         /// <summary>
         /// Captures a stacktrace of the exception.

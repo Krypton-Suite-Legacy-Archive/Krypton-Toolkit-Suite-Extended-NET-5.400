@@ -91,33 +91,33 @@ namespace ToolkitSettings.BackEnd
         /// </summary>
         /// <param name="exc">The incoming exception.</param>
         /// <param name="fileName">The file to write the exception stacktrace to.</param>
-        //public static void PrintStackTrace(Exception exc, string fileName)
-        //{
-        //    try
-        //    {
-        //        ExceptionDispatchInfo exceptionInfo = null;
+        public static void PrintStackTrace(Exception exc, string fileName)
+        {
+            //try
+            //{
+            //    ExceptionDispatchInfo exceptionInfo = null;
 
-        //        if (!File.Exists(fileName))
-        //        {
-        //            File.Create(fileName);
-        //        }
+            //    if (!File.Exists(fileName))
+            //    {
+            //        File.Create(fileName);
+            //    }
 
-        //        exceptionInfo = ExceptionDispatchInfo.Capture(exc);
+            //    exceptionInfo = ExceptionDispatchInfo.Capture(exc);
 
-        //        StreamWriter writer = new StreamWriter(fileName);
+            //    StreamWriter writer = new StreamWriter(fileName);
 
-        //        writer.Write(exc.ToString());
+            //    writer.Write(exc.ToString());
 
-        //        writer.Close();
+            //    writer.Close();
 
-        //        writer.Dispose();
-        //    }
-        //    catch (Exception ex)
-        //    {
+            //    writer.Dispose();
+            //}
+            //catch (Exception ex)
+            //{
 
-        //        throw;
-        //    }
-        //}
+            //    throw;
+            //}
+        }
 
         /// <summary>
         /// Captures a stacktrace of the exception.

@@ -84,8 +84,8 @@
     <PackageReference Include="Cyotek.Windows.Forms.ColorPicker">
       <Version>1.7.2</Version>
     </PackageReference>
-    <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1251</Version>
+    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+      <Version>5.400.1231</Version>
     </PackageReference>
     <PackageReference Include="KryptonToolkitSuite5400CoreModule">
       <Version>5.400.1254</Version>

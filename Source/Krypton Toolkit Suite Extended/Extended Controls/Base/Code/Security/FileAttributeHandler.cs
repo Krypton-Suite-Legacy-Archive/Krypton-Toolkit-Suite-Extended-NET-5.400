@@ -96,11 +96,7 @@ namespace ExtendedControls.Base.Code.Security
 
             hidden.Checked = GetHiddenAttributeState(filePath);
 
-            //integrityStream.Checked = GetIntegrityStreamAttributeState(filePath);
-
             normal.Checked = GetNormalAttributeState(filePath);
-
-            //noScrubData.Checked = GetNoScrubDataAttributeState(filePath);
 
             notContextIndexed.Checked = GetNotContextIndexedAttributeState(filePath);
 

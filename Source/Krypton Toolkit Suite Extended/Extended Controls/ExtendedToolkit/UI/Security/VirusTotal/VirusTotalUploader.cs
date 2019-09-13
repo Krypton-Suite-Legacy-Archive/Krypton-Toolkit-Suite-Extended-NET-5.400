@@ -7,6 +7,7 @@
  */
 #endregion
 
+ /*
 using ComponentFactory.Krypton.Toolkit;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
@@ -291,3 +292,4 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
         //}
     }
 }
+*/
