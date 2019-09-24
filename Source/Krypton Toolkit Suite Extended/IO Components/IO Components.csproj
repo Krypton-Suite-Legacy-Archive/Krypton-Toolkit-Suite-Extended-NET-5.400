@@ -32,8 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Krypton Extended Toolkit">
+      <HintPath>..\Extended Controls\obj\Debug\Krypton Extended Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +56,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="User Controls\KryptonExplorer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="User Controls\KryptonFileSystemUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -63,14 +70,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
-      <Version>5.400.1231</Version>
-    </PackageReference>
-    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
-      <Version>5.400.1254</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Icons\Folder.ico" />
     <None Include="Resources\active_search.png" />
   </ItemGroup>
@@ -79,9 +78,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\KryptonExplorer.resx">
+      <DependentUpon>KryptonExplorer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Controls\KryptonFileSystemUserControl.resx">
       <DependentUpon>KryptonFileSystemUserControl.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="KryptonToolkitSuite5400">
+      <Version>5.400.1251</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

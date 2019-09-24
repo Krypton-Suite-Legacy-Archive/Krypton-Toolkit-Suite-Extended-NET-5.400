@@ -80,11 +80,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1251</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="UX\ExistingComponentChooser.resx">
       <DependentUpon>ExistingComponentChooser.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +98,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ToolboxBitmaps\FloatableToolStrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+      <Version>5.400.1254</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

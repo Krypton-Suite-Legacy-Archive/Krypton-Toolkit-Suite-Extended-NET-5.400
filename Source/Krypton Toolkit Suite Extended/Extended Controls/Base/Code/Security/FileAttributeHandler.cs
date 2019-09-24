@@ -59,7 +59,7 @@ namespace ExtendedControls.Base.Code.Security
         /// <param name="filePath">The file path.</param>
         public static void ClearAllAttributes(string filePath)
         {
-            File.SetAttributes(filePath, GetFileAttributes(filePath) & ~FileAttributes.Archive | ~FileAttributes.Compressed | ~FileAttributes.Device | ~FileAttributes.Directory | ~FileAttributes.Encrypted | ~FileAttributes.Hidden | ~FileAttributes.Normal | ~FileAttributes.NotContentIndexed | ~FileAttributes.Offline | ~FileAttributes.ReadOnly | ~FileAttributes.ReparsePoint | ~FileAttributes.SparseFile | ~FileAttributes.System | ~FileAttributes.Temporary);
+            File.SetAttributes(filePath, GetFileAttributes(filePath) & ~FileAttributes.Archive | ~FileAttributes.Compressed | ~FileAttributes.Device | ~FileAttributes.Directory | ~FileAttributes.Encrypted | ~FileAttributes.Hidden  | ~FileAttributes.Normal | ~FileAttributes.NotContentIndexed | ~FileAttributes.Offline | ~FileAttributes.ReadOnly | ~FileAttributes.ReparsePoint | ~FileAttributes.SparseFile | ~FileAttributes.System | ~FileAttributes.Temporary);
         }
 
         /// <summary>
@@ -96,7 +96,11 @@ namespace ExtendedControls.Base.Code.Security
 
             hidden.Checked = GetHiddenAttributeState(filePath);
 
+            //integrityStream.Checked = GetIntegrityStreamAttributeState(filePath);
+
             normal.Checked = GetNormalAttributeState(filePath);
+
+            //noScrubData.Checked = GetNoScrubDataAttributeState(filePath);
 
             notContextIndexed.Checked = GetNotContextIndexedAttributeState(filePath);
 

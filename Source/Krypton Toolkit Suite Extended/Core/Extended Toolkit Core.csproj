@@ -51,6 +51,8 @@
     </Compile>
     <Compile Include="Classes\ColourHandler.cs" />
     <Compile Include="Classes\Drawing\DrawingMethods.cs" />
+    <Compile Include="Classes\Drawing\FontMetrics.cs" />
+    <Compile Include="Classes\Drawing\GraphicsExtension.cs" />
     <Compile Include="Classes\Drawing\RoundedRectangleF.cs" />
     <Compile Include="Classes\KryptonMessageBoxExtended.cs" />
     <Compile Include="Classes\PI.cs" />
@@ -58,14 +60,19 @@
     <Compile Include="Classes\ScrollBars\ScrollBarExtendedRenderer.cs" />
     <Compile Include="Classes\ScrollBars\ScrollBarKryptonRenderer.cs" />
     <Compile Include="Classes\ScrollBars\WIN32.cs" />
+    <Compile Include="Classes\Typeface.cs" />
     <Compile Include="Classes\Utility.cs" />
     <Compile Include="Classes\WIN32.cs" />
     <Compile Include="Components\Controls\CircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\Controls\CustomProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\Controls\ExtendedProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\Controls\KryptonColourComboBox.cs" />
     <Compile Include="Components\Controls\KryptonCommandLinkVersion1.cs" />
     <Compile Include="Components\Controls\KryptonCommandLinkVersion2.cs" />
     <Compile Include="Components\Controls\KryptonGrid.cs">
@@ -84,6 +91,8 @@
     <Compile Include="Components\Controls\KryptonProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Components\Controls\KryptonRichTextBoxExtended.cs" />
+    <Compile Include="Components\Controls\KryptonSplitButton.cs" />
     <Compile Include="Components\Controls\Rounded Controls\KryptonRoundedButton.cs" />
     <Compile Include="Components\Controls\Rounded Controls\KryptonRoundedMaskedTextBox.cs" />
     <Compile Include="Components\Controls\Rounded Controls\KryptonRoundedRichTextBox.cs" />
@@ -133,6 +142,11 @@
     <Compile Include="Values\MainTextValue.cs" />
     <Compile Include="Values\SubscriptTextValue.cs" />
     <Compile Include="View Draw\ViewDrawCommandLinkButton.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="KryptonToolkitSuite5400">
+      <Version>5.400.1252</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -316,11 +330,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1251</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,11 +7,17 @@
  */
 #endregion
 
- /*
 using ComponentFactory.Krypton.Toolkit;
+using ExtendedControls.Base.Code.Exceptions;
+using ExtendedControls.Base.Code.Security;
+using ExtendedControls.Base.Code.Settings;
+using ExtendedControls.ExtendedToolkit.MessageBoxes.UI;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
 {
@@ -126,7 +132,6 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
             popupPositionValues4.PlacementTarget = null;
             this.kbtnSubmit.ToolTipValues.ToolTipPosition = popupPositionValues4;
             this.kbtnSubmit.Values.Text = "Upload && &Analyse";
-            //this.kbtnSubmit.Click += new System.EventHandler(this.kbtnSubmit_ClickAsync);
             // 
             // kbtnCancel
             // 
@@ -189,11 +194,6 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
         {
             InitializeComponent();
         }
-
-        //private async void kbtnSubmit_ClickAsync(object sender, EventArgs e)
-        //{
-        //    await RunScan(kptxtFilePath.Text);
-        //}
 
         private void kbtnBrowse_Click(object sender, EventArgs e)
         {
@@ -292,4 +292,3 @@ namespace ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal
         //}
     }
 }
-*/

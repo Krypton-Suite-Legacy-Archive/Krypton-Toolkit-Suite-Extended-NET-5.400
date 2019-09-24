@@ -13,4 +13,4 @@
 // a specific target and scoped to a namespace, type, member, etc.
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "SecurityIntelliSenseCS:MS Security rules violation", Justification = "<Pending>", Scope = "member", Target = "~M:Base.Code.Security.SecurityMethods.CreatePassword(System.Int32)~System.String")]
-
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Code Quality", "IDE0067:Dispose objects before losing scope", Justification = "<Pending>", Scope = "member", Target = "~M:ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal.VirusTotalUploader.kbtnBrowse_Click(System.Object,System.EventArgs)")]

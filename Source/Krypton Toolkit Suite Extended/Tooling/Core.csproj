@@ -365,8 +365,8 @@
     <PackageReference Include="EasyScintilla">
       <Version>1.0.5</Version>
     </PackageReference>
-    <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1251</Version>
+    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+      <Version>5.400.1254</Version>
     </PackageReference>
     <PackageReference Include="snt.ScintillaNet.FindReplaceDialog">
       <Version>1.4.0</Version>

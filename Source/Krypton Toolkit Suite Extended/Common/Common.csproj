@@ -41,7 +41,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +48,7 @@
     <Compile Include="Classes\Enumerations\Enumerations.cs" />
     <Compile Include="Classes\ExceptionHandler.cs" />
     <Compile Include="Classes\GlobalMethods.cs" />
+    <Compile Include="Classes\Helpers\AssemblyManager.cs" />
     <Compile Include="Classes\Helpers\HashingHelper.cs" />
     <Compile Include="Classes\IconExtractor.cs" />
     <Compile Include="Classes\Internal\InternalExtendedKryptonMessageBox.cs" />
@@ -75,8 +75,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1251</Version>
+    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+      <Version>5.400.1254</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400DockingModule">
+      <Version>5.400.742</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400NavigatorModule">
+      <Version>5.400.763</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400RibbonModule">
+      <Version>5.400.817</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400WorkspaceModule">
+      <Version>5.400.716</Version>
     </PackageReference>
     <PackageReference Include="WindowsAPICodePack">
       <Version>1.1.0</Version>

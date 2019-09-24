@@ -806,6 +806,7 @@
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonCueComboBox.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonCueTextBox.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonDateTimePickerExtended.cs" />
+    <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonRichTextBoxExtended.cs" />
     <Compile Include="ExtendedToolkit\Controls\Krypton Controls\KryptonSearchBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1377,8 +1378,20 @@
     <Folder Include="ExtendedToolkit\UI\SoftwareUpdater\Classes\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="KryptonToolkitSuite5400">
-      <Version>5.400.1251</Version>
+    <PackageReference Include="KryptonToolkitSuite5400CoreModule">
+      <Version>5.400.1254</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400DockingModule">
+      <Version>5.400.742</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400NavigatorModule">
+      <Version>5.400.763</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400RibbonModule">
+      <Version>5.400.817</Version>
+    </PackageReference>
+    <PackageReference Include="KryptonToolkitSuite5400WorkspaceModule">
+      <Version>5.400.716</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>

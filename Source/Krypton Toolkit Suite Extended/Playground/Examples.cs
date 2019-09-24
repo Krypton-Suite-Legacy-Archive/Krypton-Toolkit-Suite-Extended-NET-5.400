@@ -22,6 +22,7 @@ using ExtendedControls.ExtendedToolkit.UI.Security;
 using ExtendedControls.ExtendedToolkit.UI.Security.FileHashing;
 using ExtendedControls.ExtendedToolkit.UI.Security.VirusTotal;
 using ExtendedControls.ExtendedToolkit.UI.Theming;
+using ExtendedStandardControls;
 using Playground.Properties;
 using System;
 using System.Drawing;
@@ -30,7 +31,7 @@ using System.Windows.Forms;
 
 namespace Playground
 {
-    public class Examples : KryptonForm
+    public class Examples : KryptonFormExtended
     {
         #region Designer Code
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
@@ -80,12 +81,18 @@ namespace Playground
         private KryptonButton kryptonButton3;
         private KryptonButton kbtnFileSystemExamples;
         private KryptonButton kryptonButton1;
+        private KryptonButton kbtnESC;
+        private KryptonManager kryptonManager1;
+        private KryptonPalette kryptonPalette1;
+        private KryptonButton kbtnFileVersion;
         private System.ComponentModel.IContainer components;
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Examples));
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kbtnESC = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButton3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnFileSystemExamples = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -132,12 +139,17 @@ namespace Playground
             this.kbtnColourMixer = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnHexToRGB = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kbtnConvertColour = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.kbtnFileVersion = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.kbtnFileVersion);
+            this.kryptonPanel1.Controls.Add(this.kbtnESC);
             this.kryptonPanel1.Controls.Add(this.kryptonButton3);
             this.kryptonPanel1.Controls.Add(this.kbtnFileSystemExamples);
             this.kryptonPanel1.Controls.Add(this.kryptonButton1);
@@ -189,6 +201,20 @@ namespace Playground
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(971, 597);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // kbtnESC
+            // 
+            this.kbtnESC.Location = new System.Drawing.Point(498, 449);
+            this.kbtnESC.Name = "kbtnESC";
+            this.kbtnESC.Size = new System.Drawing.Size(218, 25);
+            this.kbtnESC.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kbtnESC.StateCommon.Border.Rounding = 25;
+            this.kbtnESC.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnESC.TabIndex = 99;
+            this.kbtnESC.Values.Text = "Extended Standard Controls";
+            this.kbtnESC.Click += new System.EventHandler(this.kbtnESC_Click);
             // 
             // kryptonButton3
             // 
@@ -803,6 +829,28 @@ namespace Playground
             this.kbtnConvertColour.Values.Text = "Convert Colour";
             this.kbtnConvertColour.Click += new System.EventHandler(this.kbtnConvertColour_Click);
             // 
+            // kryptonManager1
+            // 
+            this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office365Blue;
+            // 
+            // kryptonPalette1
+            // 
+            this.kryptonPalette1.CustomisedKryptonPaletteFilePath = null;
+            // 
+            // kbtnFileVersion
+            // 
+            this.kbtnFileVersion.Location = new System.Drawing.Point(737, 449);
+            this.kbtnFileVersion.Name = "kbtnFileVersion";
+            this.kbtnFileVersion.Size = new System.Drawing.Size(218, 25);
+            this.kbtnFileVersion.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kbtnFileVersion.StateCommon.Border.Rounding = 25;
+            this.kbtnFileVersion.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kbtnFileVersion.TabIndex = 100;
+            this.kbtnFileVersion.Values.Text = "File Version";
+            this.kbtnFileVersion.Click += new System.EventHandler(this.kbtnFileVersion_Click);
+            // 
             // Examples
             // 
             this.ClientSize = new System.Drawing.Size(971, 597);
@@ -814,10 +862,15 @@ namespace Playground
             this.Name = "Examples";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StateActive.Header.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.StateActive.Header.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.StateCommon.Border.Rounding = 25;
+            this.StateCommon.Header.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.StateCommon.Header.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.StateInactive.Header.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.StateInactive.Header.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Text = "Krypton Toolkit Suite Extended for .NET 4.7 - Examples";
             this.TextExtra = "(Public Build)";
             this.Load += new System.EventHandler(this.Examples_Load);
@@ -1189,6 +1242,20 @@ namespace Playground
             FileSystemExamples fileSystemExamples = new FileSystemExamples();
 
             fileSystemExamples.Show();
+        }
+
+        private void kbtnESC_Click(object sender, EventArgs e)
+        {
+            Editor editor = new Editor();
+
+            editor.Show();
+        }
+
+        private void kbtnFileVersion_Click(object sender, EventArgs e)
+        {
+            FileVersion fv = new FileVersion();
+
+            fv.Show();
         }
     }
 }
