@@ -229,12 +229,6 @@
     <Compile Include="UX\Colours\PaletteColourCreator.Designer.cs">
       <DependentUpon>PaletteColourCreator.cs</DependentUpon>
     </Compile>
-    <Compile Include="UX\Colours\PaletteFileEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UX\Colours\PaletteFileEditor.Designer.cs">
-      <DependentUpon>PaletteFileEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="UX\SysInfo\SystemInformationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,9 +353,6 @@
     <None Include="Resources\10-large-opt.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AutoCompleteMenu-ScintillaNET">
-      <Version>1.6.1</Version>
-    </PackageReference>
     <PackageReference Include="EasyScintilla">
       <Version>1.0.5</Version>
     </PackageReference>
